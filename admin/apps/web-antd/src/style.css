@@ -1,0 +1,111 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.shell {
+  min-height: 100%;
+}
+
+.side {
+  background: #15212d;
+}
+
+.brand {
+  height: 56px;
+  padding: 17px 18px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e7edf3;
+}
+
+.content {
+  min-height: calc(100vh - 56px);
+  padding: 18px;
+  background: #f3f7fa;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.orchestration-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.source {
+  margin-bottom: 12px;
+}
+
+.editor-shell {
+  display: grid;
+  grid-template-columns: 220px minmax(360px, 1fr) 260px;
+  gap: 12px;
+}
+
+.editor-shell aside,
+.waves {
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #d9e4ec;
+}
+
+.stage-canvas {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  background: #132638;
+  border: 1px solid #8eb1c7;
+}
+
+.stage-canvas.grid {
+  background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b7f7ff;
+  border: 1px dashed rgba(183,247,255,.35);
+}
+
+.spawn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 0;
+  color: #06151d;
+}
+
+.spawn.hero {
+  background: #7ef0c1;
+}
+
+.spawn.enemy {
+  background: #ffcf70;
+}
+
+.waves {
+  margin-top: 12px;
+}

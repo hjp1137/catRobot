@@ -1,0 +1,30 @@
+{
+  "name": "cat-robot-web-antd",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "vbenAdminTargetVersion": "5.7.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5602",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "vue-tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "7.0.1",
+    "@cat-robot/content-contracts": "workspace:*",
+    "ant-design-vue": "4.2.6",
+    "axios": "1.13.2",
+    "pinia": "3.0.4",
+    "vue": "3.5.24",
+    "vue-router": "4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.2",
+    "typescript": "5.9.3",
+    "vite": "7.2.7",
+    "vitest": "4.0.15",
+    "vue-tsc": "3.1.8"
+  }
+}

@@ -1,0 +1,101 @@
+export const ANIMATION_MANIFEST_SNAPSHOT = {
+  "checksum": "db5307053c0c52a2101ce359e9c667415a8bdfb34b0f34a13151205c2e667d96",
+  "clips": [
+    {
+      "defaultFrameDurationMs": 180,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapMouse.normal",
+          "flipX": false,
+          "id": "cmrwytucy000pc29sirsbhfxn",
+          "note": "任务25样例帧A",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapBug.normal",
+          "flipX": false,
+          "id": "cmrwytugi000rc29s2i2yfc3s",
+          "note": "任务25样例帧B",
+          "order": 1
+        }
+      ],
+      "id": "cmrk2hw6o0000c21wf20xt3yx",
+      "key": "enemy.scrapMouse.idle.sequence01",
+      "loop": true,
+      "name": "废料机械鼠待机测试序列",
+      "playMode": "loop",
+      "state": "idle",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFps": 8,
+      "defaultFrameDurationMs": 125,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapMouse.stepLeft",
+          "durationMs": 125,
+          "flipX": false,
+          "id": "cmrxjveqm000ac2es3kg9ugo0",
+          "note": "机械鼠左步",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapMouse.stepRight",
+          "durationMs": 125,
+          "flipX": false,
+          "id": "cmrxjveqm000bc2es8968xs2b",
+          "note": "机械鼠右步",
+          "order": 1
+        }
+      ],
+      "id": "cmrxjvelu0009c2es3vu8jehn",
+      "key": "enemy.scrapMouse.move.sequence02",
+      "loop": true,
+      "name": "机械鼠奔跑双帧",
+      "playMode": "loop",
+      "state": "move",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFrameDurationMs": 135,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "player.mechaCat.stepLeft",
+          "durationMs": 135,
+          "flipX": false,
+          "id": "cmrxjvdsh0006c2eskbbezbib",
+          "note": "机甲猫迈步左腿前",
+          "order": 0
+        },
+        {
+          "artKey": "player.mechaCat.stepRight",
+          "durationMs": 135,
+          "flipX": false,
+          "id": "cmrxjvdsh0007c2eswnh3nnsp",
+          "note": "机甲猫迈步右腿前",
+          "order": 1
+        }
+      ],
+      "id": "cmrk2hwql0005c21wvobfz9ex",
+      "key": "hero.mechaCat.move.sequence01",
+      "loop": true,
+      "name": "机甲猫白色跑步循环",
+      "playMode": "loop",
+      "state": "move",
+      "targetType": "hero",
+      "version": 2
+    }
+  ],
+  "generatedAt": "2026-07-23T13:32:16.004Z",
+  "releaseId": "cmrxjw9y5000kc2esjgdoh1al",
+  "releaseVersion": "R000019",
+  "schemaVersion": 1
+} as const;

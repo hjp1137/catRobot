@@ -1,0 +1,39 @@
+{
+  "name": "mecha-cat-minigame",
+  "version": "0.1.0",
+  "description": "喵喵机甲：星核觉醒 — 微信小游戏 MVP",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "prebuild": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "pretest": "node --test --experimental-strip-types test/campaignAssetCheck.test.ts test/tutorialAssetCheck.test.ts",
+    "test": "tsc && node --test --experimental-strip-types test/tutorialRuntime.test.ts test/assetResolver.test.ts test/assets.test.ts test/resource.test.ts test/upgrade.test.ts test/save.test.ts test/stage.test.ts test/progress.test.ts test/wave.test.ts test/boss.test.ts test/boss2.test.ts test/boss3.test.ts test/skill.test.ts test/skillUpgrade.test.ts test/chapter2.test.ts test/chapter3.test.ts test/equipment.test.ts test/EquipmentSet.test.ts test/battle.test.ts test/battleFeedback.test.ts test/battleTask13.test.ts test/exploreTask14.test.ts test/exploreTask15.test.ts test/exploreTask16.test.ts test/exploreTask16_1.test.ts test/battleGuiTuning.test.ts test/battleGuiAutomation.test.ts test/player.test.ts test/stageIntro.test.ts test/render.test.ts test/EquipmentEnhance.test.ts test/tutorial.test.ts test/tutorialCatalog.test.ts test/numericalBaseline.test.ts test/smoke.runtime.test.ts test/tutorialExtension.test.ts test/progression.test.ts test/reward.test.ts test/packVerify.test.ts test/sound.test.ts test/exploreTask16_2.test.ts test/artManifest.test.ts test/artManifestSnapshot.test.ts test/animationPlayer.test.ts test/animationHitState.test.ts test/stageDirector.test.ts test/contentRegistry.test.ts test/contentValidation.test.ts test/stageContentBinding.test.ts test/contentSnapshotRepository.test.ts test/stageSettlement.test.ts test/stageRunLifecycle.test.ts test/campaign.test.ts test/campaignRuntime.test.ts test/task30.test.ts",
+    "test:unit": "node --test --experimental-strip-types test/assetResolver.test.ts test/assets.test.ts test/resource.test.ts test/upgrade.test.ts test/save.test.ts test/stage.test.ts test/progress.test.ts test/wave.test.ts test/boss.test.ts test/boss2.test.ts test/boss3.test.ts test/skill.test.ts test/skillUpgrade.test.ts test/chapter2.test.ts test/chapter3.test.ts test/equipment.test.ts test/EquipmentSet.test.ts test/battle.test.ts test/battleFeedback.test.ts test/battleTask13.test.ts test/exploreTask14.test.ts test/exploreTask15.test.ts test/exploreTask16.test.ts test/exploreTask16_1.test.ts test/battleGuiTuning.test.ts test/battleGuiAutomation.test.ts test/player.test.ts test/stageIntro.test.ts test/render.test.ts test/EquipmentEnhance.test.ts test/tutorial.test.ts test/numericalBaseline.test.ts test/tutorialExtension.test.ts test/progression.test.ts test/reward.test.ts test/packVerify.test.ts test/sound.test.ts test/exploreTask16_2.test.ts test/artManifest.test.ts test/contentRegistry.test.ts test/contentValidation.test.ts test/stageContentBinding.test.ts test/stageSettlement.test.ts test/stageRunLifecycle.test.ts",
+    "test:smoke": "node --test --experimental-strip-types test/smoke.runtime.test.ts",
+    "test:gui:wechat": "node scripts/test-gui-wechat.cjs",
+    "check:art": "node scripts/check-art-assets.cjs",
+    "check:content": "node scripts/check-content-config.cjs",
+    "check:animation": "node scripts/check-animation-assets.cjs",
+    "check:stage": "node scripts/check-stage-orchestration.cjs",
+    "check:progression": "node scripts/check-stage-progression.cjs",
+    "check:campaign": "node scripts/check-campaign-assets.cjs",
+    "check:tutorial": "node scripts/check-tutorial-assets.cjs",
+    "content:db:generate": "npm --prefix server run content:db:generate",
+    "content:db:migrate": "npm --prefix server run content:db:migrate",
+    "content:db:status": "npm --prefix server run content:db:status",
+    "content:db:seed": "npm --prefix server run content:db:seed",
+    "content:art:sync": "npm --prefix server run content:art:sync",
+    "content:server": "npm --prefix server run start:dev",
+    "content:web": "pnpm --dir admin/apps/web-antd dev",
+    "content:admin": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process npm -ArgumentList '--prefix server run start:dev'; pnpm --dir admin/apps/web-antd dev\"",
+    "content:validate": "curl -X POST http://127.0.0.1:3100/api/content/validate",
+    "content:publish": "curl -X POST http://127.0.0.1:3100/api/content/publish",
+    "content:server:test": "npm --prefix server run test",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "miniprogram-automator": "^0.12.1",
+    "typescript": "^5.4.0"
+  }
+}

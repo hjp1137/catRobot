@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["const { randomBytes } = require('crypto');\n\nfunction random(len) {\n\treturn randomBytes(len);\n}\n\nexports.random = random;"]}

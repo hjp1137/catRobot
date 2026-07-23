@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-07-15T12:56:00+08:00",
+  "database": "124.221.17.54:3306/cat_robot",
+  "migrationCount": 5,
+  "migrationStatus": "up-to-date",
+  "draft": {
+    "stageId": "stage_battle_1_1",
+    "rowVersion": 17,
+    "editedSpawnPoint": {
+      "id": "enemy_left",
+      "x": 333,
+      "y": 444
+    },
+    "editedWave": {
+      "name": "第一波-26.1验收",
+      "startDelayMs": 0,
+      "maxAlive": 4,
+      "entryCount": 4,
+      "spawnIntervalMs": 650,
+      "levelMultiplier": 1.2,
+      "hpMultiplier": 1.1,
+      "attackMultiplier": 1.3
+    }
+  },
+  "published": {
+    "enabled": false,
+    "reason": "content-snapshot-stage-orchestration-not-declared",
+    "behavior": "R000007 keeps legacy runtime fallback"
+  },
+  "proof": "Values were read through the restarted Nest service after GUI save and refresh."
+}

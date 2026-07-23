@@ -1,0 +1,1059 @@
+{
+  "checksum": "25c1f943594786bfd1f27bb63f2b3be8addc9b94cb74b813a979548784e399e7",
+  "featureUnlockRuleCount": 8,
+  "flowCount": 1,
+  "flows": [
+    {
+      "allowReplay": true,
+      "audience": {
+        "player": "new"
+      },
+      "campaignId": "campaign_main_01",
+      "contentVersion": 2,
+      "createdAt": {},
+      "description": "从主线入口到首关结算与装备解锁的默认草稿。",
+      "enabled": true,
+      "endStepId": "tutorial.complete",
+      "id": "tutorial.main.firstJourney",
+      "name": "首次旅程",
+      "playerCondition": {},
+      "priority": 100,
+      "rowVersion": 11,
+      "schemaVersion": 1,
+      "skipUnlockFeatures": [
+        "feature.campaign",
+        "feature.inventory",
+        "feature.equipment"
+      ],
+      "skippable": true,
+      "startCondition": {
+        "type": "first-login"
+      },
+      "startStepId": "tutorial.welcome",
+      "steps": [
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "先打开主线战役。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "dialog.acknowledged"
+          },
+          "completionType": "dialog.acknowledged",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.welcome",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "欢迎驾驶员",
+          "nextStepId": "tutorial.openCampaign",
+          "order": 1,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "home.campaign",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "欢迎驾驶员",
+          "triggerConfig": {
+            "event": "app.ready"
+          },
+          "triggerType": "app.ready",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "进入第一章。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "target.clicked"
+          },
+          "completionType": "target.clicked",
+          "contentVersion": 2,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.openCampaign",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "主线入口",
+          "nextStepId": "tutorial.chapterOne",
+          "order": 2,
+          "rowVersion": 19,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "campaign.chapter.1",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "主线入口",
+          "triggerConfig": {
+            "event": "page.campaign"
+          },
+          "triggerType": "page.campaign",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "选择铸造通道。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "node.clicked"
+          },
+          "completionType": "node.clicked",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.chapterOne",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "选择1-1",
+          "nextStepId": "tutorial.stageDetail",
+          "order": 3,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "campaign.stage.1-1",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "选择1-1",
+          "triggerConfig": {
+            "event": "page.campaign"
+          },
+          "triggerType": "page.campaign",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "查看本关目标。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "detail.objective-viewed"
+          },
+          "completionType": "detail.objective-viewed",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.stageDetail",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "关卡目标",
+          "nextStepId": "tutorial.stagePower",
+          "order": 4,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "stage.detail.objective",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "关卡目标",
+          "triggerConfig": {
+            "event": "page.stage-detail"
+          },
+          "triggerType": "page.stage-detail",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "确认推荐战力。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "detail.power-viewed"
+          },
+          "completionType": "detail.power-viewed",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.stagePower",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "推荐战力",
+          "nextStepId": "tutorial.stageReward",
+          "order": 5,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "stage.detail.power",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "推荐战力",
+          "triggerConfig": {
+            "event": "detail.objective-viewed"
+          },
+          "triggerType": "detail.objective-viewed",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "查看通关奖励。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "detail.reward-viewed"
+          },
+          "completionType": "detail.reward-viewed",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.stageReward",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "关卡奖励",
+          "nextStepId": "tutorial.startStage",
+          "order": 6,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "stage.detail.reward",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "关卡奖励",
+          "triggerConfig": {
+            "event": "detail.power-viewed"
+          },
+          "triggerType": "detail.power-viewed",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "启动机甲。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "stage.started"
+          },
+          "completionType": "stage.started",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.startStage",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "开始关卡",
+          "nextStepId": "tutorial.move",
+          "order": 7,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "stage.detail.start",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "开始关卡",
+          "triggerConfig": {
+            "event": "detail.reward-viewed"
+          },
+          "triggerType": "detail.reward-viewed",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "拖动机甲。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "battle.player-moved"
+          },
+          "completionType": "battle.player-moved",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.move",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "移动教学",
+          "nextStepId": "tutorial.attack",
+          "order": 8,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": "stage_battle_1_1",
+          "targetId": "battle.move-zone",
+          "targetType": "canvas",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "移动教学",
+          "triggerConfig": {
+            "event": "battle.ready"
+          },
+          "triggerType": "battle.ready",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "点击攻击。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "battle.attack-used"
+          },
+          "completionType": "battle.attack-used",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.attack",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "攻击教学",
+          "nextStepId": "tutorial.firstEnemy",
+          "order": 9,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": "stage_battle_1_1",
+          "targetId": "battle.attack",
+          "targetType": "canvas",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "攻击教学",
+          "triggerConfig": {
+            "event": "battle.player-moved"
+          },
+          "triggerType": "battle.player-moved",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "击败首个敌人。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "battle.enemy-defeated"
+          },
+          "completionType": "battle.enemy-defeated",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.firstEnemy",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "首个敌人",
+          "nextStepId": "tutorial.firstWave",
+          "order": 10,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": "stage_battle_1_1",
+          "targetId": "battle.enemy",
+          "targetType": "canvas",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "首个敌人",
+          "triggerConfig": {
+            "event": "battle.attack-used"
+          },
+          "triggerType": "battle.attack-used",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "清除首波。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "battle.wave-cleared"
+          },
+          "completionType": "battle.wave-cleared",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.firstWave",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "首波教学",
+          "nextStepId": "tutorial.clear",
+          "order": 11,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": "stage_battle_1_1",
+          "targetId": "battle.wave",
+          "targetType": "canvas",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "首波教学",
+          "triggerConfig": {
+            "event": "battle.enemy-defeated"
+          },
+          "triggerType": "battle.enemy-defeated",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "完成剩余战斗。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "stage.cleared"
+          },
+          "completionType": "stage.cleared",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.clear",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "完成关卡",
+          "nextStepId": "tutorial.resultStars",
+          "order": 12,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": "stage_battle_1_1",
+          "targetId": "battle.clear",
+          "targetType": "canvas",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "完成关卡",
+          "triggerConfig": {
+            "event": "battle.wave-cleared"
+          },
+          "triggerType": "battle.wave-cleared",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "查看本次星级。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "result.stars-viewed"
+          },
+          "completionType": "result.stars-viewed",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.resultStars",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "结算星级",
+          "nextStepId": "tutorial.resultReward",
+          "order": 13,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "result.stars",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "结算星级",
+          "triggerConfig": {
+            "event": "page.result"
+          },
+          "triggerType": "page.result",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "首通奖励只发一次。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "reward.claimed"
+          },
+          "completionType": "reward.claimed",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.resultReward",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "领取奖励",
+          "nextStepId": "tutorial.returnMap",
+          "order": 14,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "result.reward",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "领取奖励",
+          "triggerConfig": {
+            "event": "result.stars-viewed"
+          },
+          "triggerType": "result.stars-viewed",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "返回第一章地图。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "campaign.returned"
+          },
+          "completionType": "campaign.returned",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.returnMap",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "返回地图",
+          "nextStepId": "tutorial.newNode",
+          "order": 15,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "result.continue",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "返回地图",
+          "triggerConfig": {
+            "event": "reward.claimed"
+          },
+          "triggerType": "reward.claimed",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "查看新解锁节点。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "campaign.node-unlocked"
+          },
+          "completionType": "campaign.node-unlocked",
+          "contentVersion": 1,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.newNode",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "新节点解锁",
+          "nextStepId": "tutorial.inventory",
+          "order": 16,
+          "rowVersion": 18,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "campaign.new-node",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "新节点解锁",
+          "triggerConfig": {
+            "event": "page.campaign"
+          },
+          "triggerType": "page.campaign",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "返回车库查看已解锁功能。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "target.clicked"
+          },
+          "completionType": "target.clicked",
+          "contentVersion": 2,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.inventory",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "返回车库",
+          "nextStepId": "tutorial.equipment",
+          "order": 17,
+          "rowVersion": 19,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "campaign.back",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "返回车库",
+          "triggerConfig": {
+            "event": "page.campaign"
+          },
+          "triggerType": "page.campaign",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": true,
+          "body": "打开装备舱。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "target.clicked"
+          },
+          "completionType": "target.clicked",
+          "contentVersion": 2,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.equipment",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "装备已解锁",
+          "nextStepId": "tutorial.complete",
+          "order": 18,
+          "rowVersion": 19,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "home.equipment",
+          "targetType": "ui",
+          "terminal": false,
+          "timeoutMs": 8000,
+          "title": "装备已解锁",
+          "triggerConfig": {
+            "event": "page.home"
+          },
+          "triggerType": "page.home",
+          "updatedAt": {}
+        },
+        {
+          "arrow": {
+            "artKey": "ui.tutorial.arrow",
+            "direction": "auto"
+          },
+          "avatarArtKey": "player.mechaCat.idle",
+          "blockInput": false,
+          "body": "选择并穿戴首件战利品。",
+          "campaignId": null,
+          "characterName": "喵喵教官",
+          "completionConfig": {
+            "event": "equipment.equipped"
+          },
+          "completionType": "equipment.equipped",
+          "contentVersion": 2,
+          "deletedAt": null,
+          "displayType": "dialog",
+          "enabled": true,
+          "fallbackAction": "skip-step",
+          "featureId": null,
+          "flowId": "tutorial.main.firstJourney",
+          "force": false,
+          "id": "tutorial.complete",
+          "mask": {
+            "opacity": 0.68,
+            "padding": 12
+          },
+          "name": "教学完成",
+          "nextStepId": null,
+          "order": 19,
+          "rowVersion": 19,
+          "skipStepId": null,
+          "stageId": null,
+          "targetId": "equipment.inventory.first",
+          "targetType": "ui",
+          "terminal": true,
+          "timeoutMs": 8000,
+          "title": "教学完成",
+          "triggerConfig": {
+            "event": "page.inventory"
+          },
+          "triggerType": "page.inventory",
+          "updatedAt": {}
+        }
+      ],
+      "transitions": [],
+      "unlockRules": [
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.campaign",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.campaign",
+          "order": 1,
+          "rowVersion": 17,
+          "stepId": "tutorial.openCampaign",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.equipment",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.equipment",
+          "order": 2,
+          "rowVersion": 17,
+          "stepId": "tutorial.resultReward",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.inventory",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.inventory",
+          "order": 3,
+          "rowVersion": 17,
+          "stepId": "tutorial.resultReward",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.skills",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.skills",
+          "order": 4,
+          "rowVersion": 17,
+          "stepId": "tutorial.complete",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.runes",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.runes",
+          "order": 5,
+          "rowVersion": 17,
+          "stepId": "tutorial.complete",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.strengthen",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.strengthen",
+          "order": 6,
+          "rowVersion": 17,
+          "stepId": "tutorial.complete",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.decompose",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.decompose",
+          "order": 7,
+          "rowVersion": 17,
+          "stepId": "tutorial.complete",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        },
+        {
+          "condition": {},
+          "createdAt": {},
+          "deletedAt": null,
+          "enabled": true,
+          "featureId": "feature.exploration",
+          "flowId": "tutorial.main.firstJourney",
+          "id": "tutorial.unlock.exploration",
+          "order": 8,
+          "rowVersion": 17,
+          "stepId": "tutorial.complete",
+          "unlockOnSkip": true,
+          "unlockTrigger": "step.complete",
+          "updatedAt": {}
+        }
+      ],
+      "updatedAt": {}
+    }
+  ],
+  "generatedAt": "2026-07-20T15:45:51.232Z",
+  "referenceSummary": {
+    "artKeys": [
+      "player.mechaCat.idle",
+      "ui.tutorial.arrow"
+    ],
+    "campaignIds": [
+      "campaign_main_01"
+    ],
+    "catalog": {
+      "artKeys": [
+        "enemy.droneEye.normal",
+        "enemy.scrapBug.normal",
+        "enemy.scrapGuard.elite",
+        "enemy.scrapMouse.normal",
+        "map.trainingGround.boundary",
+        "map.trainingGround.floor",
+        "map.trainingGround.line",
+        "map.trainingGround.zoneMark",
+        "player.mechaCat.attack",
+        "player.mechaCat.idle",
+        "player.mechaCat.move",
+        "ui.skill.cannon",
+        "ui.skill.shield",
+        "ui.tutorial.arrow"
+      ],
+      "campaignIds": [
+        "campaign_main_01"
+      ],
+      "featureIds": [
+        "feature.campaign",
+        "feature.decompose",
+        "feature.equipment",
+        "feature.exploration",
+        "feature.inventory",
+        "feature.runes",
+        "feature.skills",
+        "feature.strengthen"
+      ],
+      "stageIds": [
+        "stage_battle_1_1",
+        "stage_explore_training_01"
+      ]
+    },
+    "featureIds": [
+      "feature.campaign",
+      "feature.decompose",
+      "feature.equipment",
+      "feature.exploration",
+      "feature.inventory",
+      "feature.runes",
+      "feature.skills",
+      "feature.strengthen"
+    ],
+    "stageIds": [
+      "stage_battle_1_1"
+    ]
+  },
+  "releaseId": "cmrtecge80000c2v8x1mwsjm7",
+  "releaseVersion": "R000009",
+  "schemaVersion": 1,
+  "stepCount": 19
+}

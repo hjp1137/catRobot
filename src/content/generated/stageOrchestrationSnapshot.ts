@@ -1,0 +1,390 @@
+import type { StageOrchestrationSnapshot } from '../models/StageOrchestration';
+
+export const STAGE_ORCHESTRATION_SNAPSHOT: StageOrchestrationSnapshot = {
+  "checksum": "7f2edfdf71322bcf347c4f87948f425ca1d13f468c25b89ef3977dfdb7dea65e",
+  "generatedAt": "2026-07-23T13:32:16.445Z",
+  "releaseId": "cmrxjw9y5000kc2esjgdoh1al",
+  "releaseVersion": "R000019",
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "completionRule": {
+        "type": "all-waves-cleared"
+      },
+      "failureRule": {
+        "type": "hero-dead"
+      },
+      "layers": [
+        {
+          "artKey": "map.trainingGround.overhead",
+          "enabled": true,
+          "height": 2800,
+          "id": "training-ground-art",
+          "name": "真实训练场底图",
+          "opacity": 1,
+          "order": 0,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "ground",
+          "width": 1800,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "enabled": true,
+          "height": 820,
+          "id": "press-blocker",
+          "name": "中央压装台",
+          "opacity": 0,
+          "order": 1,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 600,
+          "x": 600,
+          "y": 280
+        },
+        {
+          "enabled": true,
+          "height": 840,
+          "id": "cargo-blocker",
+          "name": "左侧货箱区",
+          "opacity": 0,
+          "order": 2,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 450,
+          "x": 70,
+          "y": 1040
+        },
+        {
+          "enabled": true,
+          "height": 740,
+          "id": "generator-blocker",
+          "name": "右侧发电机",
+          "opacity": 0,
+          "order": 3,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 480,
+          "x": 1190,
+          "y": 1160
+        },
+        {
+          "enabled": true,
+          "height": 250,
+          "id": "barrier-blocker",
+          "name": "下方检修栏",
+          "opacity": 0,
+          "order": 4,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 760,
+          "x": 500,
+          "y": 2200
+        }
+      ],
+      "layout": {
+        "backgroundThemeId": "background_training_ground_v1",
+        "battleArea": {
+          "height": 2800,
+          "width": 1800,
+          "x": 0,
+          "y": 0
+        },
+        "camera": {
+          "clampToWorld": true,
+          "mode": "follow"
+        },
+        "canvasHeight": 2800,
+        "canvasWidth": 1800,
+        "enabled": true,
+        "heroSpawnPointId": "hero_start",
+        "sceneMode": "exploration",
+        "stageId": "stage_battle_1_1",
+        "version": 3
+      },
+      "schemaVersion": 1,
+      "spawnPoints": [
+        {
+          "enabled": true,
+          "facing": "right",
+          "id": "hero_start",
+          "name": "主角出生点",
+          "type": "hero",
+          "x": 900,
+          "y": 1540
+        },
+        {
+          "enabled": true,
+          "facing": "right",
+          "id": "enemy_left",
+          "name": "左侧入口",
+          "type": "enemy",
+          "x": 280,
+          "y": 420
+        },
+        {
+          "enabled": true,
+          "facing": "left",
+          "id": "enemy_right",
+          "name": "右侧入口",
+          "type": "enemy",
+          "x": 1540,
+          "y": 520
+        },
+        {
+          "enabled": true,
+          "facing": "down",
+          "id": "enemy_top",
+          "name": "上方入口",
+          "type": "enemy",
+          "x": 900,
+          "y": 180
+        }
+      ],
+      "stageId": "stage_battle_1_1",
+      "waves": [
+        {
+          "completionDelayMs": 600,
+          "completionRule": {
+            "type": "all-enemies-cleared"
+          },
+          "enabled": true,
+          "entries": [
+            {
+              "attackMultiplier": 1.3,
+              "count": 4,
+              "elite": false,
+              "enabled": true,
+              "enemyTemplateId": "enemy_scrap_mouse_01",
+              "hpMultiplier": 1.1,
+              "id": "entry_1",
+              "initialDelayMs": 0,
+              "levelMultiplier": 1.2,
+              "spawnIntervalMs": 650,
+              "spawnPointId": "enemy_right"
+            }
+          ],
+          "id": "wave_1",
+          "maxAlive": 4,
+          "name": "第一波-26.1验收",
+          "nextWave": "next",
+          "order": 1,
+          "startDelayMs": 0,
+          "startTrigger": {
+            "type": "stage-start"
+          }
+        },
+        {
+          "completionDelayMs": 600,
+          "completionRule": {
+            "type": "all-enemies-cleared"
+          },
+          "enabled": true,
+          "entries": [
+            {
+              "attackMultiplier": 1.1,
+              "count": 4,
+              "elite": false,
+              "enabled": true,
+              "enemyTemplateId": "enemy_scrap_mouse_01",
+              "hpMultiplier": 1.1,
+              "id": "entry_2",
+              "initialDelayMs": 0,
+              "levelMultiplier": 1.1,
+              "spawnIntervalMs": 450,
+              "spawnPointId": "enemy_right"
+            }
+          ],
+          "id": "wave_2",
+          "maxAlive": 5,
+          "name": "第2波 双侧夹击",
+          "nextWave": "next",
+          "order": 2,
+          "startDelayMs": 800,
+          "startTrigger": {
+            "type": "previous-wave-cleared"
+          }
+        },
+        {
+          "completionDelayMs": 600,
+          "completionRule": {
+            "type": "all-enemies-cleared"
+          },
+          "enabled": true,
+          "entries": [
+            {
+              "attackMultiplier": 1.25,
+              "count": 1,
+              "elite": true,
+              "enabled": true,
+              "enemyTemplateId": "enemy_scrap_guard_elite_01",
+              "hpMultiplier": 1.25,
+              "id": "entry_3",
+              "initialDelayMs": 0,
+              "levelMultiplier": 1.25,
+              "spawnIntervalMs": 0,
+              "spawnPointId": "enemy_top"
+            }
+          ],
+          "id": "wave_3",
+          "maxAlive": 4,
+          "name": "第3波 精英收束",
+          "nextWave": "next",
+          "order": 3,
+          "startDelayMs": 900,
+          "startTrigger": {
+            "type": "previous-wave-cleared"
+          }
+        }
+      ]
+    },
+    {
+      "completionRule": {
+        "type": "all-waves-cleared"
+      },
+      "failureRule": {
+        "type": "hero-dead"
+      },
+      "layers": [
+        {
+          "artKey": "map.trainingGround.overhead",
+          "enabled": true,
+          "height": 2800,
+          "id": "training-ground-art",
+          "name": "真实训练场底图",
+          "opacity": 1,
+          "order": 0,
+          "parallax": 1,
+          "scale": 0.76,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "ground",
+          "width": 1800,
+          "x": 216,
+          "y": 336
+        },
+        {
+          "enabled": true,
+          "height": 623,
+          "id": "press-blocker",
+          "name": "中央压装台",
+          "opacity": 0,
+          "order": 1,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 456,
+          "x": 672,
+          "y": 549
+        },
+        {
+          "enabled": true,
+          "height": 638,
+          "id": "cargo-blocker",
+          "name": "左侧货箱区",
+          "opacity": 0,
+          "order": 2,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 342,
+          "x": 269,
+          "y": 1126
+        },
+        {
+          "enabled": true,
+          "height": 562,
+          "id": "generator-blocker",
+          "name": "右侧发电机",
+          "opacity": 0,
+          "order": 3,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 365,
+          "x": 1120,
+          "y": 1218
+        },
+        {
+          "enabled": true,
+          "height": 190,
+          "id": "barrier-blocker",
+          "name": "下方检修栏",
+          "opacity": 0,
+          "order": 4,
+          "parallax": 1,
+          "scale": 1,
+          "scrollsWithCamera": true,
+          "tiled": false,
+          "type": "collision",
+          "width": 578,
+          "x": 596,
+          "y": 2008
+        }
+      ],
+      "layout": {
+        "backgroundThemeId": "background_training_ground_v1",
+        "battleArea": {
+          "height": 2800,
+          "width": 1800,
+          "x": 0,
+          "y": 0
+        },
+        "camera": {
+          "clampToWorld": true,
+          "exploreHud": {
+            "layout": "compact",
+            "showWaveNotice": false
+          },
+          "mode": "follow"
+        },
+        "canvasHeight": 2800,
+        "canvasWidth": 1800,
+        "enabled": true,
+        "exploreHud": {
+          "layout": "compact",
+          "showWaveNotice": false
+        },
+        "heroSpawnPointId": "hero_start",
+        "sceneMode": "exploration",
+        "stageId": "stage_explore_training_01",
+        "version": 3
+      },
+      "schemaVersion": 1,
+      "spawnPoints": [
+        {
+          "enabled": true,
+          "facing": "right",
+          "id": "hero_start",
+          "name": "主角出生点",
+          "type": "hero",
+          "x": 900,
+          "y": 1540
+        }
+      ],
+      "stageId": "stage_explore_training_01",
+      "waves": []
+    }
+  ]
+};

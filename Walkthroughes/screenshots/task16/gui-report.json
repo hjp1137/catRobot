@@ -1,0 +1,8 @@
+{
+  "autoPort": 9420,
+  "screenshots": [],
+  "states": [],
+  "failedStep": "enter_explore",
+  "error": "全局超时15s",
+  "success": false
+}

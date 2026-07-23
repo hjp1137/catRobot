@@ -1,0 +1,51 @@
+{
+  "name": "cat-robot-content-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "typecheck": "tsc --noEmit",
+    "test": "jest --runInBand",
+    "test:e2e": "jest --config jest-e2e.json --runInBand",
+    "content:db:generate": "prisma generate",
+    "content:db:migrate": "prisma migrate deploy",
+    "content:db:status": "prisma migrate status",
+    "content:db:seed": "ts-node prisma/seed.ts",
+    "content:art:sync": "ts-node prisma/sync-art.ts",
+    "content:image-library:backfill": "ts-node prisma/backfill-image-library.ts",
+    "content:admin:create-user": "ts-node src/modules/auth/create-admin-user.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.1.8",
+    "@nestjs/config": "4.0.2",
+    "@nestjs/core": "11.1.8",
+    "@nestjs/jwt": "11.0.0",
+    "@nestjs/platform-express": "11.1.8",
+    "@nestjs/swagger": "11.2.0",
+    "@prisma/client": "6.19.0",
+    "bcryptjs": "3.0.2",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.2",
+    "mecha-cat-minigame": "file:..",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "11.0.10",
+    "@nestjs/testing": "11.1.8",
+    "@types/bcryptjs": "2.4.6",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.10.1",
+    "@types/supertest": "6.0.3",
+    "jest": "30.2.0",
+    "prisma": "6.19.0",
+    "supertest": "7.1.4",
+    "ts-jest": "29.4.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3"
+  }
+}

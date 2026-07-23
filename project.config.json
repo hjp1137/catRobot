@@ -1,0 +1,135 @@
+{
+  "description": "项目配置文件",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "enhance": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "disableUseStrict": false,
+    "useCompilerPlugins": false
+  },
+  "compileType": "game",
+  "libVersion": "latest",
+  "appid": "wx199a1710156d3471",
+  "projectname": "mecha-cat-minigame",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "node_modules"
+      },
+      {
+        "type": "folder",
+        "value": "src"
+      },
+      {
+        "type": "folder",
+        "value": "test"
+      },
+      {
+        "type": "folder",
+        "value": "plans"
+      },
+      {
+        "type": "folder",
+        "value": "Walkthroughes"
+      },
+      {
+        "type": "folder",
+        "value": "server"
+      },
+      {
+        "type": "folder",
+        "value": "admin"
+      },
+      {
+        "type": "folder",
+        "value": "packages"
+      },
+      {
+        "type": "folder",
+        "value": "content-store"
+      },
+      {
+        "type": "folder",
+        "value": ".git"
+      },
+      {
+        "type": "folder",
+        "value": ".agents"
+      },
+      {
+        "type": "folder",
+        "value": ".codex"
+      },
+      {
+        "type": "folder",
+        "value": ".codex-temp"
+      },
+      {
+        "type": "file",
+        "value": "开发日记.md"
+      },
+      {
+        "type": "file",
+        "value": "项目路线图.md"
+      },
+      {
+        "type": "file",
+        "value": "ANTIGRAVITY_TASK.md"
+      },
+      {
+        "type": "file",
+        "value": "ANTIGRAVITY_RESULT.md"
+      },
+      {
+        "type": "glob",
+        "value": "*bridge*"
+      },
+      {
+        "type": "file",
+        "value": "powershell.cmd"
+      }
+    ],
+    "include": []
+  },
+  "isGameTourist": false,
+  "editorSetting": {}
+}

@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-07-15T04:39:03.871Z",
+  "screenshots": [
+    "01_editor_full.png",
+    "02_real_background_hero_enemies.png",
+    "03_property_panel_layout.png",
+    "04_spawn_selected_properties.png",
+    "05_spawn_dragged_coordinates.png",
+    "06_spawn_exact_coordinates.png",
+    "07_layer_editing.png",
+    "08_wave_detail_editing.png",
+    "09_wave_entry_editing.png",
+    "10_saved_and_refreshed.png",
+    "11_wave_running.png",
+    "12_paused.png",
+    "13_second_wave.png",
+    "14_third_wave.png",
+    "15_stage_clear.png",
+    "16_stage_failed.png",
+    "17_draft_preview.png",
+    "18_published_preview_r000007.png",
+    "19_optimistic_lock_conflict.png",
+    "20_reference_protection.png",
+    "21_unsaved_leave_prompt.png",
+    "22_nest_restart_persistence.png"
+  ],
+  "badResponses": [],
+  "expected409": [
+    {
+      "page": "pageA",
+      "status": 409,
+      "url": "http://127.0.0.1:3100/api/content/stages/stage_battle_1_1/orchestration"
+    },
+    {
+      "page": "pageA",
+      "status": 409,
+      "url": "http://127.0.0.1:3100/api/content/stages/stage_battle_1_1/spawn-points/enemy_right"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "evidence": {
+    "spawnPointAfterEdit": "右侧入口",
+    "rowVersionBefore": 15,
+    "rowVersionAfterSave": 16,
+    "rowVersionAfterRefresh": 16,
+    "coordinatesAfterRefresh": [
+      333,
+      444
+    ],
+    "previewStartTrace": [
+      "WAVE_RUNNING"
+    ],
+    "pageBRowVersion": 17,
+    "rowVersionAfterNestRestart": 17,
+    "coordinatesAfterNestRestart": [
+      333,
+      444
+    ],
+    "waveAfterNestRestart": {
+      "name": "第一波-26.1验收",
+      "numbers": [
+        0,
+        4,
+        600,
+        4,
+        0,
+        650,
+        1.2,
+        1.1,
+        1.3
+      ]
+    }
+  },
+  "finishedAt": "2026-07-15T04:48:13.133Z"
+}

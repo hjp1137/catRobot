@@ -1,0 +1,14 @@
+{
+  "testCampaignRecords": [],
+  "mainCampaign": { "id": "campaign_main_01", "deleted_at": null },
+  "flow": { "id": "tutorial.main.firstJourney", "row_version": 11, "content_version": 2, "deleted_at": null },
+  "activeStepCount": 19,
+  "welcomeTitle": "欢迎驾驶员",
+  "allAvatarKeysCorrect": true,
+  "allArrowKeysCorrect": true,
+  "artDrafts": {
+    "map.trainingGround.floor": { "versionNo": 2, "width": 800, "height": 1200, "hasAlpha": true, "validationStatus": "valid", "checksum": "caa744d78388b7e9677c069ed04c6ed78628e0c979ab64ff808fe21e8011f066" },
+    "player.mechaCat.idle": { "versionNo": 3, "width": 128, "height": 128, "hasAlpha": true, "validationStatus": "valid" },
+    "ui.tutorial.arrow": { "versionNo": 2, "width": 64, "height": 64, "hasAlpha": true, "validationStatus": "valid" }
+  }
+}

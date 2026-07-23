@@ -1,0 +1,88 @@
+{
+  "campaignCount": 1,
+  "campaigns": [
+    {
+      "chapters": [
+        {
+          "backgroundArtKey": "map.trainingGround.floor",
+          "campaignId": "campaign_main_01",
+          "canvasHeight": 600,
+          "canvasWidth": 1000,
+          "chapterNo": 1,
+          "completionText": "废料边境防线已重新点亮。",
+          "connections": [
+            {
+              "chapterId": "chapter_scrap_border_01",
+              "enabled": true,
+              "fromNodeId": "campaign_node_battle_1_1",
+              "id": "campaign_path_1_1_training",
+              "oneWay": true,
+              "order": 1,
+              "pathType": "normal",
+              "toNodeId": "campaign_node_training"
+            }
+          ],
+          "description": "沿铸造通道进入训练场，重启边境防线。",
+          "enabled": true,
+          "id": "chapter_scrap_border_01",
+          "name": "第一章·废料边境",
+          "nodes": [
+            {
+              "chapterId": "chapter_scrap_border_01",
+              "description": "清除铸造通道内的三波敌人。",
+              "enabled": true,
+              "iconArtKey": "icon.objective.enemy",
+              "id": "campaign_node_battle_1_1",
+              "isEnd": false,
+              "isStart": true,
+              "name": "铸造通道",
+              "order": 1,
+              "recommendedPower": 220,
+              "stageId": "stage_battle_1_1",
+              "type": "normal",
+              "x": 250,
+              "y": 350
+            },
+            {
+              "chapterId": "chapter_scrap_border_01",
+              "description": "探索训练场并完成资源、宝箱与敌人目标。",
+              "enabled": true,
+              "iconArtKey": "icon.objective.chest",
+              "id": "campaign_node_training",
+              "isEnd": true,
+              "isStart": false,
+              "name": "边境训练场",
+              "order": 2,
+              "recommendedPower": 260,
+              "stageId": "stage_explore_training_01",
+              "type": "exploration",
+              "x": 760,
+              "y": 240
+            }
+          ],
+          "subtitle": "边境启动",
+          "viewportX": 0,
+          "viewportY": 0
+        }
+      ],
+      "contentVersion": 1,
+      "coverArtKey": "map.trainingGround.floor",
+      "defaultChapterId": "chapter_scrap_border_01",
+      "description": "从废料边境启程的主线章节。",
+      "enabled": true,
+      "id": "campaign_main_01",
+      "name": "喵喵机甲主线战役",
+      "order": 1,
+      "schemaVersion": 1,
+      "subtitle": "星核觉醒"
+    }
+  ],
+  "chapterCount": 1,
+  "checksum": "c5921f4f1e6e4703f540690c49e1eaf0d3b46305ea70fdfc772f740dae7bb1c0",
+  "connectionCount": 1,
+  "generatedAt": "2026-07-23T13:32:17.133Z",
+  "nodeCount": 2,
+  "releaseId": "cmrxjw9y5000kc2esjgdoh1al",
+  "releaseVersion": "R000019",
+  "schemaVersion": 1
+}

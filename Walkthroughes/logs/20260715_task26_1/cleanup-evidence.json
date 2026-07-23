@@ -1,0 +1,13 @@
+{
+  "temporaryAdmin": "deleted",
+  "deletedCount": 1,
+  "hardcodedCredentialScan": "no matches",
+  "adminAutomationCredentialSource": [
+    "TASK261_ADMIN_USERNAME",
+    "TASK261_ADMIN_PASSWORD"
+  ],
+  "localServicesStopped": {
+    "port3100Listening": false,
+    "port5602Listening": false
+  }
+}

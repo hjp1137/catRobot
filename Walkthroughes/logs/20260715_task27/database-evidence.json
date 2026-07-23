@@ -1,0 +1,13 @@
+{
+  "date": "2026-07-15",
+  "datasource": "mysql://124.221.17.54:3306/cat_robot",
+  "migrationCount": 6,
+  "migrationStatus": "up-to-date",
+  "pendingMigrations": 0,
+  "draftStageId": "stage_battle_1_1",
+  "draftRowVersionAfterSave": 18,
+  "publishedRelease": "R000007",
+  "publishedProgressionMode": "LEGACY_FALLBACK",
+  "published": false,
+  "health": { "ok": true }
+}

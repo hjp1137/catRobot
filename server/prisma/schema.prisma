@@ -1,0 +1,800 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum ContentAdminRole {
+  admin
+  editor
+  viewer
+}
+
+enum ContentStageMode {
+  fixed_battle
+  explore
+}
+
+enum ContentReleaseStatus {
+  validating
+  publishing
+  published
+  failed
+  restored
+}
+
+enum ContentResourceStatus {
+  physical
+  virtual
+  fallback
+  missing
+}
+
+enum ContentArtDimensionPolicy {
+  exact
+  recommended
+  free
+}
+
+enum ContentArtVersionStatus {
+  valid
+  warning
+  invalid
+  published
+  archived
+}
+
+model ContentAdminUser {
+  id String @id @default(cuid()) @db.VarChar(36)
+  username String @unique @db.VarChar(80)
+  password_hash String @db.VarChar(191)
+  role ContentAdminRole @default(viewer)
+  enabled Boolean @default(true)
+  last_login_at DateTime?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_admin_user")
+}
+
+model ContentEnemyTemplate {
+  id String @id @db.VarChar(80)
+  name String @db.VarChar(120)
+  description String? @db.Text
+  category String @db.VarChar(40)
+  behavior_type String @db.VarChar(40)
+  visual_json Json
+  stats_json Json
+  combat_json Json
+  rewards_json Json?
+  tags_json Json?
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@map("content_enemy_template")
+}
+
+model ContentBackgroundTheme {
+  id String @id @db.VarChar(80)
+  name String @db.VarChar(120)
+  description String? @db.Text
+  art_json Json
+  colors_json Json?
+  rendering_json Json
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@map("content_background_theme")
+}
+
+model ContentHeroVisual {
+  id String @id @db.VarChar(80)
+  name String @db.VarChar(120)
+  description String? @db.Text
+  visual_json Json
+  skills_json Json
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@map("content_hero_visual")
+}
+
+model ContentCampaign {
+  id String @id @db.VarChar(80)
+  name String @db.VarChar(120)
+  subtitle String? @db.VarChar(160)
+  description String? @db.Text
+  cover_art_key String? @db.VarChar(160)
+  default_chapter_id String? @db.VarChar(80)
+  sort_order Int @default(0)
+  enabled Boolean @default(true)
+  schema_version Int @default(1)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@index([enabled, sort_order])
+  @@index([cover_art_key])
+  @@map("content_campaign")
+}
+
+model ContentCampaignChapter {
+  id String @id @db.VarChar(80)
+  campaign_id String @db.VarChar(80)
+  chapter_no Int
+  name String @db.VarChar(120)
+  subtitle String? @db.VarChar(160)
+  description String? @db.Text
+  background_art_key String @db.VarChar(160)
+  canvas_width Int @default(1000)
+  canvas_height Int @default(600)
+  viewport_x Float @default(0)
+  viewport_y Float @default(0)
+  enabled Boolean @default(true)
+  completion_text String? @db.VarChar(255)
+  completion_reward_ref String? @db.VarChar(160)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@unique([campaign_id, chapter_no])
+  @@index([campaign_id, enabled])
+  @@index([background_art_key])
+  @@map("content_campaign_chapter")
+}
+
+model ContentCampaignStageNode {
+  id String @id @db.VarChar(80)
+  chapter_id String @db.VarChar(80)
+  stage_id String @db.VarChar(80)
+  name String @db.VarChar(120)
+  x Float
+  y Float
+  node_type String @db.VarChar(32)
+  icon_art_key String? @db.VarChar(160)
+  is_start Boolean @default(false)
+  is_end Boolean @default(false)
+  sort_order Int @default(0)
+  recommended_power Int @default(0)
+  description String? @db.Text
+  enabled Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@index([chapter_id, stage_id])
+  @@index([chapter_id, enabled, sort_order])
+  @@index([stage_id])
+  @@index([icon_art_key])
+  @@map("content_campaign_stage_node")
+}
+
+model ContentCampaignNodeConnection {
+  id String @id @db.VarChar(80)
+  chapter_id String @db.VarChar(80)
+  from_node_id String @db.VarChar(80)
+  to_node_id String @db.VarChar(80)
+  path_type String @default("normal") @db.VarChar(32)
+  one_way Boolean @default(true)
+  sort_order Int @default(0)
+  enabled Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([chapter_id, from_node_id, to_node_id])
+  @@index([chapter_id, enabled, sort_order])
+  @@index([from_node_id])
+  @@index([to_node_id])
+  @@map("content_campaign_node_connection")
+}
+
+model ContentStage {
+  id String @id @db.VarChar(80)
+  legacy_stage_id String? @db.VarChar(80)
+  name String @db.VarChar(120)
+  description String? @db.Text
+  mode ContentStageMode
+  hero_visual_template_id String @db.VarChar(80)
+  background_theme_id String @db.VarChar(80)
+  world_width Int?
+  world_height Int?
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@map("content_stage")
+}
+
+model ContentStageWave {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  wave_no Int
+  wave_key String? @db.VarChar(80)
+  name String? @db.VarChar(120)
+  message String? @db.VarChar(255)
+  spawn_delay Float?
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, wave_no])
+  @@map("content_stage_wave")
+}
+
+model ContentStageWaveEnemyGroup {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_wave_id String @db.VarChar(36)
+  enemy_template_id String @db.VarChar(80)
+  enemy_count Int
+  spawn_area_id String? @db.VarChar(80)
+  spawn_interval Float?
+  level_multiplier Float?
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_stage_wave_enemy_group")
+}
+
+model ContentExploreSpawnGroup {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  group_key String @db.VarChar(80)
+  enemy_template_id String @db.VarChar(80)
+  spawn_x Float
+  spawn_y Float
+  spawn_radius Float
+  initial_count Int
+  max_alive Int
+  respawn_interval Int
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_explore_spawn_group")
+}
+
+model ContentStageObjective {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  objective_type String @db.VarChar(40)
+  required_count Int
+  sort_order Int @default(0)
+  config_json Json?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_stage_objective")
+}
+
+model ContentStageProgressionConfig {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @unique @db.VarChar(80)
+  recommended_power Int @default(0)
+  victory_text String? @db.VarChar(255)
+  failure_text String? @db.VarChar(255)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_stage_progression_config")
+}
+
+model ContentStageProgressionObjective {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  objective_key String @db.VarChar(80)
+  name String @db.VarChar(120)
+  objective_type String @db.VarChar(40)
+  required Boolean @default(false)
+  params_json Json?
+  display_text String @db.VarChar(255)
+  progress_display String @db.VarChar(40)
+  star_eligible Boolean @default(false)
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, objective_key])
+  @@map("content_stage_progression_objective")
+}
+
+model ContentRewardDefinition {
+  id String @id @default(cuid()) @db.VarChar(36)
+  reward_type String @db.VarChar(32)
+  reward_ref_id String @db.VarChar(80)
+  name String @db.VarChar(120)
+  icon_art_key String? @db.VarChar(160)
+  enabled Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([reward_type, reward_ref_id])
+  @@map("content_reward_definition")
+}
+
+model ContentStageRewardPool {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  pool_key String @db.VarChar(80)
+  name String @db.VarChar(120)
+  group_type String @db.VarChar(40)
+  objective_key String? @db.VarChar(80)
+  selection_mode String @db.VarChar(40)
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, pool_key])
+  @@map("content_stage_reward_pool")
+}
+
+model ContentStageRewardEntry {
+  id String @id @default(cuid()) @db.VarChar(36)
+  pool_id String @db.VarChar(36)
+  entry_key String @db.VarChar(80)
+  reward_type String @db.VarChar(32)
+  reward_ref_id String @db.VarChar(80)
+  min_quantity Int
+  max_quantity Int
+  probability Float @default(1)
+  guaranteed Boolean @default(false)
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([pool_id, entry_key])
+  @@index([reward_type, reward_ref_id])
+  @@map("content_stage_reward_entry")
+}
+
+model ContentStageUnlockRule {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  rule_key String @db.VarChar(80)
+  rule_type String @db.VarChar(40)
+  prerequisite_stage_id String? @db.VarChar(80)
+  required_stars Int @default(0)
+  next_stage_id String? @db.VarChar(80)
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, rule_key])
+  @@index([prerequisite_stage_id])
+  @@index([next_stage_id])
+  @@map("content_stage_unlock_rule")
+}
+
+model ContentStageSceneLayout {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @unique @db.VarChar(80)
+  canvas_width Int
+  canvas_height Int
+  scene_mode String @db.VarChar(40)
+  background_theme_id String? @db.VarChar(80)
+  hero_spawn_point_key String? @db.VarChar(80)
+  battle_area_json Json
+  camera_json Json?
+  completion_rule_json Json?
+  failure_rule_json Json?
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@map("content_stage_scene_layout")
+}
+
+model ContentStageLayer {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  layer_key String @db.VarChar(80)
+  name String @db.VarChar(120)
+  layer_type String @db.VarChar(40)
+  art_key String? @db.VarChar(160)
+  background_theme_id String? @db.VarChar(80)
+  sort_order Int @default(0)
+  x Float @default(0)
+  y Float @default(0)
+  width Float?
+  height Float?
+  scale Float @default(1)
+  opacity Float @default(1)
+  tiled Boolean @default(false)
+  scrolls_with_camera Boolean @default(true)
+  parallax Float @default(1)
+  enabled Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, layer_key])
+  @@index([art_key])
+  @@map("content_stage_layer")
+}
+
+model ContentStageSpawnPoint {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  spawn_point_key String @db.VarChar(80)
+  name String @db.VarChar(120)
+  spawn_type String @db.VarChar(40)
+  x Float
+  y Float
+  facing String @db.VarChar(20)
+  battle_area_id String? @db.VarChar(80)
+  enabled Boolean @default(true)
+  note String? @db.VarChar(255)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, spawn_point_key])
+  @@map("content_stage_spawn_point")
+}
+
+model ContentStageOrchestrationWave {
+  id String @id @default(cuid()) @db.VarChar(36)
+  stage_id String @db.VarChar(80)
+  wave_key String @db.VarChar(80)
+  name String @db.VarChar(120)
+  wave_order Int
+  start_trigger String @db.VarChar(40)
+  start_delay_ms Int @default(0)
+  max_alive Int @default(8)
+  completion_rule String @db.VarChar(40)
+  completion_delay_ms Int @default(0)
+  next_wave String? @db.VarChar(80)
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([stage_id, wave_key])
+  @@map("content_stage_orchestration_wave")
+}
+
+model ContentStageWaveEntry {
+  id String @id @default(cuid()) @db.VarChar(36)
+  wave_id String @db.VarChar(36)
+  entry_key String @db.VarChar(80)
+  enemy_template_id String @db.VarChar(80)
+  spawn_point_key String @db.VarChar(80)
+  quantity Int
+  spawn_interval_ms Int @default(0)
+  initial_delay_ms Int @default(0)
+  elite Boolean @default(false)
+  level_multiplier Float @default(1)
+  hp_multiplier Float @default(1)
+  attack_multiplier Float @default(1)
+  animation_overrides_json Json?
+  enabled Boolean @default(true)
+  sort_order Int @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  @@unique([wave_id, entry_key])
+  @@index([enemy_template_id])
+  @@index([spawn_point_key])
+  @@map("content_stage_wave_entry")
+}
+
+model ContentArtResource {
+  art_key String @id @db.VarChar(160)
+  resource_type String @db.VarChar(60)
+  pack_name String? @db.VarChar(120)
+  physical_path String? @db.VarChar(255)
+  fallback_art_key String? @db.VarChar(160)
+  resource_status ContentResourceStatus
+  width Int?
+  height Int?
+  transparent Boolean @default(true)
+  expected_width Int?
+  expected_height Int?
+  dimension_policy ContentArtDimensionPolicy @default(recommended)
+  required_alpha Boolean @default(true)
+  current_draft_version_id String? @db.VarChar(36)
+  published_version_id String? @db.VarChar(36)
+  enabled Boolean @default(true)
+  checksum String? @db.VarChar(128)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  versions ContentArtResourceVersion[] @relation("ArtResourceVersions")
+  currentDraftVersion ContentArtResourceVersion? @relation("ArtResourceCurrentDraft", fields: [current_draft_version_id], references: [id])
+  publishedVersion ContentArtResourceVersion? @relation("ArtResourcePublished", fields: [published_version_id], references: [id])
+  @@map("content_art_resource")
+}
+
+model ContentArtResourceVersion {
+  id String @id @default(cuid()) @db.VarChar(36)
+  art_key String @db.VarChar(160)
+  version_no Int
+  original_filename String @db.VarChar(255)
+  stored_filename String @db.VarChar(255)
+  storage_path String @db.VarChar(255)
+  thumbnail_path String? @db.VarChar(255)
+  mime_type String @db.VarChar(120)
+  file_extension String @db.VarChar(20)
+  size_bytes Int
+  actual_width Int
+  actual_height Int
+  has_alpha Boolean @default(false)
+  checksum String @db.VarChar(128)
+  validation_status ContentArtVersionStatus @default(valid)
+  validation_errors_json Json?
+  validation_warnings_json Json?
+  created_by String? @db.VarChar(36)
+  created_at DateTime @default(now())
+  published_at DateTime?
+  archived_at DateTime?
+  image_library_asset_id String? @db.VarChar(36)
+  image_library_variant_id String? @db.VarChar(36)
+  image_source_mode String? @db.VarChar(24)
+  resource ContentArtResource @relation("ArtResourceVersions", fields: [art_key], references: [art_key])
+  imageLibraryAsset ContentImageLibraryAsset? @relation("ImageLibraryAssetVersions", fields: [image_library_asset_id], references: [id])
+  imageLibraryVariant ContentImageLibraryVariant? @relation("ImageLibraryVariantVersions", fields: [image_library_variant_id], references: [id])
+  currentFor ContentArtResource[] @relation("ArtResourceCurrentDraft")
+  publishedFor ContentArtResource[] @relation("ArtResourcePublished")
+  @@unique([art_key, version_no])
+  @@index([art_key])
+  @@index([checksum])
+  @@index([image_library_asset_id])
+  @@index([image_library_variant_id])
+  @@map("content_art_resource_version")
+}
+
+model ContentImageLibraryAsset {
+  id String @id @default(cuid()) @db.VarChar(36)
+  original_filename String @db.VarChar(255)
+  display_name String @db.VarChar(255)
+  storage_path String @db.VarChar(255)
+  thumbnail_path String? @db.VarChar(255)
+  mime_type String @db.VarChar(120)
+  extension String @db.VarChar(20)
+  width Int
+  height Int
+  file_size Int
+  has_alpha Boolean @default(false)
+  checksum_sha256 String @unique @db.VarChar(128)
+  source_type String @default("upload") @db.VarChar(40)
+  group_name String? @db.VarChar(120)
+  tags_json Json?
+  status String @default("active") @db.VarChar(24)
+  created_by String? @db.VarChar(36)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  archived_at DateTime?
+  variants ContentImageLibraryVariant[]
+  artVersions ContentArtResourceVersion[] @relation("ImageLibraryAssetVersions")
+  @@index([group_name, updated_at])
+  @@index([has_alpha, updated_at])
+  @@map("content_image_library_asset")
+}
+
+model ContentImageLibraryVariant {
+  id String @id @default(cuid()) @db.VarChar(36)
+  source_asset_id String @db.VarChar(36)
+  variant_name String @db.VarChar(120)
+  storage_path String @db.VarChar(255)
+  thumbnail_path String? @db.VarChar(255)
+  mime_type String @db.VarChar(120)
+  width Int
+  height Int
+  file_size Int
+  has_alpha Boolean @default(false)
+  checksum_sha256 String @unique @db.VarChar(128)
+  transform_config Json
+  created_by String? @db.VarChar(36)
+  created_at DateTime @default(now())
+  archived_at DateTime?
+  asset ContentImageLibraryAsset @relation(fields: [source_asset_id], references: [id])
+  artVersions ContentArtResourceVersion[] @relation("ImageLibraryVariantVersions")
+  @@index([source_asset_id, created_at])
+  @@map("content_image_library_variant")
+}
+
+model ContentAnimationClip {
+  id String @id @default(cuid()) @db.VarChar(36)
+  clip_key String @unique @db.VarChar(120)
+  name String @db.VarChar(120)
+  target_type String @db.VarChar(40)
+  state String @db.VarChar(40)
+  default_fps Float?
+  default_frame_duration_ms Int?
+  loop Boolean @default(true)
+  play_mode String @default("loop") @db.VarChar(40)
+  end_behavior String @default("hold-last-frame") @db.VarChar(40)
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  frames ContentAnimationFrame[]
+  @@index([target_type, state])
+  @@map("content_animation_clip")
+}
+
+model ContentAnimationFrame {
+  id String @id @default(cuid()) @db.VarChar(36)
+  clip_id String @db.VarChar(36)
+  sort_order Int
+  art_key String @db.VarChar(160)
+  duration_ms Int?
+  offset_x Float?
+  offset_y Float?
+  scale Float?
+  flip_x Boolean @default(false)
+  note String? @db.VarChar(255)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  clip ContentAnimationClip @relation(fields: [clip_id], references: [id])
+  @@unique([clip_id, sort_order])
+  @@index([art_key])
+  @@map("content_animation_frame")
+}
+
+model ContentRelease {
+  id String @id @default(cuid()) @db.VarChar(36)
+  release_version String @unique @db.VarChar(40)
+  status ContentReleaseStatus
+  validation_error_count Int @default(0)
+  validation_warning_count Int @default(0)
+  content_summary_json Json
+  snapshot_checksum String? @db.VarChar(128)
+  snapshot_path String? @db.VarChar(255)
+  created_by String? @db.VarChar(36)
+  created_at DateTime @default(now())
+  published_at DateTime?
+  failure_reason String? @db.Text
+  @@map("content_release")
+}
+
+model ContentReleaseSnapshot {
+  id String @id @default(cuid()) @db.VarChar(36)
+  release_id String @db.VarChar(36)
+  schema_version Int
+  snapshot_json Json
+  checksum String @db.VarChar(128)
+  created_at DateTime @default(now())
+  @@map("content_release_snapshot")
+}
+
+model ContentSystemState {
+  id String @id @default("singleton") @db.VarChar(40)
+  draft_revision Int @default(0)
+  published_revision Int @default(0)
+  current_release_id String? @db.VarChar(36)
+  draft_dirty Boolean @default(false)
+  last_validation_at DateTime?
+  last_validation_result_json Json?
+  updated_at DateTime @updatedAt
+  @@map("content_system_state")
+}
+
+model ContentChangeLog {
+  id String @id @default(cuid()) @db.VarChar(36)
+  entity_type String @db.VarChar(80)
+  entity_id String @db.VarChar(120)
+  action_type String @db.VarChar(40)
+  before_json Json?
+  after_json Json?
+  operator_id String? @db.VarChar(36)
+  created_at DateTime @default(now())
+  @@map("content_change_log")
+}
+
+model ContentTutorialFlow {
+  id String @id @db.VarChar(120)
+  name String @db.VarChar(160)
+  description String? @db.Text
+  campaign_id String? @db.VarChar(80)
+  start_step_id String? @db.VarChar(120)
+  end_step_id String? @db.VarChar(120)
+  start_condition_json Json
+  audience_json Json
+  player_condition_json Json
+  skip_unlock_features_json Json
+  skippable Boolean @default(true)
+  allow_replay Boolean @default(false)
+  priority Int @default(0)
+  enabled Boolean @default(true)
+  schema_version Int @default(1)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@index([campaign_id])
+  @@index([enabled, updated_at])
+  @@map("content_tutorial_flow")
+}
+
+model ContentTutorialStep {
+  id String @id @db.VarChar(120)
+  flow_id String @db.VarChar(120)
+  sort_order Int
+  name String @db.VarChar(160)
+  trigger_type String @db.VarChar(60)
+  trigger_json Json
+  display_type String @db.VarChar(40)
+  target_type String @db.VarChar(40)
+  target_id String @db.VarChar(160)
+  title String @db.VarChar(160)
+  body String @db.Text
+  character_name String? @db.VarChar(80)
+  avatar_art_key String? @db.VarChar(160)
+  mask_json Json
+  arrow_json Json
+  block_input Boolean @default(false)
+  completion_type String @db.VarChar(60)
+  completion_json Json
+  timeout_ms Int?
+  fallback_action String? @db.VarChar(60)
+  next_step_id String? @db.VarChar(120)
+  skip_step_id String? @db.VarChar(120)
+  stage_id String? @db.VarChar(80)
+  campaign_id String? @db.VarChar(80)
+  feature_id String? @db.VarChar(120)
+  force Boolean @default(false)
+  terminal Boolean @default(false)
+  enabled Boolean @default(true)
+  content_version Int @default(1)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@unique([flow_id, sort_order])
+  @@index([flow_id, enabled])
+  @@index([next_step_id])
+  @@index([skip_step_id])
+  @@index([stage_id])
+  @@index([campaign_id])
+  @@index([avatar_art_key])
+  @@index([target_type, target_id])
+  @@map("content_tutorial_step")
+}
+
+model ContentTutorialStepTransition {
+  id String @id @db.VarChar(120)
+  flow_id String @db.VarChar(120)
+  from_step_id String @db.VarChar(120)
+  to_step_id String @db.VarChar(120)
+  condition_type String @db.VarChar(60)
+  condition_json Json
+  sort_order Int @default(0)
+  enabled Boolean @default(true)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@unique([flow_id, from_step_id, to_step_id, condition_type])
+  @@index([from_step_id])
+  @@index([to_step_id])
+  @@index([flow_id, enabled, sort_order])
+  @@map("content_tutorial_step_transition")
+}
+
+model ContentFeatureUnlockRule {
+  id String @id @db.VarChar(120)
+  flow_id String @db.VarChar(120)
+  step_id String? @db.VarChar(120)
+  feature_id String @db.VarChar(120)
+  unlock_trigger String @db.VarChar(60)
+  condition_json Json
+  unlock_on_skip Boolean @default(false)
+  sort_order Int @default(0)
+  enabled Boolean @default(true)
+  row_version Int @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  @@unique([flow_id, feature_id, unlock_trigger])
+  @@index([step_id])
+  @@index([feature_id])
+  @@index([flow_id, enabled, sort_order])
+  @@map("content_feature_unlock_rule")
+}

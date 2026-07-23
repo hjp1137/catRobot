@@ -1,0 +1,66 @@
+{
+  "cleanup": {
+    "campaignIds": [
+      "campaign_task29_gui",
+      "campaign_task29_gui_copy"
+    ],
+    "chapterIds": [
+      "chapter_task29_gui",
+      "chapter_task29_gui_copy_1784381538964"
+    ],
+    "nodeIds": [],
+    "connectionIds": [],
+    "releaseReferences": []
+  },
+  "result": {
+    "arts": [
+      {
+        "artKey": "map.trainingGround.floor",
+        "versionId": "944bc74609979acab13ef85526303a3d",
+        "versionNo": 2,
+        "metadata": {
+          "width": 800,
+          "height": 1200,
+          "format": "png",
+          "mimeType": "image/png",
+          "channels": 4,
+          "hasAlpha": true,
+          "checksum": "caa744d78388b7e9677c069ed04c6ed78628e0c979ab64ff808fe21e8011f066"
+        },
+        "thumbnailPath": "content-store/art/task29_1/map_trainingGround_floor.webp"
+      },
+      {
+        "artKey": "player.mechaCat.idle",
+        "versionId": "37a1d395b2aa469e7c2fb566cf2551cc",
+        "versionNo": 3,
+        "metadata": {
+          "width": 128,
+          "height": 128,
+          "format": "png",
+          "mimeType": "image/png",
+          "channels": 4,
+          "hasAlpha": true,
+          "checksum": "1a16cf4ec54eca33d949921eca96dca40ffa130c0c5d083f72aa562de2174fc7"
+        },
+        "thumbnailPath": "content-store/art/task29_1/player_mechaCat_idle.webp"
+      },
+      {
+        "artKey": "ui.tutorial.arrow",
+        "versionId": "be15c1d1cfcda25373bd199ff6e2a155",
+        "versionNo": 2,
+        "metadata": {
+          "width": 64,
+          "height": 64,
+          "format": "png",
+          "mimeType": "image/png",
+          "channels": 4,
+          "hasAlpha": true,
+          "checksum": "6a7c808dd2d92ad03bd183de0402b40ee3f5c7a0fc02eb5029cada49e9d7fe2b"
+        },
+        "thumbnailPath": "content-store/art/task29_1/ui_tutorial_arrow.webp"
+      }
+    ],
+    "tutorialStepCount": 19,
+    "tutorialFlowRowVersion": 8
+  }
+}
