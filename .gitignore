@@ -27,5 +27,7 @@ tmp/
 __pycache__/
 *.pyc
 
-# Exclude screenshots from git (kept locally)
+# Exclude walkthrough media/logs from git per user request (kept locally)
 Walkthroughes/screenshots/
+Walkthroughes/designs/
+Walkthroughes/logs/

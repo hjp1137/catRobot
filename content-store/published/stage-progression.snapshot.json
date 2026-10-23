@@ -1,9 +1,9 @@
 {
-  "checksum": "65f4c252553ea0632db87e5cab70dd192f570f932aff2628060f310d55916490",
-  "generatedAt": "2026-07-23T13:32:16.853Z",
-  "objectiveCount": 3,
-  "releaseId": "cmrxjw9y5000kc2esjgdoh1al",
-  "releaseVersion": "R000019",
+  "checksum": "97ddbde79f788606d24b4014037850db37fd5e41a80305da7e3b74ef5d9f5113",
+  "generatedAt": "2026-07-30T16:15:51.914Z",
+  "objectiveCount": 30,
+  "releaseId": "cms7ptkve0000c2fw8uau019n",
+  "releaseVersion": "R000027",
   "rewardCatalog": [
     {
       "iconArtKey": "drop.coin",
@@ -120,12 +120,12 @@
       "type": "rune"
     }
   ],
-  "rewardEntryCount": 6,
+  "rewardEntryCount": 51,
   "schemaVersion": 1,
-  "stageCount": 1,
+  "stageCount": 10,
   "stages": [
     {
-      "failureText": "机甲核心失稳，请重新挑战",
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
       "objectives": [
         {
           "displayText": "清除全部三波敌人",
@@ -268,21 +268,1218 @@
       "unlockRules": [
         {
           "enabled": true,
-          "id": "default_1_1",
+          "id": "default_open",
           "requiredStars": 0,
           "type": "default-unlocked"
         },
         {
           "enabled": true,
-          "id": "unlock_training",
-          "nextStageId": "stage_explore_training_01",
+          "id": "unlock_1_2",
+          "nextStageId": "stage_ch1_02",
           "prerequisiteStageId": "stage_battle_1_1",
           "requiredStars": 1,
           "type": "prerequisite-clear"
         }
       ],
-      "victoryText": "铸造通道已净化"
+      "victoryText": "铸造入口已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部3波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "96秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 96
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 270,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 75,
+              "minQuantity": 75,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 6,
+              "minQuantity": 4,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.19,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_02",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_3",
+          "nextStageId": "stage_ch1_03",
+          "prerequisiteStageId": "stage_ch1_02",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "锈蚀通道已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部3波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "104秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 104
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 330,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 90,
+              "minQuantity": 90,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 2,
+              "minQuantity": 2,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 7,
+              "minQuantity": 5,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.21,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_03",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_4",
+          "nextStageId": "stage_ch1_04",
+          "prerequisiteStageId": "stage_ch1_03",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "废料堆伏击已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "112秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 112
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 400,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 105,
+              "minQuantity": 105,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 2,
+              "minQuantity": 2,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 8,
+              "minQuantity": 6,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.23,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_04",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_5",
+          "nextStageId": "stage_ch1_05",
+          "prerequisiteStageId": "stage_ch1_04",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "能源仓警报已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "120秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 120
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 480,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 120,
+              "minQuantity": 120,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 2,
+              "minQuantity": 2,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 9,
+              "minQuantity": 7,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.25,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_05",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_6",
+          "nextStageId": "stage_ch1_06",
+          "prerequisiteStageId": "stage_ch1_05",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "维修平台已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "128秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 128
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 570,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 135,
+              "minQuantity": 135,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 3,
+              "minQuantity": 3,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 10,
+              "minQuantity": 8,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.27,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_06",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_7",
+          "nextStageId": "stage_ch1_07",
+          "prerequisiteStageId": "stage_ch1_06",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "磁轨中继站已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "136秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 136
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 670,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 150,
+              "minQuantity": 150,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 3,
+              "minQuantity": 3,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 11,
+              "minQuantity": 9,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.29,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_07",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_8",
+          "nextStageId": "stage_ch1_08",
+          "prerequisiteStageId": "stage_ch1_07",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "冷却管廊已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "144秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 144
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 780,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 165,
+              "minQuantity": 165,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 3,
+              "minQuantity": 3,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 12,
+              "minQuantity": 10,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.31,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_08",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_9",
+          "nextStageId": "stage_ch1_09",
+          "prerequisiteStageId": "stage_ch1_08",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "废料熔解区已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部4波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "152秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 152
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于50%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.5
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 900,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 180,
+              "minQuantity": 180,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 4,
+              "minQuantity": 4,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 13,
+              "minQuantity": 11,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.33,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_09",
+      "unlockRules": [
+        {
+          "enabled": true,
+          "id": "unlock_1_10",
+          "nextStageId": "stage_ch1_10",
+          "prerequisiteStageId": "stage_ch1_09",
+          "requiredStars": 1,
+          "type": "prerequisite-clear"
+        }
+      ],
+      "victoryText": "鼠王前哨已净化"
+    },
+    {
+      "failureText": "机甲核心失稳，请调整配置后重新挑战",
+      "objectives": [
+        {
+          "displayText": "清除全部5波敌人",
+          "enabled": true,
+          "id": "clear_all",
+          "name": "区域净化",
+          "order": 0,
+          "params": {},
+          "progressDisplay": "waves",
+          "required": true,
+          "starEligible": true,
+          "type": "clear-all-waves"
+        },
+        {
+          "displayText": "160秒内完成",
+          "enabled": true,
+          "id": "fast_clear",
+          "name": "战术速攻",
+          "order": 1,
+          "params": {
+            "maxDurationSec": 160
+          },
+          "progressDisplay": "timer",
+          "required": false,
+          "starEligible": true,
+          "type": "complete-within-duration"
+        },
+        {
+          "displayText": "结束时生命不低于35%",
+          "enabled": true,
+          "id": "healthy_clear",
+          "name": "装甲完整",
+          "order": 2,
+          "params": {
+            "minHealthRatio": 0.35
+          },
+          "progressDisplay": "ratio",
+          "required": false,
+          "starEligible": true,
+          "type": "hero-health-above"
+        }
+      ],
+      "recommendedPower": 1080,
+      "rewardPools": [
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "gold",
+              "maxQuantity": 195,
+              "minQuantity": 195,
+              "probability": 1,
+              "rewardRefId": "gold",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "stone",
+              "maxQuantity": 4,
+              "minQuantity": 4,
+              "probability": 1,
+              "rewardRefId": "enhanceStone",
+              "rewardType": "material"
+            }
+          ],
+          "group": "first-clear",
+          "id": "first_clear",
+          "name": "首通补给",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "parts",
+              "maxQuantity": 14,
+              "minQuantity": 12,
+              "probability": 1,
+              "rewardRefId": "parts",
+              "rewardType": "currency"
+            },
+            {
+              "enabled": true,
+              "guaranteed": false,
+              "id": "equipment",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 0.35,
+              "rewardRefId": "rusty_claw",
+              "rewardType": "equipment"
+            }
+          ],
+          "group": "repeat-clear",
+          "id": "repeat_clear",
+          "name": "常规回收",
+          "selectionMode": "independent-probability"
+        },
+        {
+          "entries": [
+            {
+              "enabled": true,
+              "guaranteed": true,
+              "id": "rune",
+              "maxQuantity": 1,
+              "minQuantity": 1,
+              "probability": 1,
+              "rewardRefId": "cannon_rune_1",
+              "rewardType": "rune"
+            }
+          ],
+          "group": "first-three-star",
+          "id": "three_star",
+          "name": "三星战术奖励",
+          "selectionMode": "independent-probability"
+        }
+      ],
+      "stageId": "stage_ch1_10",
+      "unlockRules": [],
+      "victoryText": "机械鼠王已被摧毁，废料边境核心重新启动"
     }
   ],
-  "unlockRuleCount": 2
+  "unlockRuleCount": 10
 }
