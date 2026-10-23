@@ -1,0 +1,77 @@
+{
+	"checks": 995,
+	"engine": "4.7.2-stable (official)",
+	"failures": [],
+	"models": [
+		{
+			"bones": 31,
+			"clips": [
+				"RatArmature|Rat_Attack",
+				"RatArmature|Rat_Death",
+				"RatArmature|Rat_Idle",
+				"RatArmature|Rat_Jump",
+				"RatArmature|Rat_Run",
+				"RatArmature|Rat_Walk"
+			],
+			"file": "Rat.glb",
+			"meshes": 1,
+			"moving_clips": [
+				"RatArmature|Rat_Attack",
+				"RatArmature|Rat_Death",
+				"RatArmature|Rat_Idle",
+				"RatArmature|Rat_Jump",
+				"RatArmature|Rat_Run",
+				"RatArmature|Rat_Walk"
+			],
+			"source_bounds": "[P: (-0.754012, -0.001252, -4.84118), S: (1.508501, 2.290853, 6.91022)]",
+			"source_scale": "(1.0, 1.0, 1.0)"
+		},
+		{
+			"bones": 43,
+			"clips": [
+				"Dance",
+				"Death",
+				"Hello",
+				"HitRecieve_1",
+				"HitRecieve_2",
+				"Idle",
+				"Jump",
+				"Kick",
+				"No",
+				"Pickup",
+				"Punch",
+				"Run",
+				"Run_Holding",
+				"Shoot",
+				"SwordSlash",
+				"Walk",
+				"Walk_Holding",
+				"Yes"
+			],
+			"file": "Mike.gltf",
+			"meshes": 1,
+			"moving_clips": [
+				"Dance",
+				"Death",
+				"Hello",
+				"HitRecieve_1",
+				"HitRecieve_2",
+				"Idle",
+				"Jump",
+				"Kick",
+				"No",
+				"Pickup",
+				"Punch",
+				"Run",
+				"Run_Holding",
+				"Shoot",
+				"SwordSlash",
+				"Walk",
+				"Walk_Holding",
+				"Yes"
+			],
+			"source_bounds": "[P: (-2.745205, 0.0, -1.135333), S: (5.509957, 5.295521, 2.030574)]",
+			"source_scale": "(1.0, 1.0, 1.0)"
+		}
+	]
+}

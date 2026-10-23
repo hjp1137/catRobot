@@ -8,6 +8,8 @@ import inspectorSource from './stage-editor/StageInspector.vue?raw';
 import previewSource from './stage-editor/StagePreviewPanel.vue?raw';
 import waveSource from './stage-editor/StageWaveEditor.vue?raw';
 import progressionSource from './stage-editor/StageProgressionEditor.vue?raw';
+import appSource from '../../App.vue?raw';
+
 
 describe('StageOrchestrationEditor', () => {
   it('adds task26 visual orchestration route and API methods', () => {
@@ -90,5 +92,28 @@ describe('StageOrchestrationEditor', () => {
     expect(editorSource).toContain('await loadDraft()');
     expect(previewSource).toContain('publishedFallback');
     expect(previewSource).toContain('LEGACY_FALLBACK');
+  });
+
+  it('places wave and progression editors in the top workspace tabs with a light shell', () => {
+    expect(editorSource).toContain('v-model:active-key="activeWorkspace"');
+    expect(editorSource).toContain('class="workspace-tabs"');
+    expect(editorSource).toContain('tab="基础编排"');
+    expect(editorSource).toContain('tab="波次与生成条目"');
+    expect(editorSource).toContain('tab="目标与奖励"');
+    expect(editorSource).toContain('background:linear-gradient(145deg,#fbfcff,#eef3fb)');
+    expect(appSource).toContain('theme="light"');
+  });
+
+  it('overrides the default dark Ant Design header in the light theme', () => {
+    expect(appSource).toContain('class="top light-header"');
+  });
+
+  it('exposes the tactical HUD and skill dock configuration from the backend editor', () => {
+    expect(editorSource).toContain('战术终端');
+    expect(editorSource).toContain('skillButtonShape');
+    expect(editorSource).toContain('skillButtonSize');
+    expect(editorSource).toContain('skillButtonGap');
+    expect(editorSource).toContain('showSkillLabels');
+    expect(editorSource).toContain('panelOpacity');
   });
 });

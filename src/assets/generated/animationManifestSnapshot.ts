@@ -1,6 +1,180 @@
 export const ANIMATION_MANIFEST_SNAPSHOT = {
-  "checksum": "db5307053c0c52a2101ce359e9c667415a8bdfb34b0f34a13151205c2e667d96",
+  "checksum": "7d041fd052d8b58e2abedece520739b824aafa8c6f97ef9d76fd985da2d491e4",
   "clips": [
+    {
+      "defaultFps": 9.090909090909092,
+      "defaultFrameDurationMs": 110,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase1",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003kc2h0cve2488y",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase2",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003lc2h05lf20urt",
+          "order": 1
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase3",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003mc2h0flopkk1b",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase4",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003nc2h06645p4xn",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase5",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003oc2h0dmun62py",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.down.phase6",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfa97003pc2h09oa27edp",
+          "order": 5
+        }
+      ],
+      "id": "cms7pfa73003jc2h04gdlyj2x",
+      "key": "enemy.scrapGuard.move.down.sequence01",
+      "loop": true,
+      "name": "精英守卫向前跑步",
+      "playMode": "loop",
+      "state": "moveDown",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFps": 9.090909090909092,
+      "defaultFrameDurationMs": 110,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapGuard.run.phase01",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002gc2h0g7syqcwm",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.phase02",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002hc2h0dnmpv6y8",
+          "order": 1
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.phase03",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002ic2h0l5wym1fl",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.phase04",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002jc2h0kfmmrvko",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.phase05",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002kc2h0c6pg9zle",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.phase06",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pf7rl002lc2h01su3xlc6",
+          "order": 5
+        }
+      ],
+      "id": "cms7n55k8001jc2kk6vkdelnl",
+      "key": "enemy.scrapGuard.move.sequence01",
+      "loop": true,
+      "name": "精英废料守卫跑步",
+      "playMode": "loop",
+      "state": "move",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFps": 9.090909090909092,
+      "defaultFrameDurationMs": 110,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase1",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaou003sc2h092r0d7s9",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase2",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaou003tc2h0gofeu27v",
+          "order": 1
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase3",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaou003uc2h05n78hkml",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase4",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaou003vc2h0wy9ve8k1",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase5",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaov003wc2h0vyby125u",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapGuard.run.up.phase6",
+          "durationMs": 110,
+          "flipX": false,
+          "id": "cms7pfaov003xc2h0psu19zip",
+          "order": 5
+        }
+      ],
+      "id": "cms7pfanf003rc2h0xasi6qhh",
+      "key": "enemy.scrapGuard.move.up.sequence01",
+      "loop": true,
+      "name": "精英守卫向后跑步",
+      "playMode": "loop",
+      "state": "moveUp",
+      "targetType": "enemy",
+      "version": 1
+    },
     {
       "defaultFrameDurationMs": 180,
       "enabled": true,
@@ -31,71 +205,370 @@ export const ANIMATION_MANIFEST_SNAPSHOT = {
       "version": 1
     },
     {
-      "defaultFps": 8,
-      "defaultFrameDurationMs": 125,
+      "defaultFps": 10,
+      "defaultFrameDurationMs": 100,
       "enabled": true,
       "endBehavior": "hold-last-frame",
       "frames": [
         {
-          "artKey": "enemy.scrapMouse.stepLeft",
-          "durationMs": 125,
+          "artKey": "enemy.scrapMouse.run.down.phase1",
+          "durationMs": 100,
           "flipX": false,
-          "id": "cmrxjveqm000ac2es3kg9ugo0",
-          "note": "机械鼠左步",
+          "id": "cms7pf9ch0034c2h0hrk4jf8a",
           "order": 0
         },
         {
-          "artKey": "enemy.scrapMouse.stepRight",
-          "durationMs": 125,
+          "artKey": "enemy.scrapMouse.run.down.phase2",
+          "durationMs": 100,
           "flipX": false,
-          "id": "cmrxjveqm000bc2es8968xs2b",
-          "note": "机械鼠右步",
+          "id": "cms7pf9ch0035c2h02tww3o49",
           "order": 1
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.down.phase3",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9ch0036c2h0ks6od9yk",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.down.phase4",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9ch0037c2h0tira3d0g",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.down.phase5",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9ch0038c2h0ikuo1cy2",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.down.phase6",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9ch0039c2h0shodvtet",
+          "order": 5
+        }
+      ],
+      "id": "cms7pf9b20033c2h0b0isnst8",
+      "key": "enemy.scrapMouse.move.down.sequence01",
+      "loop": true,
+      "name": "废料鼠向前跑步",
+      "playMode": "loop",
+      "state": "moveDown",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFps": 10,
+      "defaultFrameDurationMs": 100,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "enemy.scrapMouse.run.phase01",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf7700029c2h00qs4ati3",
+          "order": 0
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.phase02",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf770002ac2h0u94juukv",
+          "order": 1
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.phase03",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf770002bc2h01bn3dkyl",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.phase04",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf770002cc2h08o20d2e1",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.phase05",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf770002dc2h0hxjggicm",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.phase06",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf770002ec2h0kzmdagnt",
+          "order": 5
         }
       ],
       "id": "cmrxjvelu0009c2es3vu8jehn",
       "key": "enemy.scrapMouse.move.sequence02",
       "loop": true,
-      "name": "机械鼠奔跑双帧",
+      "name": "废料鼠跑步",
       "playMode": "loop",
       "state": "move",
       "targetType": "enemy",
       "version": 1
     },
     {
-      "defaultFrameDurationMs": 135,
+      "defaultFps": 10,
+      "defaultFrameDurationMs": 100,
       "enabled": true,
       "endBehavior": "hold-last-frame",
       "frames": [
         {
-          "artKey": "player.mechaCat.stepLeft",
-          "durationMs": 135,
+          "artKey": "enemy.scrapMouse.run.up.phase1",
+          "durationMs": 100,
           "flipX": false,
-          "id": "cmrxjvdsh0006c2eskbbezbib",
-          "note": "机甲猫迈步左腿前",
+          "id": "cms7pf9sv003cc2h0t9yh26rm",
           "order": 0
         },
         {
-          "artKey": "player.mechaCat.stepRight",
-          "durationMs": 135,
+          "artKey": "enemy.scrapMouse.run.up.phase2",
+          "durationMs": 100,
           "flipX": false,
-          "id": "cmrxjvdsh0007c2eswnh3nnsp",
-          "note": "机甲猫迈步右腿前",
+          "id": "cms7pf9sv003dc2h0utnmj0eu",
           "order": 1
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.up.phase3",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9sv003ec2h01mg5l0fv",
+          "order": 2
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.up.phase4",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9sv003fc2h0md2bql5j",
+          "order": 3
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.up.phase5",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9sv003gc2h0joxm1s6f",
+          "order": 4
+        },
+        {
+          "artKey": "enemy.scrapMouse.run.up.phase6",
+          "durationMs": 100,
+          "flipX": false,
+          "id": "cms7pf9sv003hc2h0ibl5eoxi",
+          "order": 5
+        }
+      ],
+      "id": "cms7pf9qs003bc2h04vyb8neb",
+      "key": "enemy.scrapMouse.move.up.sequence01",
+      "loop": true,
+      "name": "废料鼠向后跑步",
+      "playMode": "loop",
+      "state": "moveUp",
+      "targetType": "enemy",
+      "version": 1
+    },
+    {
+      "defaultFps": 11.11111111111111,
+      "defaultFrameDurationMs": 90,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "player.mechaCat.run.down.phase1",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002oc2h04v46mbg5",
+          "order": 0
+        },
+        {
+          "artKey": "player.mechaCat.run.down.phase2",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002pc2h05wsp2wm7",
+          "order": 1
+        },
+        {
+          "artKey": "player.mechaCat.run.down.phase3",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002qc2h00u5qyepr",
+          "order": 2
+        },
+        {
+          "artKey": "player.mechaCat.run.down.phase4",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002rc2h0il5foq0b",
+          "order": 3
+        },
+        {
+          "artKey": "player.mechaCat.run.down.phase5",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002sc2h0wtx25h24",
+          "order": 4
+        },
+        {
+          "artKey": "player.mechaCat.run.down.phase6",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8bi002tc2h02e34c62f",
+          "order": 5
+        }
+      ],
+      "id": "cms7pf88q002nc2h0624pdxs3",
+      "key": "hero.mechaCat.move.down.sequence01",
+      "loop": true,
+      "name": "主角机甲猫向前跑步",
+      "playMode": "loop",
+      "state": "moveDown",
+      "targetType": "hero",
+      "version": 1
+    },
+    {
+      "defaultFps": 11.11111111111111,
+      "defaultFrameDurationMs": 90,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "player.mechaCat.run.phase01",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70020c2h0f3n5a2yo",
+          "order": 0
+        },
+        {
+          "artKey": "player.mechaCat.run.phase02",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70021c2h0m0sjz0os",
+          "order": 1
+        },
+        {
+          "artKey": "player.mechaCat.run.phase03",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70022c2h0sbn6ptxt",
+          "order": 2
+        },
+        {
+          "artKey": "player.mechaCat.run.phase04",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70023c2h0day4nu7s",
+          "order": 3
+        },
+        {
+          "artKey": "player.mechaCat.run.phase05",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70024c2h0wptt0ygz",
+          "order": 4
+        },
+        {
+          "artKey": "player.mechaCat.run.phase06",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70025c2h0maaesf7o",
+          "order": 5
+        },
+        {
+          "artKey": "player.mechaCat.run.phase07",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70026c2h08bgkxf44",
+          "order": 6
+        },
+        {
+          "artKey": "player.mechaCat.run.phase08",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf6i70027c2h0em97o1ua",
+          "order": 7
         }
       ],
       "id": "cmrk2hwql0005c21wvobfz9ex",
       "key": "hero.mechaCat.move.sequence01",
       "loop": true,
-      "name": "机甲猫白色跑步循环",
+      "name": "主角机甲猫跑步",
       "playMode": "loop",
       "state": "move",
       "targetType": "hero",
       "version": 2
+    },
+    {
+      "defaultFps": 11.11111111111111,
+      "defaultFrameDurationMs": 90,
+      "enabled": true,
+      "endBehavior": "hold-last-frame",
+      "frames": [
+        {
+          "artKey": "player.mechaCat.run.up.phase1",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv002wc2h0gta4ihdh",
+          "order": 0
+        },
+        {
+          "artKey": "player.mechaCat.run.up.phase2",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv002xc2h0iolim2ax",
+          "order": 1
+        },
+        {
+          "artKey": "player.mechaCat.run.up.phase3",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv002yc2h06ewvp6lc",
+          "order": 2
+        },
+        {
+          "artKey": "player.mechaCat.run.up.phase4",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv002zc2h0e7bbx22s",
+          "order": 3
+        },
+        {
+          "artKey": "player.mechaCat.run.up.phase5",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv0030c2h031dqnmkf",
+          "order": 4
+        },
+        {
+          "artKey": "player.mechaCat.run.up.phase6",
+          "durationMs": 90,
+          "flipX": false,
+          "id": "cms7pf8sv0031c2h00l9npdp9",
+          "order": 5
+        }
+      ],
+      "id": "cms7pf8pq002vc2h0u0owvxcv",
+      "key": "hero.mechaCat.move.up.sequence01",
+      "loop": true,
+      "name": "主角机甲猫向后跑步",
+      "playMode": "loop",
+      "state": "moveUp",
+      "targetType": "hero",
+      "version": 1
     }
   ],
-  "generatedAt": "2026-07-23T13:32:16.004Z",
-  "releaseId": "cmrxjw9y5000kc2esjgdoh1al",
-  "releaseVersion": "R000019",
+  "generatedAt": "2026-07-30T16:15:49.563Z",
+  "releaseId": "cms7ptkve0000c2fw8uau019n",
+  "releaseVersion": "R000027",
   "schemaVersion": 1
 } as const;

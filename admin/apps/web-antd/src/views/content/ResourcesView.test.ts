@@ -24,4 +24,9 @@ describe('ResourcesView visual gallery', () => {
     expect(source).not.toContain('createResourceWithVersion');
     expect(source).not.toContain('替换图片');
   });
+
+  it('accepts the normalized resource array returned by the shared API client', () => {
+    expect(source).toContain('contentApi.resourcesPage');
+    expect(source).toContain('rows.value = result.items');
+  });
 });

@@ -13,7 +13,10 @@ export const contentApi = {
   disable: (kind: string, id: string) => api.post(`/content/${kind}/${id}/disable`).then(r => r.data),
   remove: (kind: string, id: string) => api.delete(`/content/${kind}/${id}`).then(r => r.data),
   references: (kind: string, id: string) => api.get(`/content/${kind}/${id}/references`).then(r => r.data),
-  resources: (params?: Record<string, any>) => api.get('/content/resources', { params }).then(r => Array.isArray(r.data) ? r.data : (r.data?.items ?? [])),
+  resourcesPage: (params?: Record<string, any>) => api.get('/content/resources', { params }).then(r =>
+    Array.isArray(r.data) ? { items: r.data, total: r.data.length, categoryCounts: {} } : r.data),
+  resources: (params?: Record<string, any>) => api.get('/content/resources', { params }).then(r =>
+    Array.isArray(r.data) ? r.data : (r.data?.items ?? [])),
   imageLibrary: (params?: Record<string, any>) => api.get('/content/image-library', { params }).then(r => r.data),
   imageLibraryDetail: (assetId: string) => api.get(`/content/image-library/${assetId}`).then(r => r.data),
   uploadImageLibrary: (files: File[]) => { const form = new FormData(); files.forEach(file => form.append(files.length > 1 ? 'files' : 'file', file)); return api.post(files.length > 1 ? '/content/image-library/upload-batch' : '/content/image-library/upload', form).then(r => r.data); },
@@ -86,7 +89,7 @@ export const contentApi = {
   tutorialFeatures: () => api.get('/content/tutorials/features').then(r => r.data),
   publishedTutorial: () => api.get('/content/tutorials/published').then(r => r.data),
   validate: () => api.post('/content/validate').then(r => r.data),
-  publish: () => api.post('/content/publish').then(r => r.data),
+  publish: () => api.post('/content/publish', undefined, { timeout: 60000 }).then(r => r.data),
   publishStatus: () => api.get('/content/publish-status').then(r => r.data),
   releases: () => api.get('/content/releases').then(r => r.data),
   restore: (id: string) => api.post(`/content/releases/${id}/restore`).then(r => r.data),

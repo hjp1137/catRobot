@@ -105,7 +105,9 @@ export function bootstrap(): GameManager {
         else if (game.scene === 'result') resultUI.handleClick();
 
         if (game.scene === 'battle') { battleUI.handleStageExitInput(); battleUI.handleSkillInput(); }
-        else if (game.scene === 'explore') { exploreUI.handleStageExitInput(); exploreUI.handleSkillInput(); }
+        else if (game.scene === 'explore') {
+          exploreUI.handleStageExitInput(); exploreUI.handleSkillInput(); explore.handleTapMoveInput();
+        }
       }
     } else {
       // 处理 UI 点击（消费 tap）
@@ -121,7 +123,9 @@ export function bootstrap(): GameManager {
 
       // 任务5：战斗场景处理技能按钮点击
       if (game.scene === 'battle') { battleUI.handleStageExitInput(); battleUI.handleSkillInput(); }
-      else if (game.scene === 'explore') { exploreUI.handleStageExitInput(); exploreUI.handleSkillInput(); }
+      else if (game.scene === 'explore') {
+        exploreUI.handleStageExitInput(); exploreUI.handleSkillInput(); explore.handleTapMoveInput();
+      }
     }
 
     // 推进逻辑（原 tick 已包含 battle.update + render）

@@ -2,6 +2,7 @@ import assert from 'assert';
 import { test, beforeEach } from 'node:test';
 import { MockContext } from '../dist/engine/MockContext.js';
 import { ResourceManager, IMAGE_RESOURCES } from '../dist/core/ResourceManager.js';
+import { listAnimationClips } from '../dist/animation/AnimationManifestRepository.js';
 
 test('ResourceManager Unit Tests', async (t) => {
   const rm = ResourceManager.getInstance();
@@ -66,7 +67,8 @@ test('ResourceManager Unit Tests', async (t) => {
       return originalCreate.call(ctx);
     };
 
-    const totalResources = Object.keys(IMAGE_RESOURCES).length;
+    const animationKeys = listAnimationClips().flatMap(clip => clip.frames.map(frame => frame.artKey));
+    const totalResources = new Set([...Object.keys(IMAGE_RESOURCES), ...animationKeys]).size;
 
     // 并发首次和第二次加载
     const loadPromise1 = rm.loadAll(ctx);

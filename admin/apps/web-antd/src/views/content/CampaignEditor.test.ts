@@ -55,4 +55,10 @@ describe('campaign admin', () => {
     expect(listSource).toContain('runCampaignMutation');
     expect(chapterSource).toContain('runCampaignMutation');
   });
+
+  it('shows the published release from backend state instead of a hardcoded version', () => {
+    expect(listSource).toContain('contentApi.publishStatus()');
+    expect(listSource).toContain('publishedVersion');
+    expect(listSource).not.toContain('正式小游戏仍使用 R000007');
+  });
 });

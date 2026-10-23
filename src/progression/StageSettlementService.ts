@@ -16,6 +16,17 @@ export function applyDefaultStageUnlocks(player: PlayerData, definitions: StageP
   return added;
 }
 
+/** 兼容已通关的旧存档：仅补齐发布规则要求的解锁，不重复结算或奖励。 */
+export function reconcilePublishedStageUnlocks(player: PlayerData, definitions: StageProgressionDefinition[], map = (id: string) => id): string[] {
+  const added: string[] = [];
+  for (const definition of definitions) {
+    const progress = player.stageProgress[map(definition.stageId)];
+    if (!progress?.cleared) continue;
+    added.push(...applyUnlocks(player, definition, progress.bestStars, map));
+  }
+  return added;
+}
+
 export function settleStageRun(
   player: PlayerData,
   definition: StageProgressionDefinition,

@@ -16,6 +16,7 @@
     "content:db:seed": "ts-node prisma/seed.ts",
     "content:art:sync": "ts-node prisma/sync-art.ts",
     "content:image-library:backfill": "ts-node prisma/backfill-image-library.ts",
+    "content:stage11:animation": "ts-node src/scripts/import-stage11-run-animation.ts",
     "content:admin:create-user": "ts-node src/modules/auth/create-admin-user.ts"
   },
   "dependencies": {

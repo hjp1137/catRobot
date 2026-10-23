@@ -135,7 +135,7 @@ describe('ReleasesService publish failure guard', () => {
     expect(snapshots.buildArtManifestSnapshot).toHaveBeenCalledWith('rel_11', 'R000011');
     expect(snapshots.writeAnimationManifestSnapshot).toHaveBeenCalled();
     expect(snapshots.writeCampaignSnapshot).toHaveBeenCalled();
-    expect(prisma.$transaction).toHaveBeenCalledWith(expect.any(Function), expect.objectContaining({ maxWait: 10000, timeout: 20000 }));
+    expect(prisma.$transaction).toHaveBeenCalledWith(expect.any(Function), expect.objectContaining({ maxWait: 10000, timeout: 60000 }));
   });
 
   it('restores every published snapshot when the database publish transaction fails', async () => {

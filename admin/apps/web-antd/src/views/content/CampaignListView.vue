@@ -1,7 +1,7 @@
 <template>
   <section class="campaign-page">
     <header><div><small>CAMPAIGN CONTROL</small><h1>主线战役</h1><p>MySQL 草稿配置，不会进入当前正式版本。</p></div><a-button type="primary" @click="edit()">新建战役</a-button></header>
-    <a-alert message="正式小游戏仍使用 R000007；本页变更仅标记草稿脏状态。" type="warning" show-icon />
+    <a-alert :message="`当前正式版本 ${publishedVersion}；本页变更仅标记草稿脏状态。`" type="warning" show-icon />
     <div class="campaign-grid">
       <article v-for="row in rows" :key="row.id" class="campaign-card">
         <div class="status"><a-tag :color="row.enabled?'cyan':'default'">{{ row.enabled?'启用':'停用' }}</a-tag><span>v{{ row.contentVersion }}</span></div>
@@ -26,8 +26,9 @@ import { contentApi } from '../../api/content';
 import ArtResourceField from '../../components/art-resource/ArtResourceField.vue';
 import { runCampaignMutation } from './campaignMutationErrors';
 const router=useRouter(); const rows=ref<any[]>([]); const open=ref(false); const draft=ref<any>(blank());
+const publishedVersion=ref('读取中');
 function blank(){return{id:'',name:'',subtitle:'',description:'',coverArtKey:'',order:0,enabled:true,schemaVersion:1,contentVersion:1};}
-async function load(){rows.value=await contentApi.campaigns();}
+async function load(){const [campaigns,status]=await Promise.all([contentApi.campaigns(),contentApi.publishStatus()]);rows.value=campaigns;publishedVersion.value=status.release?.release_version??'尚未发布';}
 function edit(row?:any){draft.value=row?copy(row):blank();open.value=true;}
 const reportMutationError=(text:string)=>message.error(text);
 async function save(){await runCampaignMutation(()=>contentApi.saveCampaign(draft.value),reportMutationError,async()=>{message.success('战役草稿已保存');open.value=false;await load();});}

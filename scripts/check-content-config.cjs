@@ -15,12 +15,7 @@ const { validateContentData } = require(validatorPath);
 async function main() {
   console.log('[CheckContent] 开始内容模板配置校验...');
   const repo = new LocalContentRepository();
-  const data = {
-    enemies: await repo.loadEnemies(),
-    backgrounds: await repo.loadBackgrounds(),
-    heroes: await repo.loadHeroVisuals(),
-    stages: await repo.loadStages(),
-  };
+  const data = repo.getContentData();
   const result = validateContentData(data);
   if (!result.valid) {
     for (const error of result.errors) {

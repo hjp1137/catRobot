@@ -20,3 +20,12 @@ progress.md
 开发日记_recovered.md
 project.private.config.json
 *.baiduyun.uploading.cfg
+
+# Temporary files and cache
+tmp/
+.codex/
+__pycache__/
+*.pyc
+
+# Exclude screenshots from git (kept locally)
+Walkthroughes/screenshots/

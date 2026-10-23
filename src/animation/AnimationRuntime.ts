@@ -17,3 +17,15 @@ export function resolveAnimatedArtKey(options: {
   options.player.setAction(options.state, clip);
   return options.player.currentFrame()?.artKey ?? options.fallbackArtKey;
 }
+
+export function resolveDirectionalAnimationState(
+  state: string,
+  directionX: number,
+  directionY: number,
+  bindings?: Partial<Record<string, string>>,
+): string {
+  if (state !== 'move') return state;
+  if (Math.abs(directionY) <= Math.abs(directionX)) return state;
+  const directionalState = directionY < 0 ? 'moveUp' : 'moveDown';
+  return bindings?.[directionalState] ? directionalState : state;
+}

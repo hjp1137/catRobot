@@ -54,7 +54,7 @@ test('任务30 回归：自由地图 HUD 顶部仅保留标题，信息分列左
   assert.ok(layout.exit.y >= layout.rightDock.y + layout.rightDock.h + 8);
 });
 
-test('任务30 回归：正式自由地图完成目标后自动进入结算并解锁下一关', () => {
+test('任务30 回归：正式自由地图完成目标后自动进入发布结算并解锁下一节点', () => {
   const { game, explore } = setup();
   game.player.unlockedStageIds = ['1-1'];
   assert.equal((game as any).openFormalStage('1-1'), true);
@@ -66,6 +66,7 @@ test('任务30 回归：正式自由地图完成目标后自动进入结算并�
   assert.equal(game.scene, 'result');
   assert.equal(game.lastOutcome?.win, true);
   assert.ok(game.player.unlockedStageIds.includes('1-2'));
+  assert.deepEqual(game.lastOutcome?.settlement?.unlockedStageIds, ['1-2']);
 });
 
 test('任务30 回归：已解锁的第二关使用自身敌人数量启动自由地图', () => {

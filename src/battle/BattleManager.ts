@@ -37,7 +37,7 @@ import { getDefaultContentRegistry } from '../content/registry/ContentRegistry';
 import { createEnemyConfigFromTemplate } from '../content/adapters/EnemyTemplateAdapter';
 import type { BackgroundTheme } from '../content/models/BackgroundTheme';
 import type { HeroVisualTemplate } from '../content/models/HeroVisualTemplate';
-import { resolveAnimatedArtKey } from '../animation/AnimationRuntime';
+import { resolveAnimatedArtKey, resolveDirectionalAnimationState } from '../animation/AnimationRuntime';
 import type { ArtResourceKey } from '../assets/ArtResourceKeys';
 import { StageDirector } from '../stage/StageDirector';
 import { findPublishedStageOrchestration } from '../stage/StageOrchestrationRepository';
@@ -480,10 +480,13 @@ export class BattleManager {
         if (d > 0) { dirX = dx / d; dirY = dy / d; }
       }
       const visualRadius = e.radius * (e.visual?.displayScale ?? getEnemyVisualScale(e.isBoss, e.variant === 'elite' || e.variant === 'elite_toxic' || e.variant === 'fire_elite'));
+      const directionalState = resolveDirectionalAnimationState(
+        e.animationState, dirX, dirY, e.visual?.animationClipKeys,
+      );
       const enemyArtKey = resolveAnimatedArtKey({
         player: e.animationPlayer,
         targetType: 'enemy',
-        state: e.animationState,
+        state: directionalState,
         bindings: e.visual?.animationClipKeys,
         fallbackArtKey: artKeyForState(e.visual, e.animationState),
       });
@@ -522,10 +525,14 @@ export class BattleManager {
     // 玩家（橘猫重甲）
     if (this.player) {
       const playerVisualRadius = this.player.radius * BATTLE_ASSETS.player.idle.scale * (this.heroVisualTemplate?.visual.displayScale ?? 1);
+      const directionalState = resolveDirectionalAnimationState(
+        this.player.animationState, this.player.moveDirectionX, this.player.moveDirectionY,
+        this.heroVisualTemplate?.visual.animationClipKeys,
+      );
       const playerArtKey = resolveAnimatedArtKey({
         player: this.player.animationPlayer,
         targetType: 'hero',
-        state: this.player.animationState,
+        state: directionalState,
         bindings: this.heroVisualTemplate?.visual.animationClipKeys,
         fallbackArtKey: artKeyForState(this.heroVisualTemplate?.visual, this.player.animationState),
       });

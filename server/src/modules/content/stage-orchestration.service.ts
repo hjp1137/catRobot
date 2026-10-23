@@ -119,8 +119,16 @@ export class StageOrchestrationService {
   private async validate(stageId: string, body: any) {
     const points = body.spawnPoints ?? [];
     const hud = body.layout?.exploreHud;
-    if (hud && !['standard', 'compact'].includes(hud.layout ?? 'standard')) throw new BadRequestException('自由探索 HUD 布局不合法');
+    if (hud && !['standard', 'compact', 'tactical'].includes(hud.layout ?? 'standard')) throw new BadRequestException('自由探索 HUD 布局不合法');
+    if (hud?.theme && !['legacy', 'industrial'].includes(hud.theme)) throw new BadRequestException('自由探索 HUD 主题不合法');
+    if (hud?.skillButtonShape && !['circle', 'hex'].includes(hud.skillButtonShape)) throw new BadRequestException('技能按钮形状不合法');
     if (hud?.showWaveNotice != null && typeof hud.showWaveNotice !== 'boolean') throw new BadRequestException('自由探索 HUD 波次提示配置不合法');
+    if (hud?.showSkillLabels != null && typeof hud.showSkillLabels !== 'boolean') throw new BadRequestException('技能标签配置不合法');
+    validateHudNumber(hud, 'skillButtonSize', 56, 88);
+    validateHudNumber(hud, 'skillButtonGap', 8, 36);
+    validateHudNumber(hud, 'skillButtonRight', 12, 48);
+    validateHudNumber(hud, 'skillButtonBottom', 16, 72);
+    validateHudNumber(hud, 'panelOpacity', 0.35, 0.95);
     if (points.filter((x: any) => x.type === 'hero' && x.enabled !== false).length !== 1) throw new BadRequestException('固定屏关卡必须有且仅有一个启用主角出生点');
     const pointIds = new Set(points.map((x: any) => x.id));
     const enemyIds = new Set((await this.prisma.contentEnemyTemplate.findMany({ where: { enabled: true, deleted_at: null } })).map((x: any) => x.id));
@@ -146,6 +154,14 @@ export class StageOrchestrationService {
   private async markDraft(entityId: string, action: string, before: any, after: any) {
     await this.prisma.contentSystemState.upsert({ where: { id: 'singleton' }, create: { id: 'singleton', draft_revision: 1, draft_dirty: true }, update: { draft_revision: { increment: 1 }, draft_dirty: true } });
     await this.prisma.contentChangeLog.create({ data: { entity_type: 'stage-orchestration', entity_id: entityId, action_type: action, before_json: before, after_json: after } });
+  }
+}
+
+function validateHudNumber(hud: any, field: string, min: number, max: number): void {
+  const value = hud?.[field];
+  if (value == null) return;
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max) {
+    throw new BadRequestException(`自由探索 HUD ${field} 超出范围`);
   }
 }
 

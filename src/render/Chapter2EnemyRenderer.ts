@@ -273,8 +273,8 @@ function drawEnemyInternal(c: ICanvas2D, o: EnemyDrawOptions): void {
   const imageKey = v ? resolveAssetKey('enemy', v) : 'enemy_rat';
   const templateImg = res.getImageByArtKey(o.artKey);
 
-  if (templateImg || (imageKey && res.isLoaded(imageKey))) {
-    const img = templateImg ?? res.getImage(imageKey);
+  if (templateImg || (!o.artKey && imageKey && res.isLoaded(imageKey))) {
+    const img = templateImg ?? (!o.artKey ? res.getImage(imageKey) : null);
     if (img) {
       const { cx, cy, radius: r } = o;
       c.save();

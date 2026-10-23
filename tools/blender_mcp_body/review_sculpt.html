@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>裸猫形体 · 肩颈与掌足精修</title><style>
+:root{color-scheme:dark;--bg:#121918;--paper:#202a27;--ink:#eeede5;--muted:#aab5ac;--line:#405149;--accent:#dbc091}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Microsoft YaHei UI","Microsoft YaHei",sans-serif}
+main{max-width:1460px;margin:auto;padding:26px 34px 48px}a{color:var(--accent);text-underline-offset:4px}button,a{touch-action:manipulation}
+header{display:flex;justify-content:space-between;gap:28px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:20px}.eyebrow{margin:0 0 9px;font:11px/1.5 Consolas,monospace;letter-spacing:.18em;color:var(--accent)}
+h1{font:400 clamp(30px,3.5vw,46px)/1.2 "STZhongsong","SimSun",serif;margin:0 0 12px;letter-spacing:.04em}.lede{margin:0;max-width:790px;color:var(--muted)}.status{white-space:nowrap;font-size:12px;border:1px solid var(--line);padding:4px 11px;color:var(--accent)}
+.toolbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:20px 0 14px}.control{display:flex;gap:4px;align-items:center;flex-wrap:wrap}.control>span{font-size:12px;color:var(--muted);margin-right:10px}
+button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 17px;font:inherit;font-size:14px;cursor:pointer}button:hover,button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#1b211d}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0;background:var(--paper);min-width:0}.figure-head{display:flex;align-items:baseline;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--line)}.figure-head strong{font-size:15px;font-weight:500}.figure-head span{font:11px Consolas,monospace;color:var(--muted)}
+figure img{display:block;width:100%;height:clamp(340px,66vh,820px);object-fit:contain}figure>a{display:block}figcaption{display:flex;gap:12px;justify-content:space-between;padding:9px 18px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.error{color:#f1b19c;min-height:1.7em;margin:6px 0}
+.reading{display:flex;justify-content:space-between;gap:26px;margin:14px 0 22px;color:var(--muted);font-size:13px}.reading p{margin:0}.boundary{max-width:440px;border-left:2px solid var(--accent);padding-left:16px}
+details{border-top:1px solid var(--line);padding-top:16px;margin-top:22px}summary{cursor:pointer;color:var(--accent);font-size:14px}.sources{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:16px 0}.sources p{margin:6px 0;font-size:13px;color:var(--muted)}code,pre{font:12px/1.7 Consolas,monospace;overflow-wrap:anywhere}pre{white-space:pre-wrap;max-height:350px;overflow:auto}.source-label{color:var(--ink)}.foot{margin:22px 0 0;font-size:12px;color:var(--muted)}[hidden]{display:none!important}
+@media(max-width:820px){main{padding:22px 16px 36px}header,.toolbar,.reading{display:block}.status{display:inline-block;margin-top:14px}.toolbar .control+.control{margin-top:10px}.reading p+p{margin-top:14px}.sources{grid-template-columns:1fr;gap:16px}.pair{gap:8px}.figure-head,figcaption{padding:8px 10px}.figure-head span,figcaption span+span{display:none}button{padding:8px 12px}}
+@media(max-width:520px){.pair{grid-template-columns:1fr;gap:18px}figure img{height:auto;aspect-ratio:2/3}}
+</style></head><body><main>
+<header><div><p class="eyebrow">CAT ROBOT / FULL BODY STUDY</p><h1>裸猫形体，肩颈与掌足精修</h1><p class="lede">对照上一轮形体与本轮精修，重点查看肩峰、颈根到上臂的过渡，以及胸腰和掌足的厚薄。</p></div><span class="status">离线全身候选</span></header>
+<section aria-label="全身前后对照"><div class="toolbar"><nav class="control" aria-label="观察角度"><span>观察角度</span><button data-view="front" aria-pressed="true">正面</button><button data-view="three_quarter" aria-pressed="false">45°</button><button data-view="profile" aria-pressed="false">侧面</button><button data-view="back" aria-pressed="false">背面</button></nav><nav class="control" aria-label="显示方式"><span>显示方式</span><button data-mode="comparison" aria-pressed="true">材质与短毛</button><button data-mode="clay_comparison" aria-pressed="false">全材质灰模</button></nav></div>
+<div class="pair"><figure><div class="figure-head"><strong>上一轮全身</strong><span>BEFORE</span></div><a id="before-link" target="_blank" rel="noopener"><img id="before" width="720" height="1080" alt="上一轮全身正面"></a><figcaption><span id="before-caption"></span><span>点击查看原尺寸</span></figcaption></figure><figure><div class="figure-head"><strong>本轮精修</strong><span>AFTER</span></div><a id="after-link" target="_blank" rel="noopener"><img id="after" width="720" height="1080" alt="本轮精修全身正面"></a><figcaption><span id="after-caption"></span><span>点击查看原尺寸</span></figcaption></figure></div><p id="image-error" class="error" role="status" aria-live="polite"></p></section>
+<section class="reading"><p>材质与短毛：看整体色调与毛感。全材质灰模：看头身比例与表面衔接。四个角度均保留完整画面。</p><p class="boundary">本页展示离线全身候选，尚未进行游戏集成与动作验收。</p></section>
+<p><a href="paw_details.png" target="_blank">查看掌足局部灰模对照</a></p><details><summary>可编辑源与渲染来源记录</summary><div class="sources"><div><p><a id="blend-link">打开全身 Blender 源工程</a></p><p>保存的源文件：<code id="blend-path"></code></p><p id="blend-meta"></p><p><a href="review_data.json">查看 16 张原图路径与来源记录</a></p></div><div><p><span class="source-label">本轮源目录</span><br><code id="source-directory"></code></p><p>本页仅核对文件与图片尺寸并复制原图；游戏集成与动作表现需另行验证。</p><p id="record-note">未附带独立渲染参数记录；本页未据图片推断镜头、灯光或渲染设置。</p><div id="render-record" hidden><p><a href="render_record.json">查看独立渲染参数记录</a></p><pre id="render-parameters"></pre></div></div></div></details>
+<p class="foot">2026-10-23 · 四个角度 × 两种显示 × 前后对照，共 16 张 · 每张 720 × 1080。</p>
+</main><script>
+const data = __REVIEW_DATA__;
+const views = {front:'正面',three_quarter:'45°',profile:'侧面',back:'背面'};
+const modes = {comparison:'材质与短毛',clay_comparison:'全材质灰模'};
+const labels = {before:'上一轮全身',after:'本轮精修'};
+const state = {view:'front',mode:'comparison'};
+const $ = selector => document.querySelector(selector);
+function show(){
+  $('#image-error').textContent='';
+  for(const version of ['before','after']){
+    const entry=data.images.find(item=>item.view===state.view&&item.mode===state.mode&&item.version===version);
+    const caption=`${views[state.view]} · ${modes[state.mode]}`;
+    const image=$('#'+version);
+    image.src=entry.file; image.alt=labels[version]+' · '+caption;
+    $('#'+version+'-link').href=entry.file;
+    $('#'+version+'-caption').textContent=caption;
+  }
+  document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===state.view)));
+  document.querySelectorAll('[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===state.mode)));
+}
+document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;show()}));
+document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{state.mode=button.dataset.mode;show()}));
+document.querySelectorAll('figure img').forEach(image=>image.addEventListener('error',()=>{$('#image-error').textContent='图片读取失败，请检查审阅页旁的 comparison 与 clay_comparison 目录。'}));
+$('#blend-link').href=data.source.url;$('#blend-path').textContent=data.source.path;
+$('#blend-meta').textContent=`${(data.source.bytes/1024/1024).toFixed(1)} MiB · 保存于 ${new Date(data.source.modified).toLocaleString('zh-CN')}`;
+$('#source-directory').textContent=data.source_directory;
+if(data.render_record){
+  $('#record-note').textContent='以下参数直接来自附带的独立渲染记录，图片尺寸校验不替代实际渲染与视觉核验。';
+  $('#render-record').hidden=false;$('#render-parameters').textContent=JSON.stringify(data.render_record.data,null,2);
+}
+show();
+</script></body></html>

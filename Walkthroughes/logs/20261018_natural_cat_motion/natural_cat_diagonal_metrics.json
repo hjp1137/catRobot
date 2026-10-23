@@ -1,0 +1,546 @@
+[
+	{
+		"case": "(1.0, -1.0)/side/65.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000244140625,
+		"restart_max_jump": 2.37719178199768,
+		"stop": {
+			"max_jump": 0.132455587387085,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 39,
+			"right": 28
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 10.8630428314209,
+		"stop": {
+			"max_jump": 1.56532049179077,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 12,
+			"right": 11
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/65.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 2.02842998504639,
+		"stop": {
+			"max_jump": 0.697710871696472,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 41,
+			"right": 40
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000251654390012845,
+		"restart_max_jump": 8.0428991317749,
+		"stop": {
+			"max_jump": 1.29904162883759,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 17,
+			"right": 18
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/65.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.000244140625,
+		"restart_max_jump": 2.48938798904419,
+		"stop": {
+			"max_jump": 0.42502748966217,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 29,
+			"right": 39
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 9.71545600891113,
+		"stop": {
+			"max_jump": 1.62211239337921,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 12,
+			"right": 12
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/65.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 1.695063829422,
+		"stop": {
+			"max_jump": 0.594204723834991,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 37,
+			"right": 39
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000272957520792261,
+		"restart_max_jump": 8.29627323150635,
+		"stop": {
+			"max_jump": 1.49091470241547,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 18,
+			"right": 16
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/depth/65.0/120",
+		"direction": "back",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000251654390012845,
+		"restart_max_jump": 2.17676568031311,
+		"stop": {
+			"max_jump": 0.70177161693573,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 50,
+			"right": 48
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/depth/340.0/120",
+		"direction": "back",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 10.3632183074951,
+		"stop": {
+			"max_jump": 1.23674583435059,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 19,
+			"right": 20
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/depth/65.0/120",
+		"direction": "front",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000251654390012845,
+		"restart_max_jump": 1.34003031253815,
+		"stop": {
+			"max_jump": 1.19781744480133,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 49,
+			"right": 49
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/depth/340.0/120",
+		"direction": "front",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000244140625,
+		"restart_max_jump": 9.26140117645264,
+		"stop": {
+			"max_jump": 0.650214791297913,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 16,
+			"right": 23
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/depth/65.0/120",
+		"direction": "back",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000251654390012845,
+		"restart_max_jump": 2.11538028717041,
+		"stop": {
+			"max_jump": 0.18566045165062,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 50,
+			"right": 52
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/depth/340.0/120",
+		"direction": "back",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 10.0884971618652,
+		"stop": {
+			"max_jump": 1.23794901371002,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 18,
+			"right": 23
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/depth/65.0/120",
+		"direction": "front",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000244140625,
+		"restart_max_jump": 1.85032153129578,
+		"stop": {
+			"max_jump": 0.000244140625,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 52,
+			"right": 48
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/depth/340.0/120",
+		"direction": "front",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000272957520792261,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 8.83540058135986,
+		"stop": {
+			"max_jump": 0.446308851242065,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 18,
+			"right": 23
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000125827195006423,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 10.1391620635986,
+		"stop": {
+			"max_jump": 1.56845438480377,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 12,
+			"right": 12
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/side/340.0/130",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 11.2660150527954,
+		"stop": {
+			"max_jump": 1.33454096317291,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 14,
+			"right": 12
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/side/340.0/140",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 10.288703918457,
+		"stop": {
+			"max_jump": 1.62342429161072,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 14,
+			"right": 14
+		}
+	},
+	{
+		"case": "(1.0, -1.0)/side/340.0/150",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 11.1808853149414,
+		"stop": {
+			"max_jump": 1.21183204650879,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 16,
+			"right": 14
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000251654390012845,
+		"restart_max_jump": 8.07224941253662,
+		"stop": {
+			"max_jump": 1.50862956047058,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 16,
+			"right": 18
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/340.0/130",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000272957520792261,
+		"restart_max_jump": 8.93697834014893,
+		"stop": {
+			"max_jump": 1.09055042266846,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 21,
+			"right": 18
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/340.0/140",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 8.25063610076904,
+		"stop": {
+			"max_jump": 1.4843522310257,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 21,
+			"right": 21
+		}
+	},
+	{
+		"case": "(1.0, 1.0)/side/340.0/150",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 8.72384738922119,
+		"stop": {
+			"max_jump": 1.2277604341507,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 24,
+			"right": 21
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 11.1643810272217,
+		"stop": {
+			"max_jump": 1.38134777545929,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 12,
+			"right": 12
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/340.0/130",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 11.1113557815552,
+		"stop": {
+			"max_jump": 1.40733957290649,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 12,
+			"right": 13
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/340.0/140",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 10.3647928237915,
+		"stop": {
+			"max_jump": 1.5177663564682,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 14,
+			"right": 14
+		}
+	},
+	{
+		"case": "(-1.0, -1.0)/side/340.0/150",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.00013647876039613,
+		"max_world_slip": 0.00013647876039613,
+		"restart_max_jump": 10.7448797225952,
+		"stop": {
+			"max_jump": 1.58070874214172,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 16,
+			"right": 16
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/340.0/120",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 8.72914791107178,
+		"stop": {
+			"max_jump": 1.25982189178467,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 18,
+			"right": 18
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/340.0/130",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000172633488546126,
+		"restart_max_jump": 8.65738677978516,
+		"stop": {
+			"max_jump": 1.22813391685486,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 18,
+			"right": 21
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/340.0/140",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000272957520792261,
+		"restart_max_jump": 8.71698379516602,
+		"stop": {
+			"max_jump": 1.48869836330414,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 21,
+			"right": 21
+		}
+	},
+	{
+		"case": "(-1.0, 1.0)/side/340.0/150",
+		"direction": "side",
+		"fixed_leg_scales": true,
+		"max_stance_target_error": 0.000172633488546126,
+		"max_world_slip": 0.000244140625,
+		"restart_max_jump": 7.99564981460571,
+		"stop": {
+			"max_jump": 1.39821112155914,
+			"settled": true,
+			"stable": true
+		},
+		"support": {
+			"left": 21,
+			"right": 24
+		}
+	}
+]

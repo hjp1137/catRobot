@@ -7,12 +7,17 @@ export function getArtResource(key: ArtResourceKey): ArtResourceEntry {
   if (snapshotEntry) {
     return snapshotEntry;
   }
-  const entry = ART_MANIFEST[key];
+  const entry = (ART_MANIFEST as Partial<Record<ArtResourceKey, ArtResourceEntry>>)[key];
   if (!entry) {
     console.error(`[ArtResolver] 找不到 Key 为 "${key}" 的资源配置`);
     return ART_MANIFEST['placeholder.image'];
   }
   return entry;
+}
+
+export function hasArtResource(key: ArtResourceKey): boolean {
+  return Boolean(getSnapshotResource(key)
+    ?? (ART_MANIFEST as Partial<Record<ArtResourceKey, ArtResourceEntry>>)[key]);
 }
 
 export function getArtPath(key: ArtResourceKey): string {

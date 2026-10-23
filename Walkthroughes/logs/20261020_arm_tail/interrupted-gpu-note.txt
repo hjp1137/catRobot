@@ -1,0 +1,10 @@
+Observed during the first long final-capture attempt, not a passing run.
+Windows Application event 1000: 2026-10-20 20:06:38 (Asia/Shanghai).
+Windows Application event 1001: 2026-10-20 20:06:45 (Asia/Shanghai).
+Application: Godot_v4.7.2-stable_win64.exe, version 4.7.2.0.
+Faulting module: KERNELBASE.dll, exception 0xe06d7363.
+Tool process exit code: -529697949.
+Capture first recorded no travel at bare_diag_up_left frames 119 through 131.
+Root cause is unconfirmed; the record does not establish a fixed engine defect.
+The final evidence is collected in separate cardinal, diagonal and equipment processes.
+Each fresh controlled frame reasserts the intended input; nonzero movement remains asserted.

@@ -14,7 +14,16 @@ import type { HeroVisualTemplate } from '../content/models/HeroVisualTemplate';
 import type { GameManager } from '../core/GameManager';
 import type { ExploreHudConfig } from '../content/models/StageOrchestration';
 
-export interface SkillButton { skillId: string; label: string; cx: number; cy: number; r: number; hitR: number; }
+export interface SkillButton {
+  skillId: string;
+  label: string;
+  cx: number;
+  cy: number;
+  r: number;
+  hitR: number;
+  shape: 'circle' | 'hex';
+  showLabel: boolean;
+}
 export interface BattleHudSource {
   player: PlayerMecha | null;
   stage: { name: string };
@@ -45,16 +54,19 @@ export function getBattleHudSafeTop(info: ReturnType<IContext['getSystemInfo']>)
   return resolveBattleHudSafeTop(info);
 }
 
-export function getBattleSkillButtonLayout(w: number, h: number): SkillButton[] {
-  const r = Math.max(36, Math.min(40, w * 0.1));
-  const rightPad = Math.max(20, w * 0.052);
-  const bottomPad = Math.max(24, h * 0.034);
+export function getBattleSkillButtonLayout(w: number, h: number, config?: ExploreHudConfig): SkillButton[] {
+  const configuredSize = clampNumber(config?.skillButtonSize, 56, 88);
+  const r = configuredSize ? configuredSize / 2 : Math.max(36, Math.min(40, w * 0.1));
+  const rightPad = clampNumber(config?.skillButtonRight, 12, 48) ?? Math.max(20, w * 0.052);
+  const bottomPad = clampNumber(config?.skillButtonBottom, 16, 72) ?? Math.max(24, h * 0.034);
   const cy = h - bottomPad - r;
-  const gap = Math.max(18, r * 0.42);
+  const gap = clampNumber(config?.skillButtonGap, 8, 36) ?? Math.max(18, r * 0.42);
   const hitR = r + 8;
+  const shape = config?.skillButtonShape ?? 'circle';
+  const showLabel = config?.showSkillLabels ?? false;
   return [
-    { skillId: 'meow_cannon', label: '炮', cx: w - rightPad - r, cy, r, hitR },
-    { skillId: 'heavy_shield', label: '盾', cx: w - rightPad - r * 3 - gap, cy, r, hitR },
+    { skillId: 'meow_cannon', label: '火力', cx: w - rightPad - r, cy, r, hitR, shape, showLabel },
+    { skillId: 'heavy_shield', label: '护盾', cx: w - rightPad - r * 3 - gap, cy, r, hitR, shape, showLabel },
   ];
 }
 
@@ -64,21 +76,43 @@ export interface ExploreHudLayout {
   leftDock: { x: number; y: number; w: number; h: number };
   rightDock: { x: number; y: number; w: number; h: number };
   exit: { x: number; y: number; w: number; h: number };
+  panelOpacity: number;
 }
 
 /** 自由地图不占用顶部场景：标题居中，状态与操作分别停靠在左右。 */
 export function getExploreHudLayout(w: number, _h: number, safeTop: number, config?: ExploreHudConfig): ExploreHudLayout {
   const compact = config?.layout === 'compact';
-  const dockW = compact ? Math.min(96, Math.max(78, w * 0.24)) : Math.min(112, Math.max(88, w * 0.28));
-  const dockH = compact ? 20 : 24;
-  const sideY = safeTop + (compact ? 26 : 42);
+  const tactical = config?.layout === 'tactical';
+  const dockW = tactical ? Math.min(118, Math.max(96, w * 0.29)) : compact ? Math.min(96, Math.max(78, w * 0.24)) : Math.min(112, Math.max(88, w * 0.28));
+  const dockH = tactical ? 24 : compact ? 20 : 24;
+  const sideY = safeTop + (tactical ? 34 : compact ? 26 : 42);
   return {
     topPanelHeight: 0,
-    title: { x: w / 2, y: safeTop + (compact ? 7 : 10) },
+    title: { x: w / 2, y: safeTop + (tactical ? 12 : compact ? 7 : 10) },
     leftDock: { x: 16, y: sideY, w: dockW, h: dockH },
     rightDock: { x: w - 16 - dockW, y: sideY, w: dockW, h: dockH },
-    exit: { x: w - 62, y: sideY + dockH + (compact ? 5 : 8), w: 46, h: compact ? 24 : 28 },
+    exit: { x: w - (tactical ? 70 : 62), y: sideY + dockH + (compact ? 5 : 8), w: tactical ? 54 : 46, h: compact ? 24 : 28 },
+    panelOpacity: clampNumber(config?.panelOpacity, 0.35, 0.95) ?? 0.62,
   };
+}
+
+function clampNumber(value: number | undefined, min: number, max: number): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : undefined;
+}
+
+function traceSkillButton(c: ICanvas2D, btn: SkillButton, radius = btn.r): void {
+  c.beginPath();
+  if (btn.shape === 'circle') {
+    c.arc(btn.cx, btn.cy, radius, 0, Math.PI * 2);
+    return;
+  }
+  for (let index = 0; index < 6; index += 1) {
+    const angle = -Math.PI / 2 + index * Math.PI / 3;
+    const x = btn.cx + Math.cos(angle) * radius;
+    const y = btn.cy + Math.sin(angle) * radius;
+    if (index === 0) c.moveTo(x, y); else c.lineTo(x, y);
+  }
+  c.closePath();
 }
 
 export class BattleUI {
@@ -95,7 +129,11 @@ export class BattleUI {
   }
 
   private layout(): void {
-    this.skillButtons = getBattleSkillButtonLayout(this.ctx.canvasWidth, this.ctx.canvasHeight);
+    this.skillButtons = getBattleSkillButtonLayout(
+      this.ctx.canvasWidth,
+      this.ctx.canvasHeight,
+      this.battle.exploreHud,
+    );
   }
 
   handleSkillInput(): void {
@@ -146,6 +184,8 @@ export class BattleUI {
     const safeTop = getBattleHudSafeTop(this.ctx.getSystemInfo());
     const isExploreHud = this.isExploreHud();
     const exploreLayout = isExploreHud ? getExploreHudLayout(w, h, safeTop, this.battle.exploreHud) : null;
+    const tacticalHud = this.battle.exploreHud?.theme === 'industrial' || this.battle.exploreHud?.layout === 'tactical';
+    const hudPanel = `rgba(7, 18, 29, ${exploreLayout?.panelOpacity ?? 0.62})`;
 
     // 顶部半透明信息条
     const barH = isExploreHud ? safeTop + 24 : safeTop + 54;
@@ -159,6 +199,10 @@ export class BattleUI {
  
     // 关卡名
     if (exploreLayout) {
+      if (tacticalHud) {
+        fillRoundRect(c, w / 2 - 72, exploreLayout.title.y - 8, 144, 22, 3, hudPanel);
+        strokeRoundRect(c, w / 2 - 72, exploreLayout.title.y - 8, 144, 22, 3, 'rgba(87, 235, 220, .65)', 1);
+      }
       text(c, this.battle.stage.name, exploreLayout.title.x, exploreLayout.title.y, {
         color: Theme.color.gold, align: 'center', font: Theme.font.bodyBold,
       });
@@ -171,8 +215,8 @@ export class BattleUI {
     const total = this.battle.waveProgress ? this.battle.currentWaveEnemyTotal : this.battle.totalEnemies;
     if (isExploreHud) {
       const dock = exploreLayout!.rightDock;
-      fillRoundRect(c, dock.x, dock.y, dock.w, dock.h, 4, 'rgba(10, 20, 36, 0.45)');
-      strokeRoundRect(c, dock.x, dock.y, dock.w, dock.h, 4, 'rgba(255, 255, 255, 0.15)', 1);
+      fillRoundRect(c, dock.x, dock.y, dock.w, dock.h, tacticalHud ? 3 : 4, hudPanel);
+      strokeRoundRect(c, dock.x, dock.y, dock.w, dock.h, tacticalHud ? 3 : 4, tacticalHud ? 'rgba(255, 173, 67, .7)' : 'rgba(255, 255, 255, 0.15)', 1);
       circle(c, dock.x + 13, dock.y + dock.h / 2, 4, Theme.color.red);
       text(c, `存活 ${alive}`, dock.x + dock.w - 8, dock.y + dock.h / 2,
         { color: alive === 0 ? Theme.color.green : Theme.color.redBright, align: 'right', baseline: 'middle', font: Theme.font.small });
@@ -231,7 +275,7 @@ export class BattleUI {
       const dockGap = 6;
 
       const drawDockItem = (textStr: string, isCompleted: boolean) => {
-        const bgColor = isCompleted ? 'rgba(95, 224, 104, 0.16)' : 'rgba(10, 20, 36, 0.45)';
+        const bgColor = isCompleted ? 'rgba(95, 224, 104, 0.16)' : hudPanel;
         const borderColor = isCompleted ? Theme.color.green : 'rgba(255, 255, 255, 0.15)';
         const textColor = isCompleted ? Theme.color.green : Theme.color.white;
 
@@ -539,9 +583,10 @@ export class BattleUI {
   ): void {
     if (!this.game || this.battle.isEnded) return;
     const exit = exploreExit ?? { x: w - 68, y: safeTop + 32, w: 52, h: 28 };
-    fillRoundRect(c, exit.x, exit.y, exit.w, exit.h, 6, 'rgba(8, 19, 30, .88)');
-    strokeRoundRect(c, exit.x, exit.y, exit.w, exit.h, 6, Theme.color.gray, 1);
-    text(c, '退出', exit.x + exit.w / 2, exit.y + exit.h / 2, { color: Theme.color.white, align: 'center', baseline: 'middle', font: Theme.font.small });
+    const tactical = this.battle.exploreHud?.theme === 'industrial' || this.battle.exploreHud?.layout === 'tactical';
+    fillRoundRect(c, exit.x, exit.y, exit.w, exit.h, tactical ? 3 : 6, 'rgba(8, 19, 30, .88)');
+    strokeRoundRect(c, exit.x, exit.y, exit.w, exit.h, tactical ? 3 : 6, tactical ? 'rgba(255, 173, 67, .72)' : Theme.color.gray, 1);
+    text(c, tactical ? '撤离' : '退出', exit.x + exit.w / 2, exit.y + exit.h / 2, { color: tactical ? Theme.color.gold : Theme.color.white, align: 'center', baseline: 'middle', font: Theme.font.small });
     if (!this.exitConfirmVisible) return;
     const panelX = 26; const panelY = h * .34; const panelW = w - 52; const buttonY = panelY + 118;
     fillRoundRect(c, panelX, panelY, panelW, 170, 10, 'rgba(5, 13, 23, .96)');
@@ -575,7 +620,7 @@ export class BattleUI {
     c.save();
     c.globalAlpha = isActive ? 0.5 : 0.28;
     c.fillStyle = baseColor;
-    c.beginPath(); c.arc(btn.cx, btn.cy, btn.r + 7, 0, Math.PI * 2); c.fill();
+    traceSkillButton(c, btn, btn.r + 7); c.fill();
     c.restore();
     const flashUntil = this.skillButtonFlash.get(btn.skillId) ?? 0;
     if (flashUntil > this.ctx.now()) {
@@ -592,19 +637,19 @@ export class BattleUI {
 
       c.save();
       c.beginPath();
-      c.arc(btn.cx, btn.cy, btn.r, 0, Math.PI * 2);
+      traceSkillButton(c, btn);
       c.clip();
       c.drawImage(img, btn.cx - btn.r, btn.cy - btn.r, btn.r * 2, btn.r * 2);
       c.restore();
 
       c.strokeStyle = usable ? Theme.color.white : Theme.color.gray;
       c.lineWidth = 2;
-      c.beginPath(); c.arc(btn.cx, btn.cy, btn.r, 0, Math.PI * 2); c.stroke();
+      traceSkillButton(c, btn); c.stroke();
 
       if (!usable) {
         c.save();
         c.fillStyle = 'rgba(0, 0, 0, 0.6)';
-        c.beginPath(); c.arc(btn.cx, btn.cy, btn.r, 0, Math.PI * 2); c.fill();
+        traceSkillButton(c, btn); c.fill();
         c.restore();
       }
 
@@ -622,6 +667,12 @@ export class BattleUI {
           color: Theme.color.white, align: 'center', baseline: 'middle', font: Theme.font.titleSmall,
         });
       }
+      if (btn.showLabel) {
+        fillRoundRect(c, btn.cx - 24, btn.cy + btn.r - 6, 48, 16, 3, 'rgba(5, 14, 24, .9)');
+        text(c, btn.label, btn.cx, btn.cy + btn.r + 2, {
+          color: baseColor, align: 'center', baseline: 'middle', font: Theme.font.small,
+        });
+      }
       c.restore();
       return;
     }
@@ -629,10 +680,10 @@ export class BattleUI {
     c.save();
     c.globalAlpha = 1;
     c.fillStyle = usable ? baseColor : Theme.color.grayDark;
-    c.beginPath(); c.arc(btn.cx, btn.cy, btn.r, 0, Math.PI * 2); c.fill();
+    traceSkillButton(c, btn); c.fill();
     c.strokeStyle = usable ? Theme.color.white : Theme.color.gray;
     c.lineWidth = 2;
-    c.beginPath(); c.arc(btn.cx, btn.cy, btn.r, 0, Math.PI * 2); c.stroke();
+    traceSkillButton(c, btn); c.stroke();
     text(c, btn.label, btn.cx, btn.cy, {
       color: usable ? Theme.color.white : Theme.color.gray,
       align: 'center', baseline: 'middle', font: Theme.font.titleSmall,

@@ -89,6 +89,90 @@
       },
       {
         "type": "folder",
+        "value": "scratch"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000005"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000006"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000007"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000008"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000009"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000010"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000012"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000013"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000014"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000015"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000016"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000017"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000018"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000019"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000020"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000021"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000022"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000023"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000024"
+      },
+      {
+        "type": "folder",
+        "value": "assets/art-releases/R000025"
+      },
+      {
+        "type": "folder",
         "value": ".git"
       },
       {

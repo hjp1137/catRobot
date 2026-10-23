@@ -10,12 +10,14 @@ test('任务21：LocalContentRepository 加载首批内容模板', async () => {
   const heroes = await repo.loadHeroVisuals();
   const stages = await repo.loadStages();
 
-  assert.equal(enemies.length, 4);
+  assert.equal(enemies.length, 5);
   assert.equal(backgrounds.length, 2);
   assert.equal(heroes.length, 1);
-  assert.equal(stages.length, 2);
+  assert.equal(stages.length, 11);
   assert.ok(enemies.some(e => e.id === 'enemy_scrap_mouse_01'));
   assert.ok(stages.some(s => s.id === 'stage_explore_training_01'));
+  assert.ok(enemies.some(e => e.id === 'enemy_scrap_mouse_king_01'));
+  assert.ok(stages.some(s => s.id === 'stage_ch1_10'));
 });
 
 test('任务21：ContentRegistry 集中查询模板并冻结配置对象', async () => {
@@ -29,8 +31,8 @@ test('任务21：ContentRegistry 集中查询模板并冻结配置对象', async
   assert.equal(mouse.visual.idleArtKey, 'enemy.scrapMouse.normal');
   assert.equal(bg.art.floorArtKey, 'map.trainingGround.floor');
   assert.equal(hero.skills.cannonIconArtKey, 'ui.skill.cannon');
-  assert.equal(stage.backgroundThemeId, 'background_forging_corridor_v1');
-  assert.equal(registry.listEnemies().length, 4);
+  assert.equal(stage.backgroundThemeId, 'background_training_ground_v1');
+  assert.equal(registry.listEnemies().length, 5);
   assert.equal(Object.isFrozen(mouse), true);
 });
 

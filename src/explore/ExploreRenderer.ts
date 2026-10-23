@@ -9,8 +9,14 @@ import { drawMecha } from '../render/MechaRenderer';
 import { drawMeowCannonEffect, drawShieldEffect } from '../render/SkillRenderer';
 import { worldToScreen } from './WorldTransform';
 import { drawExploreTrainingMap } from './ExploreMapRenderer';
-import { resolveAnimatedArtKey } from '../animation/AnimationRuntime';
+import { resolveAnimatedArtKey, resolveDirectionalAnimationState } from '../animation/AnimationRuntime';
 import type { ArtResourceKey } from '../assets/ArtResourceKeys';
+import {
+  getExploreEnemyVisualRadius,
+  getExplorePlayerVisualRadius,
+  resolveExploreActionArtKey,
+  resolveExploreHeroArtKey,
+} from './ExploreMotionVisuals';
 
 export function drawExploreScene(c: ICanvas2D, scene: ExploreScene, time: number): void {
   drawExploreTrainingMap(c, scene.camera, time, scene.backgroundTheme, scene.stageLayers);
@@ -20,17 +26,25 @@ export function drawExploreScene(c: ICanvas2D, scene: ExploreScene, time: number
 
   for (const e of scene.enemies) {
     const p = worldToScreen(scene.camera, e);
-    const dx = scene.player.x - e.x;
-    const dy = scene.player.y - e.y;
+    const facingTarget = e.exploreState === 'patrol'
+      ? { x: e.patrolTargetX, y: e.patrolTargetY }
+      : scene.player;
+    const dx = facingTarget.x - e.x;
+    const dy = facingTarget.y - e.y;
     const d = Math.hypot(dx, dy) || 1;
-    const visualRadius = Math.max(32, e.radius * (e.visual?.displayScale ?? getEnemyVisualScale(e.isBoss, e.variant !== 'normal')));
-    const enemyArtKey = resolveAnimatedArtKey({
+    const configuredRadius = e.radius * (e.visual?.displayScale ?? getEnemyVisualScale(e.isBoss, e.variant !== 'normal'));
+    const visualRadius = getExploreEnemyVisualRadius(configuredRadius);
+    const directionalState = resolveDirectionalAnimationState(
+      e.animationState, dx, dy, e.visual?.animationClipKeys,
+    );
+    const animatedArtKey = resolveAnimatedArtKey({
       player: e.animationPlayer,
       targetType: 'enemy',
-      state: e.animationState,
+      state: directionalState,
       bindings: e.visual?.animationClipKeys,
       fallbackArtKey: artKeyForState(e.visual, e.animationState),
     });
+    const enemyArtKey = resolveExploreActionArtKey(e.animationState, e.visual?.moveArtKey, animatedArtKey);
     drawEnemy(c, {
       cx: p.x, cy: p.y, radius: visualRadius,
       hpRatio: e.hpRatio, hitFlash: e.hitFlash,
@@ -160,14 +174,27 @@ function drawExploreProjectiles(c: ICanvas2D, scene: ExploreScene): void {
 
 function drawExplorePlayer(c: ICanvas2D, scene: ExploreScene, x: number, y: number, time: number): void {
   const player = scene.player;
-  const visualRadius = player.radius * BATTLE_ASSETS.player.idle.scale * (scene.heroVisualTemplate?.visual.displayScale ?? 1);
-  const playerArtKey = resolveAnimatedArtKey({
+  const actionState = player.isMoving ? 'move' : player.animationState;
+  const configuredRadius = player.radius * BATTLE_ASSETS.player.idle.scale * (scene.heroVisualTemplate?.visual.displayScale ?? 1);
+  const visualRadius = getExplorePlayerVisualRadius(configuredRadius);
+  const directionalState = resolveDirectionalAnimationState(
+    actionState, player.moveDirectionX, player.moveDirectionY,
+    scene.heroVisualTemplate?.visual.animationClipKeys,
+  );
+  const animatedArtKey = resolveAnimatedArtKey({
     player: player.animationPlayer,
     targetType: 'hero',
-    state: player.animationState,
+    state: directionalState,
     bindings: scene.heroVisualTemplate?.visual.animationClipKeys,
-    fallbackArtKey: artKeyForState(scene.heroVisualTemplate?.visual, player.animationState),
+    fallbackArtKey: artKeyForState(scene.heroVisualTemplate?.visual, actionState),
   });
+  const playerArtKey = resolveExploreHeroArtKey(
+    actionState,
+    player.isMoving,
+    time,
+    scene.heroVisualTemplate?.visual.idleArtKey,
+    animatedArtKey,
+  );
   drawMecha(c, {
     cx: x, cy: y, radius: visualRadius,
     hitFlash: player.hitFlash, attackFlash: player.attackFlash,

@@ -145,7 +145,7 @@ test('�孵稬�諹��亦����𨧀� 蝡㰘��㗇𥋘 �� 蝚
 test('�喳㨃�㗇𥋘嚗𡁶洵銝�蝡䭾遬蝷� 5 銝芸��∴�1-1 閫��嚗��雿䠷�摰�', () => {
   gotoCampaignMap();
   const view = game.getCampaignChapterView();
-  assert.equal(view.nodes.length, 2);
+  assert.equal(view.nodes.length, 10);
   assert.equal(view.nodes[0].state, 'UNLOCKED');
   assert.equal(view.nodes[1].state, 'LOCKED');
 });
@@ -154,7 +154,7 @@ test('�喳㨃�㗇𥋘���嚗𡁜鉄蝡㰘��滢��喳㨃��', 
   gotoCampaignMap();
   const texts = env.canvas.getDrawnTexts().join('|');
   assert.match(texts, /第一章·废料边境/);
-  assert.match(texts, /铸造通道/);
+  assert.match(texts, /铸造入口/);
 });
 
 test('����喳㨃�孵稬銝滩��交���', () => {

@@ -17,7 +17,7 @@ export const ART_PACKS = {
   training_ground_v1: { name: '训练场正式资源包 v1', enabled: true },
 };
 
-export const ART_MANIFEST: Record<ArtResourceKey, ArtResourceEntry> = {
+export const ART_MANIFEST = {
   'main.bg': { path: 'assets/main_bg.png', type: 'background', pack: 'base', fallback: 'placeholder.image' },
   'player.mecha.normal': { path: 'assets/player_mecha.png', type: 'sprite', pack: 'base', fallback: 'placeholder.image' },
   'enemy.rat.normal': { path: 'assets/enemy_rat.png', type: 'sprite', pack: 'base', fallback: 'placeholder.image' },
@@ -124,4 +124,4 @@ export const ART_MANIFEST: Record<ArtResourceKey, ArtResourceEntry> = {
   'effect.cannon.burst': { path: 'assets/art-packs/training_ground_v1/effect_cannon_burst_01.png', type: 'sprite', pack: 'training_ground_v1', fallback: 'placeholder.image', virtual: true },
   'ui.notice.clearComplete': { path: 'assets/art-packs/training_ground_v1/ui_notice_clear_complete_01.png', type: 'icon', pack: 'training_ground_v1', fallback: 'placeholder.image', virtual: true },
   'ui.notice.trainingComplete': { path: 'assets/art-packs/training_ground_v1/ui_notice_training_complete_01.png', type: 'icon', pack: 'training_ground_v1', fallback: 'placeholder.image', virtual: true },
-};
+} satisfies Partial<Record<ArtResourceKey, ArtResourceEntry>>;

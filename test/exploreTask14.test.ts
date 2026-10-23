@@ -56,6 +56,30 @@ test('任务14：自由探索玩家使用世界坐标移动且不能越出地图
   assert.ok(explore.camera.x <= explore.worldWidth - ctx.canvasWidth);
 });
 
+test('自由探索点击地面后自动行走并在到达目标时停止', () => {
+  const { ctx, explore } = setupExplore();
+  explore.enemies = [];
+  const startX = explore.player.x;
+  ctx.input.simulateTap(300, 502);
+  assert.equal(explore.handleTapMoveInput(), true);
+  for (let i = 0; i < 30; i++) explore.update(0.05);
+  assert.ok(explore.player.x > startX + 80);
+  assert.equal(explore.player.isMoving, false);
+  assert.equal(explore.hasMoveTarget, false);
+});
+
+test('自由探索摇杆输入立即取消点击移动目标', () => {
+  const { ctx, explore } = setupExplore();
+  explore.enemies = [];
+  ctx.input.simulateTap(300, 502);
+  explore.handleTapMoveInput();
+  ctx.input.simulateMove(-1, 0);
+  const before = explore.player.x;
+  explore.update(0.1);
+  assert.ok(explore.player.x < before);
+  assert.equal(explore.hasMoveTarget, false);
+});
+
 test('任务14：敌人按世界坐标追击，自动攻击与技能可复用', () => {
   const { ctx, game, explore } = setupExplore();
   const enemy = explore.enemies[0];
@@ -168,7 +192,7 @@ test('任务32：探索机械鼠以独立视觉尺寸清晰绘制', async () => 
   await rm.loadAll(ctx);
   drawExploreScene(ctx.canvas, explore, 1);
   const mouse = ctx.canvas.calls.find(call => call.includes('enemy_scrapMouse_normal.png')) ?? '';
-  assert.match(mouse, /,64,64$/, '机械鼠绘制直径至少应为 64px，不能复用 14px 碰撞半径');
+  assert.match(mouse, /,96,96$/, '机械鼠绘制直径至少应为 96px，不能复用 14px 碰撞半径');
 });
 
 test('任务32：地图图层由后台发布配置的 Art Key 绘制', async () => {
@@ -203,6 +227,7 @@ test('任务32：后台阻挡图层同时阻断角色和常规子弹', () => {
   const blocker = { id: 'configured-press', x: explore.player.x + 52, y: explore.player.y - 80, w: 80, h: 160, label: '后台压装台', kind: 'machine' };
   (explore as any).terrainObstacles = [blocker];
   const startX = explore.player.x;
+  explore.player.attackCooldown = 999;
   ctx.input.simulateMove(1, 0); explore.update(1);
   assert.ok(explore.player.x < startX + 50, '角色必须使用后台阻挡图层');
 

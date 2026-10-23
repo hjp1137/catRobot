@@ -1,0 +1,252 @@
+{
+  "checks": {
+    "original_65_joint_indices": true,
+    "inverse_bind_matrices_exact": true,
+    "joint_names_and_rest_exact": true,
+    "unique_mesh_names": true,
+    "images_embedded": true,
+    "textured_primitives_have_uv": true,
+    "four_fur_surfaces_have_pbr_maps": true,
+    "normal_surfaces_have_tangents": true,
+    "finite_geometry": true,
+    "weights_sum_one": true,
+    "valid_joints": true,
+    "contacts_are_actual_vertices": true,
+    "complete_convex_support": true,
+    "blackiron_helmet": true,
+    "blackiron_helmet_five_families": true,
+    "blackiron_chest": true,
+    "blackiron_chest_five_families": true,
+    "blackiron_armor": true,
+    "blackiron_armor_five_families": true,
+    "blackiron_legs": true,
+    "blackiron_legs_five_families": true,
+    "blackiron_boots": true,
+    "blackiron_boots_five_families": true,
+    "blackiron_ring": true,
+    "blackiron_ring_five_families": true,
+    "bronze_helmet": true,
+    "bronze_helmet_five_families": true,
+    "bronze_chest": true,
+    "bronze_chest_five_families": true,
+    "bronze_armor": true,
+    "bronze_armor_five_families": true,
+    "bronze_legs": true,
+    "bronze_legs_five_families": true,
+    "bronze_boots": true,
+    "bronze_boots_five_families": true,
+    "bronze_ring": true,
+    "bronze_ring_five_families": true,
+    "silver_helmet": true,
+    "silver_helmet_five_families": true,
+    "silver_chest": true,
+    "silver_chest_five_families": true,
+    "silver_armor": true,
+    "silver_armor_five_families": true,
+    "silver_legs": true,
+    "silver_legs_five_families": true,
+    "silver_boots": true,
+    "silver_boots_five_families": true,
+    "silver_ring": true,
+    "silver_ring_five_families": true,
+    "gold_helmet": true,
+    "gold_helmet_five_families": true,
+    "gold_chest": true,
+    "gold_chest_five_families": true,
+    "gold_armor": true,
+    "gold_armor_five_families": true,
+    "gold_legs": true,
+    "gold_legs_five_families": true,
+    "gold_boots": true,
+    "gold_boots_five_families": true,
+    "gold_ring": true,
+    "gold_ring_five_families": true,
+    "astral_helmet": true,
+    "astral_helmet_five_families": true,
+    "astral_chest": true,
+    "astral_chest_five_families": true,
+    "astral_armor": true,
+    "astral_armor_five_families": true,
+    "astral_legs": true,
+    "astral_legs_five_families": true,
+    "astral_boots": true,
+    "astral_boots_five_families": true,
+    "astral_ring": true,
+    "astral_ring_five_families": true
+  },
+  "bytes": 49810392,
+  "meshes": 264,
+  "groups": {
+    "body": {
+      "vertices": 23948,
+      "triangles": 39330,
+      "meshes": 18,
+      "family_meshes": 0
+    },
+    "blackiron": {
+      "vertices": 23096,
+      "triangles": 16714,
+      "meshes": 42,
+      "family_meshes": 30
+    },
+    "bronze": {
+      "vertices": 26888,
+      "triangles": 22880,
+      "meshes": 46,
+      "family_meshes": 30
+    },
+    "silver": {
+      "vertices": 78697,
+      "triangles": 102384,
+      "meshes": 52,
+      "family_meshes": 30
+    },
+    "gold": {
+      "vertices": 83481,
+      "triangles": 108788,
+      "meshes": 53,
+      "family_meshes": 30
+    },
+    "astral": {
+      "vertices": 102386,
+      "triangles": 132302,
+      "meshes": 53,
+      "family_meshes": 30
+    }
+  },
+  "foot_meshes": [
+    {
+      "name": "Body_Paws_l_foot_l",
+      "bone": "foot_l",
+      "min_y": 0.00370011106133461,
+      "contact_count": 266,
+      "vertices": 290,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Body_Paws_l_ball_l",
+      "bone": "ball_l",
+      "min_y": 0.0032001305371522903,
+      "contact_count": 166,
+      "vertices": 502,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Body_Paws_r_foot_r",
+      "bone": "foot_r",
+      "min_y": 0.0037001706659793854,
+      "contact_count": 266,
+      "vertices": 290,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Body_Paws_r_ball_r",
+      "bone": "ball_r",
+      "min_y": 0.0032001882791519165,
+      "contact_count": 166,
+      "vertices": 502,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_silver_Slot_boots_foot_l",
+      "bone": "foot_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 195,
+      "vertices": 3617,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_silver_Slot_boots_ball_l",
+      "bone": "ball_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 145,
+      "vertices": 2506,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_silver_Slot_boots_foot_r",
+      "bone": "foot_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 195,
+      "vertices": 3631,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_silver_Slot_boots_ball_r",
+      "bone": "ball_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 145,
+      "vertices": 2515,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_gold_Slot_boots_foot_l",
+      "bone": "foot_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 183,
+      "vertices": 3616,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_gold_Slot_boots_ball_l",
+      "bone": "ball_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 137,
+      "vertices": 2502,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_gold_Slot_boots_foot_r",
+      "bone": "foot_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 183,
+      "vertices": 3631,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_gold_Slot_boots_ball_r",
+      "bone": "ball_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 137,
+      "vertices": 2518,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_astral_Slot_boots_foot_l",
+      "bone": "foot_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 188,
+      "vertices": 3625,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_astral_Slot_boots_ball_l",
+      "bone": "ball_l",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 141,
+      "vertices": 2505,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_astral_Slot_boots_foot_r",
+      "bone": "foot_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 188,
+      "vertices": 3640,
+      "support_error_m": 0.0
+    },
+    {
+      "name": "Tier_astral_Slot_boots_ball_r",
+      "bone": "ball_r",
+      "min_y": 0.0031999999191612005,
+      "contact_count": 141,
+      "vertices": 2517,
+      "support_error_m": 0.0
+    }
+  ],
+  "embedded_images": 26,
+  "normal_primitives": 19,
+  "tangent_primitives": 406,
+  "uv_primitives": 406,
+  "result": "PASS"
+}

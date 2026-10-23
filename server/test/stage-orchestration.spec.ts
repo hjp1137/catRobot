@@ -29,6 +29,40 @@ describe('StageOrchestrationService', () => {
     expect(prisma.$transaction).not.toHaveBeenCalled();
   });
 
+  it('accepts backend-configured tactical HUD parameters and persists them in camera_json', async () => {
+    const prisma: any = prismaMock();
+    prisma.contentStage.findFirst.mockResolvedValue({ id: 'stage_battle_1_1' });
+    prisma.contentStageSceneLayout.findUnique.mockResolvedValue(null);
+    prisma.contentStageSceneLayout.create.mockResolvedValue({ row_version: 1 });
+    prisma.contentEnemyTemplate.findMany.mockResolvedValue([{ id: 'enemy_scrap_mouse_01' }]);
+    prisma.contentArtResource.findMany.mockResolvedValue([{ art_key: 'map.trainingGround.floor', resource_status: 'physical' }]);
+    const service = new StageOrchestrationService(prisma);
+    const body = sampleOrchestration();
+    body.layout.exploreHud = {
+      layout: 'tactical', theme: 'industrial', skillButtonShape: 'hex',
+      skillButtonSize: 68, skillButtonGap: 14, skillButtonRight: 18,
+      skillButtonBottom: 24, showSkillLabels: true, panelOpacity: 0.82,
+    };
+
+    await service.saveOrchestration('stage_battle_1_1', body);
+
+    expect(prisma.contentStageSceneLayout.create).toHaveBeenCalledWith(expect.objectContaining({
+      data: expect.objectContaining({ camera_json: expect.objectContaining({ exploreHud: body.layout.exploreHud }) }),
+    }));
+  });
+
+  it('rejects out-of-range tactical HUD dimensions before writing', async () => {
+    const prisma: any = prismaMock();
+    prisma.contentStage.findFirst.mockResolvedValue({ id: 'stage_battle_1_1' });
+    const service = new StageOrchestrationService(prisma);
+    const body = sampleOrchestration();
+    body.layout.exploreHud = { layout: 'tactical', skillButtonSize: 160 };
+
+    await expect(service.saveOrchestration('stage_battle_1_1', body))
+      .rejects.toBeInstanceOf(BadRequestException);
+    expect(prisma.$transaction).not.toHaveBeenCalled();
+  });
+
   it('returns structured rowVersion details for optimistic-lock conflicts', async () => {
     const prisma: any = prismaMock();
     prisma.contentStage.findFirst.mockResolvedValue({ id: 'stage_battle_1_1' });

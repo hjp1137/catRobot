@@ -1,0 +1,211 @@
+{
+  "result": "PASS",
+  "scope": "Walk support extension, landing and swing from actual joints",
+  "samples_per_leg": 4000,
+  "checks": [
+    {
+      "name": "left: main support reaches near extension",
+      "pass": true,
+      "detail": "minimum 7.106 degrees; target <= 12"
+    },
+    {
+      "name": "left: main support is not permanently crouched",
+      "pass": true,
+      "detail": "over 30 degrees fraction 0"
+    },
+    {
+      "name": "left: landing retains moderate flexion",
+      "pass": true,
+      "detail": "range 3.063..18.000 degrees; must include 8..40"
+    },
+    {
+      "name": "left: swing bends for clearance",
+      "pass": true,
+      "detail": "maximum 65.413 degrees; target 35..125"
+    },
+    {
+      "name": "right: main support reaches near extension",
+      "pass": true,
+      "detail": "minimum 7.106 degrees; target <= 12"
+    },
+    {
+      "name": "right: main support is not permanently crouched",
+      "pass": true,
+      "detail": "over 30 degrees fraction 0"
+    },
+    {
+      "name": "right: landing retains moderate flexion",
+      "pass": true,
+      "detail": "range 3.063..18.000 degrees; must include 8..40"
+    },
+    {
+      "name": "right: swing bends for clearance",
+      "pass": true,
+      "detail": "maximum 65.413 degrees; target 35..125"
+    }
+  ],
+  "metrics": {
+    "left": {
+      "support_flex_degrees": {
+        "min": 3.0626793935851993,
+        "max": 49.400665165554216
+      },
+      "main_support_flex_degrees": {
+        "min": 7.105744867734586,
+        "max": 15.950438332031155
+      },
+      "main_support_over_30_fraction": 0,
+      "landing_flex_degrees": {
+        "min": 3.0626793935851993,
+        "max": 17.99983140793597
+      },
+      "swing_flex_degrees": {
+        "min": 24.94425828357916,
+        "max": 65.41323175023254
+      },
+      "support_hip_ankle_ratio": {
+        "min": 0.9085057519332487,
+        "max": 0.9996428571428573
+      }
+    },
+    "right": {
+      "support_flex_degrees": {
+        "min": 3.0626793935851993,
+        "max": 49.40066516555433
+      },
+      "main_support_flex_degrees": {
+        "min": 7.105744867734586,
+        "max": 15.950438332031155
+      },
+      "main_support_over_30_fraction": 0,
+      "landing_flex_degrees": {
+        "min": 3.0626793935851993,
+        "max": 17.99983140793597
+      },
+      "swing_flex_degrees": {
+        "min": 24.94425828357916,
+        "max": 65.41323175023255
+      },
+      "support_hip_ankle_ratio": {
+        "min": 0.9085057519332485,
+        "max": 0.9996428571428573
+      }
+    }
+  },
+  "key_phases": [
+    {
+      "phase": 0,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0,
+          "contact": true,
+          "flex_degrees": 3.0626793935865066,
+          "hip_ankle_ratio": 0.999642857142857
+        },
+        {
+          "name": "right",
+          "local": 0.5,
+          "contact": true,
+          "flex_degrees": 45.299219078029125,
+          "hip_ankle_ratio": 0.9228771290643293
+        }
+      ]
+    },
+    {
+      "phase": 0.1,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0.10000000000000009,
+          "contact": true,
+          "flex_degrees": 17.9999999999998,
+          "hip_ankle_ratio": 0.9876883405951379
+        },
+        {
+          "name": "right",
+          "local": 0.6000000000000001,
+          "contact": false,
+          "flex_degrees": 46.924146496026395,
+          "hip_ankle_ratio": 0.9173238240791864
+        }
+      ]
+    },
+    {
+      "phase": 0.25,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0.25,
+          "contact": true,
+          "flex_degrees": 8.077199184769142,
+          "hip_ankle_ratio": 0.9975168296498879
+        },
+        {
+          "name": "right",
+          "local": 0.75,
+          "contact": false,
+          "flex_degrees": 63.58693144182685,
+          "hip_ankle_ratio": 0.8499527839671408
+        }
+      ]
+    },
+    {
+      "phase": 0.3,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0.30000000000000004,
+          "contact": true,
+          "flex_degrees": 7.105744867734586,
+          "hip_ankle_ratio": 0.9980780379724153
+        },
+        {
+          "name": "right",
+          "local": 0.8,
+          "contact": false,
+          "flex_degrees": 64.08371474097585,
+          "hip_ankle_ratio": 0.8476607379363691
+        }
+      ]
+    },
+    {
+      "phase": 0.5,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0.5,
+          "contact": true,
+          "flex_degrees": 45.299219078029125,
+          "hip_ankle_ratio": 0.9228771290643293
+        },
+        {
+          "name": "right",
+          "local": 0,
+          "contact": true,
+          "flex_degrees": 3.0626793935865066,
+          "hip_ankle_ratio": 0.999642857142857
+        }
+      ]
+    },
+    {
+      "phase": 0.6,
+      "legs": [
+        {
+          "name": "left",
+          "local": 0.6000000000000001,
+          "contact": false,
+          "flex_degrees": 46.924146496026395,
+          "hip_ankle_ratio": 0.9173238240791864
+        },
+        {
+          "name": "right",
+          "local": 0.10000000000000009,
+          "contact": true,
+          "flex_degrees": 17.9999999999998,
+          "hip_ankle_ratio": 0.9876883405951379
+        }
+      ]
+    }
+  ]
+}

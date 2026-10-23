@@ -1,6 +1,7 @@
 import { IContext } from '../engine/IContext';
 import { getArtPath } from '../assets/ArtResourceResolver';
 import type { ArtResourceKey } from '../assets/ArtResourceKeys';
+import { listAnimationClips } from '../animation/AnimationManifestRepository';
 
 export type LoadStatus = 'PENDING' | 'LOADING' | 'LOADED' | 'FAILED';
 
@@ -59,6 +60,8 @@ export const IMAGE_RESOURCES = {
   ui_tutorial_equip: getArtPath('ui.tutorial.equip'),
   player_mecha_cat_idle: getArtPath('player.mechaCat.idle'),
   player_mecha_cat_move: getArtPath('player.mechaCat.move'),
+  player_mecha_cat_run_left: getArtPath('player.mechaCat.runLeft'),
+  player_mecha_cat_run_right: getArtPath('player.mechaCat.runRight'),
   player_mecha_cat_attack: getArtPath('player.mechaCat.attack'),
   enemy_scrap_mouse: getArtPath('enemy.scrapMouse.normal'),
   enemy_scrap_bug: getArtPath('enemy.scrapBug.normal'),
@@ -170,7 +173,12 @@ export class ResourceManager {
       });
     });
 
-    await Promise.all(promises);
+    const animationKeys = new Set<ArtResourceKey>();
+    for (const clip of listAnimationClips()) {
+      for (const frame of clip.frames) animationKeys.add(frame.artKey);
+    }
+    const animationPromises = Array.from(animationKeys).map(key => this.loadArtKey(key, context));
+    await Promise.all([...promises, ...animationPromises]);
   }
 
   public resetForTest(): void {

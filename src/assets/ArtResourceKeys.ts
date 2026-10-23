@@ -100,4 +100,9 @@ export type ArtResourceKey =
   | 'effect.shield.aura'
   | 'effect.cannon.burst'
   | 'ui.notice.clearComplete'
-  | 'ui.notice.trainingComplete';
+  | 'ui.notice.trainingComplete'
+  // 1-1 多帧跑步资源；具体帧顺序与文件由后台动画快照决定
+  | `player.mechaCat.run.phase0${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}`
+  | `enemy.scrapMouse.run.phase0${1 | 2 | 3 | 4 | 5 | 6}`
+  | `enemy.scrapGuard.run.phase0${1 | 2 | 3 | 4 | 5 | 6}`
+  | `${'player.mechaCat' | 'enemy.scrapMouse' | 'enemy.scrapGuard'}.run.${'up' | 'down'}.phase${1 | 2 | 3 | 4 | 5 | 6}`;

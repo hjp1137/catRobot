@@ -1,0 +1,362 @@
+[
+	{
+		"case": "bare/(0.0, 1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 164.408889770508,
+		"minimum_bone_leg_span": 71.9421768188477,
+		"restart_max_jump": 2.178955078125,
+		"stop": {
+			"max_jump": 0.42242431640625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 97,
+		"swing_lift": 11.159920978825
+	},
+	{
+		"case": "bare/(0.0, 1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000244140625,
+		"maximum_bone_leg_span": 165.723571777344,
+		"minimum_bone_leg_span": 72.4163093566895,
+		"restart_max_jump": 9.2393798828125,
+		"stop": {
+			"max_jump": 1.0423583984375,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 41,
+		"swing_lift": 23.1706484661695
+	},
+	{
+		"case": "bare/(0.0, -1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 176.633232116699,
+		"minimum_bone_leg_span": 70.0372161865234,
+		"restart_max_jump": 2.10772705078125,
+		"stop": {
+			"max_jump": 1.17828369140625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 102,
+		"swing_lift": 11.1560409616609
+	},
+	{
+		"case": "bare/(0.0, -1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000272957520792261,
+		"maximum_bone_leg_span": 159.115837097168,
+		"minimum_bone_leg_span": 63.3182468414307,
+		"restart_max_jump": 10.5751876831055,
+		"stop": {
+			"max_jump": 1.29847717285156,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 40,
+		"swing_lift": 23.0463916117826
+	},
+	{
+		"case": "bare/(-1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000172633488546126,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 2.18627643585205,
+		"stop": {
+			"max_jump": 0.00013647876039613,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 98,
+		"swing_lift": 17.995859432933
+	},
+	{
+		"case": "bare/(-1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.00013647876039613,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 9.80790615081787,
+		"stop": {
+			"max_jump": 0.88297301530838,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 39,
+		"swing_lift": 36.9681716699049
+	},
+	{
+		"case": "bare/(1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000172633488546126,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 2.17692637443542,
+		"stop": {
+			"max_jump": 1.1253674030304,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 107,
+		"swing_lift": 17.9548926798368
+	},
+	{
+		"case": "bare/(1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000244140625,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 10.4546728134155,
+		"stop": {
+			"max_jump": 1.09255146980286,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 40,
+		"swing_lift": 37.7832425457033
+	},
+	{
+		"case": "mixed/(0.0, 1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 164.395851135254,
+		"minimum_bone_leg_span": 71.9028129577637,
+		"restart_max_jump": 2.32135009765625,
+		"stop": {
+			"max_jump": 0.62066650390625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 99,
+		"swing_lift": 11.1580663115202
+	},
+	{
+		"case": "mixed/(0.0, 1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000272957520792261,
+		"maximum_bone_leg_span": 165.905235290527,
+		"minimum_bone_leg_span": 74.8410797119141,
+		"restart_max_jump": 9.1104736328125,
+		"stop": {
+			"max_jump": 0.4664306640625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 38,
+		"swing_lift": 23.4219908637205
+	},
+	{
+		"case": "mixed/(0.0, -1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000272957520792261,
+		"maximum_bone_leg_span": 163.756813049316,
+		"minimum_bone_leg_span": 70.037353515625,
+		"restart_max_jump": 2.28570556640625,
+		"stop": {
+			"max_jump": 0.6082763671875,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 105,
+		"swing_lift": 11.1596236967913
+	},
+	{
+		"case": "mixed/(0.0, -1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000246040581259876,
+		"maximum_bone_leg_span": 159.368965148926,
+		"minimum_bone_leg_span": 63.306957244873,
+		"restart_max_jump": 10.5874633789063,
+		"stop": {
+			"max_jump": 1.31890869140625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 39,
+		"swing_lift": 23.4079012807474
+	},
+	{
+		"case": "mixed/(-1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.00013647876039613,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 1.89487028121948,
+		"stop": {
+			"max_jump": 1.00147747993469,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 112,
+		"swing_lift": 17.9327889456284
+	},
+	{
+		"case": "mixed/(-1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000244140625,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 9.81029891967773,
+		"stop": {
+			"max_jump": 1.26403057575226,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 40,
+		"swing_lift": 37.5708291316209
+	},
+	{
+		"case": "mixed/(1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 2.18448352813721,
+		"stop": {
+			"max_jump": 0.00013647876039613,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 93,
+		"swing_lift": 17.9990173910484
+	},
+	{
+		"case": "mixed/(1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 9.81225490570068,
+		"stop": {
+			"max_jump": 0.814181625843048,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 39,
+		"swing_lift": 37.4408139820179
+	},
+	{
+		"case": "full/(0.0, 1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 164.400405883789,
+		"minimum_bone_leg_span": 71.927116394043,
+		"restart_max_jump": 1.94549560546875,
+		"stop": {
+			"max_jump": 1.051025390625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 96,
+		"swing_lift": 11.1584940747322
+	},
+	{
+		"case": "full/(0.0, 1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000272957520792261,
+		"maximum_bone_leg_span": 165.740188598633,
+		"minimum_bone_leg_span": 73.4748344421387,
+		"restart_max_jump": 9.5047607421875,
+		"stop": {
+			"max_jump": 0.189331218600273,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 40,
+		"swing_lift": 23.0898688239417
+	},
+	{
+		"case": "full/(0.0, -1.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 172.178596496582,
+		"minimum_bone_leg_span": 70.0382537841797,
+		"restart_max_jump": 2.30535888671875,
+		"stop": {
+			"max_jump": 0.748291015625,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 96,
+		"swing_lift": 11.1554605283077
+	},
+	{
+		"case": "full/(0.0, -1.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.00013647876039613,
+		"maximum_bone_leg_span": 169.139015197754,
+		"minimum_bone_leg_span": 63.315450668335,
+		"restart_max_jump": 11.1646957397461,
+		"stop": {
+			"max_jump": 0.974052488803864,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 42,
+		"swing_lift": 23.0020788122696
+	},
+	{
+		"case": "full/(-1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000172633488546126,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 2.15473103523254,
+		"stop": {
+			"max_jump": 0.458096653223038,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 106,
+		"swing_lift": 17.9995938059285
+	},
+	{
+		"case": "full/(-1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.00013647876039613,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 10.4233093261719,
+		"stop": {
+			"max_jump": 1.11992430686951,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 42,
+		"swing_lift": 36.894351985575
+	},
+	{
+		"case": "full/(1.0, 0.0)/65.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 2.09705281257629,
+		"stop": {
+			"max_jump": 0.818750321865082,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 109,
+		"swing_lift": 17.9636580895548
+	},
+	{
+		"case": "full/(1.0, 0.0)/340.0",
+		"fixed_leg_image_scales": true,
+		"max_world_slip": 0.000251654390012845,
+		"maximum_bone_leg_span": 132.0,
+		"minimum_bone_leg_span": 132.0,
+		"restart_max_jump": 9.64413547515869,
+		"stop": {
+			"max_jump": 1.23360145092011,
+			"settled": true,
+			"stable": true
+		},
+		"support_steps": 39,
+		"swing_lift": 37.776342996723
+	}
+]

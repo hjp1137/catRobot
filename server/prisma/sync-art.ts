@@ -9,9 +9,10 @@ const prisma = new PrismaClient();
 async function main() {
   let upserted = 0;
   for (const [artKey, entry] of Object.entries(ART_MANIFEST)) {
-    const fullPath = path.resolve('..', entry.path);
-    const physical = !entry.virtual && fs.existsSync(fullPath);
-    const status = entry.virtual ? 'virtual' : physical ? 'physical' : 'missing';
+    const manifestEntry = entry as { path: string; virtual?: boolean };
+    const fullPath = path.resolve('..', manifestEntry.path);
+    const physical = !manifestEntry.virtual && fs.existsSync(fullPath);
+    const status = manifestEntry.virtual ? 'virtual' : physical ? 'physical' : 'missing';
     await prisma.contentArtResource.upsert({
       where: { art_key: artKey },
       create: row(artKey, entry, status) as any,

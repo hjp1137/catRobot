@@ -7,6 +7,7 @@ import { ANIMATION_CLIPS } from '../../src/content/data/animations';
 import { EQUIPMENT_CONFIGS } from '../../src/data/EquipmentConfig';
 import { RUNE_CONFIGS } from '../../src/data/RuneConfig';
 import { seedTutorialDraft } from './tutorial-seed';
+import { seedChapterOne } from './seed-chapter-one';
 
 const prisma = new PrismaClient();
 const result = { created: 0, skipped: 0, failed: 0 };
@@ -46,10 +47,8 @@ async function main() {
   }
   for (const clip of ANIMATION_CLIPS) await seedAnimationClip(clip);
   for (const s of STAGE_DEFINITIONS) await seedStage(s);
-  await seedStageOrchestration();
   await seedRewardDefinitions();
-  await seedStageProgression();
-  await seedCampaignDraft();
+  await seedChapterOne(prisma as any, result);
   const tutorialSeed = await seedTutorialDraft(prisma as any);
   result[tutorialSeed === 'created' ? 'created' : 'skipped'] += 1;
   await prisma.contentSystemState.upsert({ where: { id: 'singleton' }, create: { id: 'singleton' }, update: {} });

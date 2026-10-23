@@ -27,8 +27,16 @@ export interface StageSceneLayout {
 }
 
 export interface ExploreHudConfig {
-  layout?: 'standard' | 'compact';
+  layout?: 'standard' | 'compact' | 'tactical';
+  theme?: 'legacy' | 'industrial';
   showWaveNotice?: boolean;
+  skillButtonShape?: 'circle' | 'hex';
+  skillButtonSize?: number;
+  skillButtonGap?: number;
+  skillButtonRight?: number;
+  skillButtonBottom?: number;
+  showSkillLabels?: boolean;
+  panelOpacity?: number;
 }
 
 export interface StageLayer {

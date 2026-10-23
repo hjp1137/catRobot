@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>猫角色 · Tripo 参考与本地重建初稿</title><style>
+:root{color-scheme:dark;--bg:#121918;--paper:#202a27;--ink:#eeede5;--muted:#aab5ac;--line:#405149;--accent:#dbc091;--alert:#edb49b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Microsoft YaHei UI","Microsoft YaHei",sans-serif}main{max-width:1680px;margin:auto;padding:26px 32px 48px}a{color:var(--accent);text-underline-offset:4px}button,a{touch-action:manipulation}
+header{display:flex;justify-content:space-between;gap:28px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:20px}.eyebrow{margin:0 0 9px;font:11px/1.5 Consolas,monospace;letter-spacing:.18em;color:var(--accent)}h1{font:400 clamp(28px,3.3vw,44px)/1.25 "STZhongsong","SimSun",serif;margin:0 0 12px;letter-spacing:.03em}.lede{margin:0;max-width:900px;color:var(--muted)}.status{white-space:nowrap;font-size:13px;border:1px solid var(--accent);padding:5px 12px;color:var(--accent)}
+.boundary{margin:18px 0 0;border-left:3px solid var(--accent);padding:10px 16px;background:#2b3029;color:var(--ink)}.boundary strong{color:var(--accent)}.toolbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin:20px 0 12px}.control{display:flex;gap:4px;align-items:center;flex-wrap:wrap}.control>span{font-size:12px;color:var(--muted);margin-right:8px}button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 15px;font:inherit;font-size:14px;cursor:pointer}button:hover,button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#1b211d}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.camera-note{color:var(--accent);font-size:13px;margin:8px 0 14px}.triptych{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}figure{margin:0;background:var(--paper);min-width:0}.figure-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:10px 15px;border-bottom:1px solid var(--line)}.figure-head strong{font-size:15px;font-weight:500}.figure-head span{font:10px Consolas,monospace;color:var(--muted)}figure>a{display:block}figure img{display:block;width:100%;height:clamp(360px,63vh,800px);object-fit:contain;background:#18211e}figcaption{padding:9px 15px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);min-height:60px}figcaption span{display:block}.error{color:var(--alert);min-height:1.7em;margin:6px 0}
+.reading{display:flex;justify-content:space-between;gap:26px;margin:12px 0 22px;color:var(--muted);font-size:13px}.reading p{margin:0;max-width:700px}details{border-top:1px solid var(--line);padding-top:16px;margin-top:22px}summary{cursor:pointer;color:var(--accent);font-size:14px}.sources{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:16px 0}.sources p{margin:6px 0;font-size:13px;color:var(--muted)}code{font:12px/1.7 Consolas,monospace;overflow-wrap:anywhere}.foot{margin:22px 0 0;font-size:12px;color:var(--muted)}
+@media(max-width:960px){main{padding:22px 16px 36px}header,.toolbar,.reading{display:block}.status{display:inline-block;margin-top:14px}.toolbar .control+.control{margin-top:10px}.reading p+p{margin-top:12px}.triptych{gap:8px}.figure-head,figcaption{padding:8px 10px}.figure-head span{display:none}button{padding:8px 10px}figure img{height:52vh}}
+@media(max-width:640px){.triptych,.sources{grid-template-columns:1fr;gap:18px}figure img{height:auto;aspect-ratio:2/3}.sources{gap:12px}figcaption{min-height:0}}
+</style></head><body><main>
+<header><div><p class="eyebrow">CAT ROBOT / REFERENCE REBUILD STUDY</p><h1>从截图参考到本地重建</h1><p class="lede">并排观察 Tripo 参考、旧本地模型与当前 Blender 候选。保留完整画面，点击任一图片可查看原尺寸。</p></div><span class="status">本地重建初稿</span></header>
+<p class="boundary"><strong>本地重建初稿 · 非游戏内验收</strong><br>现有参考仅为用户提供的 Tripo 截图；没有 Tripo 原网格、贴图或绑定。当前候选的形体与材质仍需审阅，未证明游戏内动作、性能或适配结果。</p>
+<section aria-label="参考与本地模型三列对照"><div class="toolbar"><nav class="control" aria-label="观察角度"><span>观察角度</span><button data-view="front" aria-pressed="true">正面</button><button data-view="three_quarter" aria-pressed="false">前侧</button><button data-view="profile" aria-pressed="false">侧面</button><button data-view="back" aria-pressed="false">背面</button></nav><nav class="control" aria-label="候选显示方式"><span>当前候选</span><button data-mode="comparison" aria-pressed="true">当前材质</button><button data-mode="clay_comparison" aria-pressed="false">灰模</button></nav></div>
+<p id="camera-note" class="camera-note" aria-live="polite">参考截图与本地渲染非同机位，不能作为一比一重合对照。</p>
+<div class="triptych"><figure><div class="figure-head"><strong>用户 Tripo 截图参考</strong><span>REFERENCE</span></div><a id="reference-link" target="_blank" rel="noopener"><img id="reference" alt="用户 Tripo 正面截图参考"></a><figcaption><span id="reference-caption"></span><span>原始截图 · 点击查看大图</span></figcaption></figure>
+<figure><div class="figure-head"><strong>旧本地模型</strong><span>BEFORE</span></div><a id="before-link" target="_blank" rel="noopener"><img id="before" width="720" height="1080" alt="旧本地模型正面"></a><figcaption><span id="before-caption"></span><span>原有材质渲染 · 点击查看大图</span></figcaption></figure>
+<figure><div class="figure-head"><strong>当前 Blender 候选</strong><span>LOCAL DRAFT</span></div><a id="after-link" target="_blank" rel="noopener"><img id="after" width="720" height="1080" alt="当前 Blender 候选正面"></a><figcaption><span id="after-caption"></span><span>本地重建初稿 · 点击查看大图</span></figcaption></figure></div><p id="image-error" class="error" role="status" aria-live="polite"></p></section>
+<section class="reading"><p>当前材质用于观察配色与整体观感；灰模用于观察头身比例、轮廓和表面过渡。切换显示方式只改变右侧候选，参考截图与旧本地模型保持原始显示。</p><p>截图与渲染的镜头、透视和光照存在差异。侧面参考是近侧角度，背面参考是背部三分之四；本地对应图是严格侧面与背面。</p></section>
+<details><summary>可编辑源工程与图片来源</summary><div class="sources"><div><p><a id="blend-link">打开本地 Blender 重建源工程</a></p><p><code id="blend-path"></code></p><p id="blend-meta"></p><p><a href="review_data.json">查看全部 16 张图片的来源与尺寸记录</a></p></div><div><p>Tripo 截图来源目录<br><code id="reference-directory"></code></p><p>本地渲染来源目录<br><code id="source-directory"></code></p><p>导出脚本只检查所需文件和 PNG 尺寸并复制原图，不生成模型图片。来源记录不替代视觉审阅或游戏内验收。</p></div></div></details>
+<p class="foot">2026-10-23 · 四个观察方向 · 4 张参考截图 + 4 张旧模型渲染 + 8 张候选渲染 · 本地渲染 720 × 1080。</p>
+</main><script>
+const data = __REVIEW_DATA__;
+const views = {front:'正面',three_quarter:'前侧',profile:'严格侧面',back:'背面'};
+const modes = {comparison:'当前材质',clay_comparison:'灰模'};
+const labels = {reference:'用户 Tripo 截图参考',before:'旧本地模型',after:'当前 Blender 候选'};
+const cameraNotes = {front:'正面参考与本地正面渲染仍非同机位，透视与光照可能不同。',three_quarter:'两侧均用于观察前侧轮廓，但截图角度未标定，非同机位。',profile:'参考是近侧角度截图，本地是严格侧面；两者非同机位。',back:'参考是背部三分之四截图，本地是背面；两者非同机位。'};
+const state = {view:'front',mode:'comparison'};
+const $ = selector => document.querySelector(selector);
+function show(){
+  $('#image-error').textContent='';
+  $('#camera-note').textContent=cameraNotes[state.view]+' 不能作为一比一重合对照。';
+  for(const version of ['reference','before','after']){
+    const mode=version==='reference'?'reference':version==='before'?'comparison':state.mode;
+    const entry=data.images.find(item=>item.view===state.view&&item.mode===mode&&item.version===version);
+    const caption=version==='reference'?entry.reference_label:`${views[state.view]} · ${version==='before'?'原有材质':modes[state.mode]}`;
+    const image=$('#'+version);
+    image.src=entry.file;image.alt=labels[version]+' · '+caption;
+    image.width=entry.dimensions[0];image.height=entry.dimensions[1];
+    $('#'+version+'-link').href=entry.file;
+    $('#'+version+'-caption').textContent=caption;
+  }
+  document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===state.view)));
+  document.querySelectorAll('[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===state.mode)));
+}
+document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;show()}));
+document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{state.mode=button.dataset.mode;show()}));
+document.querySelectorAll('figure img').forEach(image=>image.addEventListener('error',()=>{$('#image-error').textContent='图片读取失败，请检查审阅页旁的 reference、comparison 与 clay_comparison 目录。'}));
+$('#blend-link').href=data.source.url;$('#blend-path').textContent=data.source.path;
+$('#blend-meta').textContent=`${(data.source.bytes/1024/1024).toFixed(1)} MiB · 保存于 ${new Date(data.source.modified).toLocaleString('zh-CN')}`;
+$('#reference-directory').textContent=data.reference_directory;$('#source-directory').textContent=data.source_directory;
+show();
+</script></body></html>

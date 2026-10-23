@@ -1,0 +1,4 @@
+Blender version: 4.5.14 LTS (62c1db4208e8)
+RNA: TriangulateModifier.keep_custom_normals exists; default False.
+Build override: modifier.keep_custom_normals=True before modifier_apply.
+Probe: Blender --background --factory-startup, bpy.types.TriangulateModifier.bl_rna.properties.

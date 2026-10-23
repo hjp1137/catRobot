@@ -52,7 +52,7 @@ export function drawMecha(c: ICanvas2D, o: MechaDrawOptions): void {
   }
 
   const rm = ResourceManager.getInstance();
-  const img = rm.getImageByArtKey(o.artKey) ?? rm.getImage('player_mecha');
+  const img = rm.getImageByArtKey(o.artKey) ?? (o.artKey ? null : rm.getImage('player_mecha'));
   if (img) {
     c.save();
     if (o.showRings) {

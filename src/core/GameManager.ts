@@ -36,7 +36,7 @@ import {
   toggleEquipmentLock, ToggleLockResult
 } from '../data/EquipmentEnhance';
 import { findPublishedStageProgression, resolvePublishedStageProgressions } from '../progression/StageProgressionRepository';
-import { applyDefaultStageUnlocks, settleStageRun } from '../progression/StageSettlementService';
+import { applyDefaultStageUnlocks, reconcilePublishedStageUnlocks, settleStageRun } from '../progression/StageSettlementService';
 import type { StageRunResult, StageSettlement } from '../progression/StageSettlementModels';
 import { getDefaultContentRegistry } from '../content/registry/ContentRegistry';
 import { resolvePublishedCampaigns } from '../campaign/CampaignRepository';
@@ -95,6 +95,7 @@ export class GameManager {
   private playerBeforeActiveStage: PlayerData | null = null;
   /** 固定屏只保留给显式调试入口；玩家关卡选择始终走正式自由地图入口。 */
   private stageEntrySource: 'debug' | 'formal' = 'debug';
+  private freeMapStageRunSeq = 0;
 
   public menuUi: any = null;
   public battle: any = null;
@@ -126,7 +127,11 @@ export class GameManager {
     this.save = new SaveManager(ctx.storage);
     this.events = new EventManager();
     this.player = this.save.load();
-    if (applyDefaultStageUnlocks(this.player, resolvePublishedStageProgressions(), id => this.mapContentStageId(id)).length) this.save.save(this.player);
+    const publishedProgressions = resolvePublishedStageProgressions();
+    const mapStageId = (id: string) => this.mapContentStageId(id);
+    const restoredUnlocks = applyDefaultStageUnlocks(this.player, publishedProgressions, mapStageId)
+      .concat(reconcilePublishedStageUnlocks(this.player, publishedProgressions, mapStageId));
+    if (restoredUnlocks.length) this.save.save(this.player);
   }
 
   setTutorialManager(tm: any): void {
@@ -369,9 +374,28 @@ export class GameManager {
   /** 自由地图满足正式章节目标后复用既有结算、奖励和解锁链。 */
   finishFreeMapStage(stageId: string, hpRatio: number, elapsedSec: number): boolean {
     if (this.scene !== 'explore' || !getStageById(stageId)) return false;
+    const run = this.createFreeMapStageRun(stageId, hpRatio, elapsedSec);
     this.explore?.clear?.();
-    this.finishBattle({ win: true, stageId, hpRatio, elapsedSec, clearResult: null, loot: null });
+    this.finishBattle({ win: true, stageId, contentStageId: run?.contentStageId, run, hpRatio, elapsedSec, clearResult: null, loot: null });
     return true;
+  }
+
+  private createFreeMapStageRun(stageId: string, hpRatio: number, elapsedSec: number): StageRunResult | undefined {
+    const contentStageId = this.explore?.activeStageId;
+    if (!contentStageId || !findPublishedStageProgression(contentStageId)) return undefined;
+    const waveCount = this.explore?.stageWaves?.length || 1;
+    const objective = this.explore?.objective;
+    const clearedWaves = objective?.enemyKills >= objective?.enemyKillsRequired
+      ? waveCount : Math.min(waveCount, (this.explore?.currentStageWave ?? 0) + 1);
+    const endedAt = this.ctx.now();
+    const heroMaxHp = this.explore?.player?.maxHp ?? 0;
+    return {
+      stageRunId: `${contentStageId}:${Math.floor(endedAt * 1000)}:${++this.freeMapStageRunSeq}`,
+      stageId, contentStageId, victory: true,
+      startedAt: Math.max(0, endedAt - elapsedSec), endedAt, elapsedSec,
+      clearedWaves, totalWaves: waveCount, defeatedEnemies: objective?.enemyKills ?? 0,
+      heroRemainingHp: heroMaxHp * hpRatio, heroMaxHp,
+    };
   }
 
   /** 战斗结束后由 BattleManager 调用 */

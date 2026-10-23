@@ -6,7 +6,7 @@ import { PlayerMecha } from '../player/PlayerMecha';
 import { EnemyMouse } from '../enemy/EnemyMouse';
 import { BattleFeedback } from '../battle/BattleFeedback';
 import { SoundManager } from '../core/SoundManager';
-import { CameraState, clampWorldPoint, createCameraState, followCameraToPoint } from './WorldTransform';
+import { CameraState, clampWorldPoint, createCameraState, followCameraToPoint, screenToWorld } from './WorldTransform';
 import { drawExploreScene } from './ExploreRenderer';
 import { getBattleHudSafeTop as resolveBattleHudSafeTop } from '../config/BattleAssets';
 import {
@@ -80,6 +80,8 @@ export class ExploreScene {
   private stageWaves: StageWaveDefinition[] = [];
   private currentStageWave = 0;
   private currentStageWaveMessage: string | null = null;
+  private moveTarget: { x: number; y: number } | null = null;
+  private moveTargetBlockedSeconds = 0;
 
   constructor(private ctx: IContext, private game: GameManager) {
     this.camera = createCameraState(ctx.canvasWidth, ctx.canvasHeight, this.worldWidth, this.worldHeight);
@@ -117,6 +119,8 @@ export class ExploreScene {
     this.killGoalNoticeTimer = 0;
     this.completionNoticeTimer = 0;
     this.paused = false;
+    this.moveTarget = null;
+    this.moveTargetBlockedSeconds = 0;
     this.started = true;
     this.camera = createCameraState(this.ctx.canvasWidth, this.ctx.canvasHeight, this.worldWidth, this.worldHeight);
     const stats = this.game.battleStats;
@@ -128,7 +132,8 @@ export class ExploreScene {
     };
     this.enemies = this.stageWaves.length
       ? this.spawnStageWave(this.stageWaves[0])
-      : seedExploreEnemies(this.ctx, this.player, this.spawnPoints, this.worldWidth, this.worldHeight);
+      : seedExploreEnemies(this.ctx, this.player, this.spawnPoints, this.worldWidth, this.worldHeight,
+        this.terrainObstacles);
     this.totalSpawned = this.enemies.length;
     this.updateCamera();
   }
@@ -139,10 +144,15 @@ export class ExploreScene {
     this.collectDropCoins();
     const playerBeforeMove = { x: this.player.x, y: this.player.y };
     const enemyBeforeMove = new Map(this.enemies.map(enemy => [enemy, { x: enemy.x, y: enemy.y }]));
+    const originalMove = { x: this.ctx.input.moveX, y: this.ctx.input.moveY };
+    const autoMoving = this.applyMoveTargetInput(dt);
     this.player.update(dt, this.enemies, this.terrainObstacles);
     this.clampPlayer(playerBeforeMove);
+    this.finishMoveTargetFrame(playerBeforeMove, autoMoving, dt);
+    this.ctx.input.moveX = originalMove.x;
+    this.ctx.input.moveY = originalMove.y;
     this.flushCombatFeedback();
-    updateExploreEnemyAI(this.enemies, this.player, this.worldWidth, this.worldHeight, dt);
+    updateExploreEnemyAI(this.enemies, this.player, this.worldWidth, this.worldHeight, dt, this.terrainObstacles);
     for (const enemy of this.enemies) {
       const before = enemyBeforeMove.get(enemy);
       if (!before) continue;
@@ -156,7 +166,7 @@ export class ExploreScene {
     if (this.stageWaves.length) this.advanceStageWave();
     else this.totalSpawned += updateExploreSpawns(
       this.ctx, this.player, this.enemies, this.spawnPoints,
-      this.worldWidth, this.worldHeight, dt, this.enemySpawnPaused,
+      this.worldWidth, this.worldHeight, dt, this.enemySpawnPaused, this.terrainObstacles,
     );
     if (this.killGoalNoticeTimer > 0) this.killGoalNoticeTimer -= dt;
     if (this.completionNoticeTimer > 0) this.completionNoticeTimer -= dt;
@@ -177,6 +187,18 @@ export class ExploreScene {
 
   render(): void { if (this.started && this.player) drawExploreScene(this.ctx.canvas, this, this.ctx.now()); }
 
+  handleTapMoveInput(): boolean {
+    const { tapX, tapY } = this.ctx.input;
+    if (!this.started || this.paused || tapX === null || tapY === null) return false;
+    this.moveTarget = clampWorldPoint(
+      screenToWorld(this.camera, { x: tapX, y: tapY }),
+      this.worldWidth, this.worldHeight, this.player.radius,
+    );
+    this.moveTargetBlockedSeconds = 0;
+    this.ctx.input.consumeTap();
+    return true;
+  }
+
   usePlayerSkill(skillId: string): SkillUseResult {
     if (!this.started || this.paused || !this.player || this.player.dead) return { ok: false, reason: 'cooldown' };
     const result = this.player.useSkill(skillId, this.enemies);
@@ -191,6 +213,7 @@ export class ExploreScene {
   clear(): void {
     this.paused = false; this.started = false; this.enemies = []; this.spawnPoints = [];
     this.resourceNodes = []; this.chests = []; this.feedback.reset();
+    this.moveTarget = null; this.moveTargetBlockedSeconds = 0;
     this.player?.clearActiveProjectiles(); SoundManager.getInstance().stopAll();
   }
 
@@ -205,7 +228,8 @@ export class ExploreScene {
     };
     this.spawnPoints = createExploreSpawnPoints(exploration);
     this.currentStageWaveMessage = wave.message ?? null;
-    return seedExploreEnemies(this.ctx, this.player, this.spawnPoints, this.worldWidth, this.worldHeight);
+    return seedExploreEnemies(this.ctx, this.player, this.spawnPoints, this.worldWidth, this.worldHeight,
+      this.terrainObstacles);
   }
 
   private advanceStageWave(): void {
@@ -227,6 +251,34 @@ export class ExploreScene {
 
   private updateCamera(): void {
     this.camera = followCameraToPoint(this.camera, this.player, { targetOffsetY: EXPLORE_CONFIG.targetOffsetY, followLerp: 1 });
+  }
+
+  private applyMoveTargetInput(dt: number): boolean {
+    if (this.ctx.input.moveX !== 0 || this.ctx.input.moveY !== 0) {
+      this.moveTarget = null;
+      this.moveTargetBlockedSeconds = 0;
+      return false;
+    }
+    if (!this.moveTarget) return false;
+    const dx = this.moveTarget.x - this.player.x;
+    const dy = this.moveTarget.y - this.player.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance <= Math.max(4, this.player.speed * dt)) {
+      this.player.x = this.moveTarget.x;
+      this.player.y = this.moveTarget.y;
+      this.moveTarget = null;
+      return false;
+    }
+    this.ctx.input.moveX = dx / distance;
+    this.ctx.input.moveY = dy / distance;
+    return true;
+  }
+
+  private finishMoveTargetFrame(before: { x: number; y: number }, autoMoving: boolean, dt: number): void {
+    if (!autoMoving || !this.moveTarget) return;
+    const moved = Math.hypot(this.player.x - before.x, this.player.y - before.y);
+    this.moveTargetBlockedSeconds = moved < 0.5 ? this.moveTargetBlockedSeconds + dt : 0;
+    if (this.moveTargetBlockedSeconds >= 0.35) this.moveTarget = null;
   }
 
   private applyPublishedTerrain(stageId: string): void {
@@ -264,6 +316,7 @@ export class ExploreScene {
   }
 
   get aliveEnemies(): number { return this.enemies.length; }
+  get hasMoveTarget(): boolean { return this.moveTarget !== null; }
   get activeProjectiles(): number { return this.player?.activeProjectileCount ?? 0; }
   get spawnedEnemyCount(): number { return this.totalSpawned; }
   get totalEnemies(): number { return this.objective.completed ? this.aliveEnemies : this.spawnPoints.reduce((sum, sp) => sum + sp.maxAlive, 0); }

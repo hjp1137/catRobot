@@ -87,6 +87,8 @@ export class PlayerMecha {
 
   /** 任务5：朝向角（弧度），默认 0=右；移动/攻击时更新。喵能炮判定用 */
   public facingAngle = 0;
+  public moveDirectionX = 1;
+  public moveDirectionY = 0;
   /** 任务5：局内技能状态 */
   public readonly skillState: SkillState;
   /** 任务5：喵能炮释放特效计时（秒），>0 时 render 画能量光束 */
@@ -97,6 +99,7 @@ export class PlayerMecha {
   public readonly statusEffects = new StatusEffectManager();
   public readonly animationPlayer = new FrameSequencePlayer();
   public animationState: RuntimeAnimationState = 'idle';
+  private moving = false;
   private hitReactionRemaining = 0;
 
   private attackTimer = 0; // 累计冷却
@@ -150,6 +153,7 @@ export class PlayerMecha {
   /** 每帧更新。enemies 由 BattleManager 传入。 */
   update(dt: number, enemies: EnemyMouse[], projectileBlockers: readonly ExploreTerrainObstacle[] = []): void {
     if (this.dead) {
+      this.moving = false;
       this.animationState = 'death';
       this.animationPlayer.update(dt);
       return;
@@ -174,8 +178,11 @@ export class PlayerMecha {
   private move(dt: number): void {
     const ix = this.ctx.input.moveX;
     const iy = this.ctx.input.moveY;
-    if (ix === 0 && iy === 0) return;
+    this.moving = ix !== 0 || iy !== 0;
+    if (!this.moving) return;
     (this.ctx as any).playerMoved = true;
+    this.moveDirectionX = ix;
+    this.moveDirectionY = iy;
     // 任务5：更新朝向角（移动方向）
     this.facingAngle = Math.atan2(iy, ix);
     this.facing = ix >= 0 ? 1 : -1;
@@ -191,6 +198,10 @@ export class PlayerMecha {
     if (this.x > bounds.maxX) this.x = bounds.maxX;
     if (this.y < bounds.minY) this.y = bounds.minY;
     if (this.y > bounds.maxY) this.y = bounds.maxY;
+  }
+
+  get isMoving(): boolean {
+    return this.moving;
   }
 
   private autoAttack(dt: number, enemies: EnemyMouse[]): void {

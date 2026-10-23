@@ -175,7 +175,7 @@ const VersionCard = defineComponent({
 });
 
 async function load() {
-  const result = await contentApi.resources({ page: page.value, pageSize: pageSize.value, category: category.value, packName: packName.value, status: status.value, keyword: keyword.value || undefined });
+  const result = await contentApi.resourcesPage({ page: page.value, pageSize: pageSize.value, category: category.value, packName: packName.value, status: status.value, keyword: keyword.value || undefined });
   rows.value = result.items;
   total.value = result.total;
   categoryCounts.value = result.categoryCounts ?? {};

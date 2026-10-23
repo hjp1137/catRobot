@@ -1,0 +1,196 @@
+{
+	"combat_seed": 20261015,
+	"injected_combat_state": false,
+	"injected_inventory": false,
+	"manual_play_acceptance": false,
+	"merged_uid": "rune_1792307858.048_3765650361",
+	"runes": [
+		{
+			"config_id": "rune_helmet",
+			"generation_version": 1.0,
+			"level": 2.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "cooldownReduction",
+				"roll": 14.0,
+				"value_units": 80.0
+			},
+			"secondary_affixes": [
+				{
+					"id": "attackSpeedBonus",
+					"roll": 96.0,
+					"value_units": 43.0
+				}
+			],
+			"uid": "rune_1792307802.266_1256314588"
+		},
+		{
+			"config_id": "rune_necklace",
+			"generation_version": 1.0,
+			"level": 1.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "skillDamageBonus",
+				"roll": 11.0,
+				"value_units": 132.0
+			},
+			"secondary_affixes": [],
+			"uid": "rune_1792307824.199_2320501025"
+		},
+		{
+			"config_id": "rune_legs",
+			"generation_version": 1.0,
+			"level": 1.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "defense",
+				"roll": 34.0,
+				"value_units": 14.0
+			},
+			"secondary_affixes": [],
+			"uid": "rune_1792307832.212_2414841878"
+		},
+		{
+			"config_id": "rune_ring",
+			"generation_version": 1.0,
+			"level": 1.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "attack",
+				"roll": 88.0,
+				"value_units": 56.0
+			},
+			"secondary_affixes": [],
+			"uid": "rune_1792307838.181_2464049865"
+		},
+		{
+			"config_id": "rune_resolve",
+			"generation_version": 1.0,
+			"level": 1.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "eliteDamageReduction",
+				"roll": 33.0,
+				"value_units": 47.0
+			},
+			"secondary_affixes": [],
+			"uid": "rune_1792307843.731_3230022144"
+		},
+		{
+			"config_id": "rune_thunder",
+			"generation_version": 1.0,
+			"level": 1.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "attackSpeedBonus",
+				"roll": 32.0,
+				"value_units": 57.0
+			},
+			"secondary_affixes": [],
+			"uid": "rune_1792307856.034_17882758"
+		},
+		{
+			"config_id": "rune_weapon",
+			"generation_version": 1.0,
+			"level": 2.0,
+			"locked": false,
+			"mechanism": {},
+			"primary_affix": {
+				"id": "attackDamageBonus",
+				"roll": 89.0,
+				"value_units": 168.0
+			},
+			"secondary_affixes": [
+				{
+					"id": "attackSpeedBonus",
+					"roll": 71.0,
+					"value_units": 40.0
+				}
+			],
+			"uid": "rune_1792307858.048_3765650361"
+		}
+	],
+	"runs": [
+		{
+			"equipment": 0,
+			"hp": 109.0,
+			"kills": 48,
+			"run": 1,
+			"runes": 1,
+			"seconds": 152.86666666668
+		},
+		{
+			"equipment": 0,
+			"hp": 88.5,
+			"kills": 53,
+			"run": 2,
+			"runes": 2,
+			"seconds": 170.400000000028
+		},
+		{
+			"equipment": 0,
+			"hp": 91.5,
+			"kills": 42,
+			"run": 3,
+			"runes": 3,
+			"seconds": 128.283333333328
+		},
+		{
+			"equipment": 0,
+			"hp": 45.5,
+			"kills": 64,
+			"run": 4,
+			"runes": 4,
+			"seconds": 204.333333333388
+		},
+		{
+			"equipment": 1,
+			"hp": 114.0,
+			"kills": 42,
+			"run": 5,
+			"runes": 5,
+			"seconds": 130.049999999996
+		},
+		{
+			"equipment": 1,
+			"hp": 93.5,
+			"kills": 57,
+			"run": 6,
+			"runes": 6,
+			"seconds": 184.566666666706
+		},
+		{
+			"equipment": 2,
+			"hp": 91.5,
+			"kills": 42,
+			"run": 7,
+			"runes": 7,
+			"seconds": 128.283333333328
+		},
+		{
+			"equipment": 4,
+			"hp": 107.5,
+			"kills": 41,
+			"run": 8,
+			"runes": 8,
+			"seconds": 128.283333333328
+		}
+	],
+	"save_path": "D:/projects/hjp/catRobot/tmp/rune-integration-e0e64b8b5fe64374b02abcad508f6420/full-third.json",
+	"sockets": {
+		"eq_1792307832.212_2654717672": [
+			"rune_1792307858.048_3765650361",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"source": "Accelerated real combat simulation with scripted navigation and skills, actual viewport mouse UI"
+}

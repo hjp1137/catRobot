@@ -143,6 +143,16 @@ export class EnemyMouse {
     this.animationPlayer.update(dt);
   }
 
+  syncExploreMotionAnimation(dt: number, moving: boolean): void {
+    this.isMoving = moving;
+    this.isAttacking = false;
+    this.animationState = resolveEnemyAnimationState({
+      ...this,
+      hitFlash: Math.max(this.hitFlash, this.hitReactionRemaining),
+    });
+    this.animationPlayer.update(dt);
+  }
+
   takeDamage(dmg: number): void {
     if (this.dead) return;
     this.hp -= dmg;

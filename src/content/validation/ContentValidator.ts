@@ -1,4 +1,4 @@
-import { ART_MANIFEST } from '../../assets/ArtManifest';
+import { hasArtResource } from '../../assets/ArtResourceResolver';
 import type { ArtResourceKey } from '../../assets/ArtResourceKeys';
 import type { ContentDataSet, ContentValidationError, ContentValidationResult } from '../models/ContentTypes';
 import { validateStages } from './StageContentValidator';
@@ -27,7 +27,7 @@ function generic(errors: ContentValidationError[], file: string, items: Array<{ 
 }
 
 function art(errors: ContentValidationError[], file: string, objectId: string, field: string, key?: ArtResourceKey): void {
-  if (key && !ART_MANIFEST[key]) push(errors, file, objectId, field, `Art Key 不存在：${key}`);
+  if (key && !hasArtResource(key)) push(errors, file, objectId, field, `Art Key 不存在：${key}`);
 }
 
 export function validateContentData(data: ContentDataSet): ContentValidationResult {

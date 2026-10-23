@@ -1,0 +1,185 @@
+{
+	"after": {
+		"armor_level": 1,
+		"claimed_rewards": {},
+		"cleared": {},
+		"credits": 0,
+		"equip_index": 0,
+		"equipped": {
+			"left_weapon": "old_gun"
+		},
+		"first_three_claimed": {},
+		"gear_dry_streak": 0,
+		"inventory": [
+			{
+				"config_id": "blackiron_weapon_cannon",
+				"level": 0,
+				"locked": false,
+				"uid": "old_gun"
+			}
+		],
+		"legacy_raw": {},
+		"legacy_unlocked": [],
+		"level": 1,
+		"materials": {
+			"enhanceStone": 0.0
+		},
+		"parts": 0,
+		"rune_reward_choices": [],
+		"rune_sockets": {
+			"old_gun": [
+				"migration_rune_weapon",
+				"migration_cannon_rune_1",
+				"",
+				"",
+				""
+			]
+		},
+		"runes": [
+			{
+				"config_id": "rune_weapon",
+				"generation_version": 1,
+				"legacy_effect": {
+					"attackDamageBonus": 0.02
+				},
+				"legacy_fixed": true,
+				"level": 3,
+				"locked": false,
+				"mechanism": {},
+				"primary_affix": {},
+				"secondary_affixes": [],
+				"uid": "migration_rune_weapon"
+			},
+			{
+				"config_id": "cannon_rune_1",
+				"generation_version": 1,
+				"legacy_effect": {
+					"skillDamageBonus": 0.05,
+					"skillId": "meow_cannon"
+				},
+				"legacy_fixed": true,
+				"level": 3,
+				"locked": false,
+				"mechanism": {},
+				"primary_affix": {},
+				"secondary_affixes": [],
+				"uid": "migration_cannon_rune_1"
+			},
+			{
+				"config_id": "poison_guard_rune",
+				"generation_version": 1,
+				"legacy_effect": {
+					"poisonResist": 0.15
+				},
+				"legacy_fixed": true,
+				"level": 4,
+				"locked": true,
+				"mechanism": {},
+				"primary_affix": {},
+				"secondary_affixes": [],
+				"uid": "migration_poison_guard_rune"
+			},
+			{
+				"config_id": "fire_guard_rune",
+				"generation_version": 1,
+				"legacy_effect": {
+					"fireResist": 0.15
+				},
+				"legacy_fixed": true,
+				"level": 4,
+				"locked": true,
+				"mechanism": {},
+				"primary_affix": {},
+				"secondary_affixes": [],
+				"uid": "migration_fire_guard_rune"
+			},
+			{
+				"config_id": "unrecognized_old",
+				"generation_version": 1,
+				"legacy_effect": {},
+				"legacy_fixed": true,
+				"level": 1,
+				"locked": true,
+				"mechanism": {},
+				"primary_affix": {},
+				"secondary_affixes": [],
+				"uid": "migration_unrecognized_old"
+			}
+		],
+		"schema_version": 5,
+		"selected_stage": "stage_battle_1_1",
+		"skill_level": 1,
+		"skill_levels": {
+			"heavy_shield": 1.0,
+			"meow_cannon": 1.0
+		},
+		"weapon_level": 1
+	},
+	"before": {
+		"armor_level": 1,
+		"claimed_rewards": {},
+		"cleared": {},
+		"credits": 0,
+		"equip_index": 0,
+		"equipped": {
+			"left_weapon": "old_gun"
+		},
+		"first_three_claimed": {},
+		"gear_dry_streak": 0,
+		"inventory": [
+			{
+				"config_id": "blackiron_weapon_cannon",
+				"level": 0,
+				"locked": false,
+				"uid": "old_gun"
+			}
+		],
+		"legacy_raw": {},
+		"legacy_unlocked": [],
+		"level": 1,
+		"materials": {
+			"enhanceStone": 0.0
+		},
+		"parts": 0,
+		"rune_reward_choices": [],
+		"rune_sockets": {
+			"old_gun": [
+				"migration_rune_weapon",
+				"migration_cannon_rune_1",
+				"",
+				"",
+				""
+			]
+		},
+		"runes": [
+			{
+				"config_id": "rune_weapon",
+				"uid": "migration_rune_weapon"
+			},
+			{
+				"config_id": "cannon_rune_1",
+				"uid": "migration_cannon_rune_1"
+			},
+			{
+				"config_id": "poison_guard_rune",
+				"uid": "migration_poison_guard_rune"
+			},
+			{
+				"config_id": "fire_guard_rune",
+				"uid": "migration_fire_guard_rune"
+			},
+			{
+				"config_id": "unrecognized_old",
+				"uid": "migration_unrecognized_old"
+			}
+		],
+		"schema_version": 4,
+		"selected_stage": "stage_battle_1_1",
+		"skill_level": 1,
+		"skill_levels": {
+			"heavy_shield": 1.0,
+			"meow_cannon": 1.0
+		},
+		"weapon_level": 1
+	}
+}

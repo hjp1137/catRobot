@@ -66,7 +66,7 @@ export class ReleasesService implements OnModuleInit {
           await this.snapshots.markArtVersionsPublished(artSnapshot, tx);
           await tx.contentRelease.update({ where: { id: release.id }, data: { status: 'published', snapshot_checksum: snapshot.checksum, snapshot_path: paths.jsonPath, published_at: new Date() } });
           await tx.contentSystemState.update({ where: { id: 'singleton' }, data: { draft_dirty: false, published_revision: { increment: 1 }, current_release_id: release.id } });
-        }, { maxWait: 10000, timeout: 20000 });
+        }, { maxWait: 10000, timeout: 60000 });
         try { this.snapshots.clearPublishJournal(release.id); } catch { /* 启动恢复会确认已提交发布 */ }
         return { releaseId: release.id, releaseVersion, checksum: snapshot.checksum, paths: { ...paths, artJsonPath: artPaths.jsonPath, artTsPath: artPaths.tsPath, animationJsonPath: animationPaths.jsonPath, animationTsPath: animationPaths.tsPath, stageJsonPath: stagePaths.jsonPath, stageTsPath: stagePaths.tsPath, progressionJsonPath: progressionPaths.jsonPath, progressionTsPath: progressionPaths.tsPath, campaignJsonPath: campaignPaths.jsonPath, campaignTsPath: campaignPaths.tsPath, tutorialJsonPath: tutorialPaths.jsonPath, tutorialTsPath: tutorialPaths.tsPath, tutorialHistoryJsonPath: tutorialPaths.historyJsonPath } };
       } catch (error) {
